@@ -1,6 +1,24 @@
 {
-  "name": "vue-project",
-  "version": "0.0.0",
+  "name": "vue-peaks",
+  "version": "0.0.1",
+  "description": "A Vue wrapper around the bbc/peaks.js audio waveform UI component",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/suterma/vue-peaks.git"
+  },
+  "keywords": [
+    "vue",
+    "peaks.js",
+    "wrapper",
+    "waveform",
+    "component"
+  ],
+  "author": "Marcel Suter (https://marcelsuter.ch)",
+  "license": "GNU LGPLv3",
+  "bugs": {
+    "url": "https://github.com/suterma/vue-peaks/issues"
+  },
+  "homepage": "https://github.com/suterma/vue-peaks#readme",
   "scripts": {
     "dev": "vite",
     "build": "run-p type-check build-only",
