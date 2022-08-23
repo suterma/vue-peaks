@@ -36,6 +36,8 @@ npm run lint
 ```
 
 # Credits
+- [peaks.js](https://github.com/bbc/peaks.js/) by BBC (LGPL-3.0 licensed)
+
 Initial code is taken from 
 - [peaks-vue-demo](https://github.com/candeogi/peaks-vue-demo) by Giovanni Candeo (MIT-licensed)
 - [vue-waveform-template](https://github.com/thom4parisot/vue-waveform-template) by Thomas Parisot (MIT-licensed)
