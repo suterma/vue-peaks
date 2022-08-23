@@ -15,6 +15,9 @@ import TheWelcome from './components/TheWelcome.vue';
   <main>
     <TheWelcome />
   </main>
+  <section>
+    <h1>Some Examples....</h1>
+  </section>
 </template>
 
 <style scoped>
@@ -29,8 +32,8 @@ header {
 
 @media (min-width: 1024px) {
   header {
-    display: flex;
-    place-items: center;
+    /* display: flex;
+    place-items: center; */
     padding-right: calc(var(--section-gap) / 2);
   }
 
