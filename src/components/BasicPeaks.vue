@@ -1,24 +1,3 @@
-<!-- <script setup lang="ts">
-import Peaks from "peaks.js";
-
-const options: Peaks.PeaksOptions = {
-  zoomview: {
-    container: document.getElementById("zoomview-container"),
-  },
-  overview: {
-    container: document.getElementById("overview-container"),
-  },
-  mediaElement: (document.querySelector("audio") as HTMLAudioElement) ?? null,
-  webAudio: {
-    audioContext: new AudioContext(),
-  },
-};
-
-Peaks.init(options, function (err, peaks) {
-  // Do something when the waveform is displayed and ready
-});
-</script> -->
-
 <script lang="ts">
 import Peaks from "peaks.js";
 export default {
@@ -43,7 +22,7 @@ export default {
         webAudio: {
           audioContext: new AudioContext(),
         },
-        zoomLevels: [64, 128, 256, 512],
+        zoomLevels: [64, 128, 256, 512, 1024, 2048],
       };
       const vm = this;
       Peaks.init(options, function (err, peaks) {
