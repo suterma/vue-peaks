@@ -1,11 +1,18 @@
 <script setup lang="ts">
-import HelloWorld from './components/HelloWorld.vue';
-import TheWelcome from './components/TheWelcome.vue';
+import HelloWorld from "./components/HelloWorld.vue";
+import TheWelcome from "./components/TheWelcome.vue";
+import BasicPeaks from "./components/BasicPeaks.vue";
 </script>
 
 <template>
   <header>
-    <img alt="Vue logo" class="logo" src="./assets/peaks-logo.svg" width="125" height="125" />
+    <img
+      alt="Vue logo"
+      class="logo"
+      src="./assets/peaks-logo.svg"
+      width="125"
+      height="125"
+    />
 
     <div class="wrapper">
       <HelloWorld msg="vue-peaks" />
@@ -15,8 +22,13 @@ import TheWelcome from './components/TheWelcome.vue';
   <main>
     <TheWelcome />
   </main>
+  <!-- Examples -->
   <section>
-    <h1>Some Examples....</h1>
+    <article>
+      <h1>A basic example</h1>
+
+      <BasicPeaks />
+    </article>
   </section>
 </template>
 
@@ -32,8 +44,8 @@ header {
 
 @media (min-width: 1024px) {
   header {
-    /* display: flex;
-    place-items: center; */
+    display: flex;
+    place-items: center;
     padding-right: calc(var(--section-gap) / 2);
   }
 
