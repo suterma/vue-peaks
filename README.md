@@ -15,6 +15,24 @@ npm install --save waveform-data
 
 Installing vue-peaks also installs Peaks.js as a dependency. However, Peaks.js uses [Konva](https://konvajs.org/) and [waveform-data](https://github.com/bbc/waveform-data.js) as peer dependencies, so you must also install those modules.
 
+# How to use
+
+## A basic example
+
+```html
+<AudioPeaks src="lidija_roos-not_for_sale.mp3" />
+```
+
+By default, a new audio element and audio context is created for the given source URL, both panes (overview and zoom) are shown, and their size is 100% width and 250px height.
+
+## Another example
+
+```html
+<AudioPeaks src="lidija_roos-decisions.ogg" id="someIdentifier" />
+```
+
+When using more than one audio.js component instance in the same HTML document, a unique id must be set.
+
 # Build & Development
 
 ## Project Setup
