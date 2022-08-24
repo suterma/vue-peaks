@@ -12,9 +12,7 @@ npm install --save konva
 npm install --save waveform-data
 ```
 
-Installing vue-peaks also installs peaks.js as a dependency.
-
-Note that Peaks.js uses [Konva](https://konvajs.org/) and [waveform-data](https://github.com/bbc/waveform-data.js) as peer dependencies, so you must also install those modules.
+Installing vue-peaks also installs Peaks.js as a dependency. However, Peaks.js uses [Konva](https://konvajs.org/) and [waveform-data](https://github.com/bbc/waveform-data.js) as peer dependencies, so you must also install those modules.
 
 # Build & Development
 

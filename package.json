@@ -29,6 +29,7 @@
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore"
   },
   "dependencies": {
+    "peaks.js": "^2.0.4",
     "vue": "^3.2.37"
   },
   "devDependencies": {
