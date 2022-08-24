@@ -28,6 +28,16 @@ import AudioPeaks from "./components/AudioPeaks.vue";
       </p>
       <AudioPeaks src="lidija_roos-not_for_sale.mp3" />
     </article>
+
+    <article>
+      <h1>Another example</h1>
+      <pre>
+&lt;AudioPeaks src="lidija_roos-decisions.ogg" id="someIdentifier" /&gt;
+      </pre>
+      <p>when using more than one audio.js component instance in the same HTML document, a unique id must be set.
+      </p>
+      <AudioPeaks src="lidija_roos-decisions.ogg" id="someIdentifier" />
+    </article>
   </section>
 </template>
 
