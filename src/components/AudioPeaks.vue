@@ -1,49 +1,54 @@
 <script setup lang="ts">
-import { shallowRef, onMounted } from 'vue'
-import Peaks from "peaks.js";
+import { ref, shallowRef, onMounted } from 'vue';
+import Peaks from 'peaks.js';
 
 const props = defineProps<{
   /** The audio source URL */
-  src: string,
-}>()
+  src: string;
+}>();
 
-const peakInstance = shallowRef<Peaks.PeaksInstance | undefined>(undefined)
+/** The peaks instance MUST NOT be deeply reactive for performance reasons.
+ * @devdoc See https://github.com/bbc/peaks.js/issues/406#issuecomment-1225885020 in peaks.js
+ * and this documentation https://vuejs.org/api/reactivity-advanced.html#shallowref about shallow references
+ */
+const peakInstance = shallowRef<Peaks.PeaksInstance | undefined>(undefined);
 const zoomInButton = shallowRef(null);
 const zoomOutButton = shallowRef(null);
+const zoomLevel = ref<number | undefined>(undefined);
 
 onMounted(() => {
   createPeakInstance();
-})
+});
 
 function createPeakInstance() {
   const options: Peaks.PeaksOptions = {
     containers: {
-      overview: document.getElementById("overview-container"),
-      zoomview: document.getElementById("zoomview-container"),
+      overview: document.getElementById('overview-container'),
+      zoomview: document.getElementById('zoomview-container'),
     },
     mediaElement:
-      (document.querySelector("audio") as HTMLAudioElement) ?? null,
+      (document.querySelector('audio') as HTMLAudioElement) ?? null,
     webAudio: {
       audioContext: new AudioContext(),
     },
-    zoomLevels: [8, 16, 32, 64, 128, 256, 512, 1024, 2048],
+    zoomLevels: [256, 512, 1024, 2048, 4096],
   };
 
   Peaks.init(options, function (err, peaks) {
     console.log(err, peaks);
     peakInstance.value = peaks;
-
-    console.log(zoomInButton.value);
-    console.log(zoomOutButton.value);
-
-    zoomInButton.value.addEventListener("click", () => {
-      peakInstance.value.zoom.zoomIn();
-    });
-    zoomOutButton.value.addEventListener("click", () => {
-      peakInstance.value.zoom.zoomOut();
-    });
+    zoomLevel.value = peaks?.zoom.getZoom();
   });
-} 
+}
+
+function zoomIn() {
+  peakInstance.value?.zoom.zoomIn();
+  zoomLevel.value = peakInstance.value?.zoom.getZoom();
+}
+function zoomOut() {
+  peakInstance.value?.zoom.zoomOut();
+  zoomLevel.value = peakInstance.value?.zoom.getZoom();
+}
 </script>
 
 <template>
@@ -53,10 +58,8 @@ function createPeakInstance() {
     <source :src="src" />
   </audio>
   <div>
-    <button ref="zoomInButton">Zoom in</button>
-    <button ref="zoomOutButton">Zoom out</button>
-    <!-- <button ref="zoomInButton" @click="peakInstance.zoom.zoomIn()">Zoom in</button>
-    <button ref="zoomOutButton" @click="peakInstance.zoom.zoomOut()">Zoom out</button> -->
-    <!-- {{ peakInstance?.value?.zoom.getZoom() }} -->
+    <button ref="zoomInButton" @click="zoomIn()">Zoom in</button>&nbsp;
+    <button ref="zoomOutButton" @click="zoomOut()">Zoom out</button>&nbsp;
+    <span>Zoom level: {{ zoomLevel }}</span>
   </div>
 </template>
