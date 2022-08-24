@@ -7,11 +7,9 @@ const props = defineProps<{
   src: string,
 }>()
 
-const peakInstance = ref(null)
-//     peakInstance: null,
-//     src: String | null
-//   };
-// },
+const count = ref(0)
+const peakInstance = ref<Peaks.PeaksInstance | undefined>(undefined)
+
 onMounted(() => {
   createPeakInstance();
 })
@@ -29,17 +27,9 @@ function createPeakInstance() {
     },
     zoomLevels: [64, 128, 256, 512, 1024, 2048],
   };
-  const vm = this;
   Peaks.init(options, function (err, peaks) {
     console.log(err, peaks);
-
-    vm.peakInstance = peaks;
-    vm.$refs.zoomInButton.addEventListener("click", () => {
-      peaks.zoom.zoomIn();
-    });
-    vm.$refs.zoomOutButton.addEventListener("click", () => {
-      peaks.zoom.zoomOut();
-    });
+    peakInstance.value = peaks;
   });
 } 
 </script>
@@ -51,7 +41,7 @@ function createPeakInstance() {
     <source :src="src" />
   </audio>
   <div>
-    <button ref="zoomInButton">Zoom in</button>
-    <button ref="zoomOutButton">Zoom out</button>
+    <button ref="zoomInButton" @click="peakInstance.zoom.zoomIn()">Zoom in</button>
+    <button ref="zoomOutButton" @click="peakInstance.zoom.zoomOut()">Zoom out</button>
   </div>
 </template>
