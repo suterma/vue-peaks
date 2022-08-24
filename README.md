@@ -3,7 +3,20 @@ A Vue wrapper around the bbc/peaks.js audio waveform UI component.
 
 This project aims to simplify the use of peaks.js in a Vue3 environment.
 
-# Development
+# Installation
+
+```sh
+npm install --save vue-peaks
+# peer dependencies of peaks.js
+npm install --save konva
+npm install --save waveform-data
+```
+
+Installing vue-peaks also installs peaks.js as a dependency.
+
+Note that Peaks.js uses [Konva](https://konvajs.org/) and [waveform-data](https://github.com/bbc/waveform-data.js) as peer dependencies, so you must also install those modules.
+
+# Build & Development
 
 ## Project Setup
 
