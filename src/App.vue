@@ -1,18 +1,12 @@
 <script setup lang="ts">
 import HelloWorld from "./components/HelloWorld.vue";
 import TheWelcome from "./components/TheWelcome.vue";
-import BasicPeaks from "./components/BasicPeaks.vue";
+import AudioPeaks from "./components/AudioPeaks.vue";
 </script>
 
 <template>
   <header>
-    <img
-      alt="Vue logo"
-      class="logo"
-      src="./assets/peaks-logo.svg"
-      width="125"
-      height="125"
-    />
+    <img alt="Vue logo" class="logo" src="./assets/peaks-logo.svg" width="125" height="125" />
 
     <div class="wrapper">
       <HelloWorld msg="vue-peaks" />
@@ -26,8 +20,13 @@ import BasicPeaks from "./components/BasicPeaks.vue";
   <section>
     <article>
       <h1>A basic example</h1>
-
-      <BasicPeaks />
+      <pre>
+&lt;AudioPeaks src="lidija_roos-not_for_sale.mp3" /&gt;
+      </pre>
+      <p>By default, a new audio element and audio context is created for the given source URL, both panes (overview and
+        zoom) are shown, and their size is 100% width and 250px height.
+      </p>
+      <AudioPeaks src="lidija_roos-not_for_sale.mp3" />
     </article>
   </section>
 </template>
