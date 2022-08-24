@@ -11,16 +11,16 @@ const props = defineProps<{
  * @devdoc See https://github.com/bbc/peaks.js/issues/406#issuecomment-1225885020 in peaks.js
  * and this documentation https://vuejs.org/api/reactivity-advanced.html#shallowref about shallow references
  */
-const peakInstance = shallowRef<Peaks.PeaksInstance | undefined>(undefined);
+const peaksInstance = shallowRef<Peaks.PeaksInstance | undefined>(undefined);
 const zoomInButton = shallowRef(null);
 const zoomOutButton = shallowRef(null);
 const zoomLevel = ref<number | undefined>(undefined);
 
 onMounted(() => {
-  createPeakInstance();
+  createPeaksInstance();
 });
 
-function createPeakInstance() {
+function createPeaksInstance() {
   const options: Peaks.PeaksOptions = {
     containers: {
       overview: document.getElementById('overview-container'),
@@ -36,18 +36,18 @@ function createPeakInstance() {
 
   Peaks.init(options, function (err, peaks) {
     console.log(err, peaks);
-    peakInstance.value = peaks;
+    peaksInstance.value = peaks;
     zoomLevel.value = peaks?.zoom.getZoom();
   });
 }
 
 function zoomIn() {
-  peakInstance.value?.zoom.zoomIn();
-  zoomLevel.value = peakInstance.value?.zoom.getZoom();
+  peaksInstance.value?.zoom.zoomIn();
+  zoomLevel.value = peaksInstance.value?.zoom.getZoom();
 }
 function zoomOut() {
-  peakInstance.value?.zoom.zoomOut();
-  zoomLevel.value = peakInstance.value?.zoom.getZoom();
+  peaksInstance.value?.zoom.zoomOut();
+  zoomLevel.value = peaksInstance.value?.zoom.getZoom();
 }
 </script>
 
