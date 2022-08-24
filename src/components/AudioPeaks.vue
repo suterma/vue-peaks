@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, onMounted } from 'vue'
+import { shallowRef, onMounted } from 'vue'
 import Peaks from "peaks.js";
 
 const props = defineProps<{
@@ -7,8 +7,9 @@ const props = defineProps<{
   src: string,
 }>()
 
-const count = ref(0)
-const peakInstance = ref<Peaks.PeaksInstance | undefined>(undefined)
+const peakInstance = shallowRef<Peaks.PeaksInstance | undefined>(undefined)
+const zoomInButton = shallowRef(null);
+const zoomOutButton = shallowRef(null);
 
 onMounted(() => {
   createPeakInstance();
@@ -25,11 +26,22 @@ function createPeakInstance() {
     webAudio: {
       audioContext: new AudioContext(),
     },
-    zoomLevels: [64, 128, 256, 512, 1024, 2048],
+    zoomLevels: [8, 16, 32, 64, 128, 256, 512, 1024, 2048],
   };
+
   Peaks.init(options, function (err, peaks) {
     console.log(err, peaks);
     peakInstance.value = peaks;
+
+    console.log(zoomInButton.value);
+    console.log(zoomOutButton.value);
+
+    zoomInButton.value.addEventListener("click", () => {
+      peakInstance.value.zoom.zoomIn();
+    });
+    zoomOutButton.value.addEventListener("click", () => {
+      peakInstance.value.zoom.zoomOut();
+    });
   });
 } 
 </script>
@@ -41,7 +53,10 @@ function createPeakInstance() {
     <source :src="src" />
   </audio>
   <div>
-    <button ref="zoomInButton" @click="peakInstance.zoom.zoomIn()">Zoom in</button>
-    <button ref="zoomOutButton" @click="peakInstance.zoom.zoomOut()">Zoom out</button>
+    <button ref="zoomInButton">Zoom in</button>
+    <button ref="zoomOutButton">Zoom out</button>
+    <!-- <button ref="zoomInButton" @click="peakInstance.zoom.zoomIn()">Zoom in</button>
+    <button ref="zoomOutButton" @click="peakInstance.zoom.zoomOut()">Zoom out</button> -->
+    <!-- {{ peakInstance?.value?.zoom.getZoom() }} -->
   </div>
 </template>
