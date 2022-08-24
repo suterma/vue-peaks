@@ -50,7 +50,6 @@ npm run lint
 # Credits
 
 -   [peaks.js](https://github.com/bbc/peaks.js/) by BBC (LGPL-3.0 licensed)
--   Music track ["Not for sale"](https://github.com/suterma/vue-peaks/raw/main/public/lidija_roos-not_for_sale.mp3) by Lidja Roos, used by permission.
 
 Initial code is taken from
 
