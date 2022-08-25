@@ -16,7 +16,7 @@ import AudioPeaks from './../components/AudioPeaks.vue';
   &lt;template v-slot:zoomview&gt;
     &lt;div&gt;No zoomview is used here&lt;/div&gt;
   &lt;/template&gt;
-  &lt;template v-slot:audio&gt;
+  &lt;template v-slot:default&gt;
     &lt;span&gt;In this example, the audio control is not shown, but some custom buttons instead:&lt;/span&gt;&amp;nbsp;
     &lt;audio id=&quot;audio-customPanes&quot;
       ref=&quot;customPanesAudio&quot;&gt;
@@ -37,7 +37,7 @@ import AudioPeaks from './../components/AudioPeaks.vue';
   <p>
     To provide your own layout, you can also use the
     <a href="https://github.com/suterma/vue-peaks/blob/main/src/components/AudioPeaks.vue">named slots</a>
-    for the overview, zoomview, audio and controls pane.
+    for the overview, zoomview, audio (default) and controls pane.
   </p>
   <p>This allows you for example to
   <ul>
@@ -57,7 +57,7 @@ import AudioPeaks from './../components/AudioPeaks.vue';
       <template #zoomview>
         <div>No zoomview is used here</div>
       </template>
-      <template #audio>
+      <template #default>
         <span>In this example, the audio control is not shown, but some custom buttons instead:</span>&nbsp;
         <audio id="audio-customPanes" ref="customPanesAudio">
           <source src="lidija_roos-not_for_sale.mp3" />

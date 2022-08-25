@@ -4,7 +4,7 @@ import Peaks from 'peaks.js';
 
 const props = defineProps<{
   /** The audio source URL */
-  src: string;
+  src?: string;
   /** The unique identifier of this component
    * @remarks Required, if you have more than one instance of an
    * audio.js component in the HTML document.
@@ -41,9 +41,10 @@ function createPeaksInstance() {
       overview: document.getElementById('overview-' + props.id),
       zoomview: document.getElementById('zoomview-' + props.id),
     },
+    /* Either use the audio element from the default content of the default slot, if available; otherwise get the audio element by id */
     mediaElement:
       (audio.value as unknown as HTMLAudioElement) ??
-      null,
+      document.getElementById('' + props.id),
     webAudio: {
       audioContext: new AudioContext(),
     },
@@ -77,8 +78,8 @@ function zoomOut() {
   <slot name="zoomview">
     <div class="peaks-zoomview" :id="'zoomview-' + props.id" ref="zoomview"></div>
   </slot>
-  <slot name="audio">
-    <audio class="peaks-audio" :id="'audio-' + props.id" ref="audio" controls>
+  <slot name="default">
+    <audio class="peaks-audio" :id="props.id" ref="audio" controls>
       <source :src="src" />
     </audio>
   </slot>
