@@ -62,6 +62,17 @@ button {
   margin-bottom: 1rem;
 }
 
+pre {
+  border: 1px solid var(--color-border);
+  background: var(--color-background);
+  border-radius: 8px;
+  padding: 1rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  font-family: monospace;
+  font-size: small;
+}
+
 b {
   font-weight: bold;
 }

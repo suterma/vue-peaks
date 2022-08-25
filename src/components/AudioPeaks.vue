@@ -3,13 +3,23 @@ import { ref, shallowRef, onMounted } from 'vue';
 import Peaks from 'peaks.js';
 
 const props = defineProps<{
-  /** The audio source URL */
+  /** The audio source URL (for the "simple" mode)
+   * @remarks This URL is to be used internally with the default media slot 
+   * (no slot template or external media element id is expected)
+   */
   src?: string;
+
   /** The unique identifier of this component
-   * @remarks Required, if you have more than one instance of an
-   * audio.js component in the HTML document.
+   * @remarks Required, if you have more than one instance of a
+   * Peaks.js component in the HTML document.
    */
   id?: string;
+
+  /** The unique identifier of an external media element to use. (for the "external" mode)
+ * @remarks Allows the use of an external media element.
+ * (no slot template or audio source URL is expected)
+ */
+  mediaElementId?: string;
 
   /** The peaks options MUST NOT be deeply reactive for performance reasons.
    * @devdoc See the notes aboout performance with the peaksInstance property
@@ -24,16 +34,22 @@ const props = defineProps<{
 const peaksInstance = shallowRef<Peaks.PeaksInstance | undefined>(undefined);
 const zoomInButton = shallowRef(null);
 const zoomOutButton = shallowRef(null);
-const audio = shallowRef(null);
 const zoomLevel = ref<number | undefined>(undefined);
 
 onMounted(() => {
+
+  //TODO add a warning when not all required propreties (src, id) are set.
   createPeaksInstance();
 });
 
 /** Initializes the peaks instance
  * @remarks If no options are provided by the respective component property, some default options are used.
  * @devdoc Must be called only after mount, because the expected HTML elements must be addressable already by their id.
+ * @devdoc A currently unused variant for referencing an audio element from the template via reference uses
+ * // reference on the component level
+ * const audio = shallowRef(null);
+ * // getting the element
+ * (audio.value as unknown as HTMLAudioElement)
  */
 function createPeaksInstance() {
   const defaultOptions: Peaks.PeaksOptions = {
@@ -41,10 +57,10 @@ function createPeaksInstance() {
       overview: document.getElementById('overview-' + props.id),
       zoomview: document.getElementById('zoomview-' + props.id),
     },
-    /* Either use the audio element from the default content of the default slot, if available; otherwise get the audio element by id */
+    /* Either use the audio element from inside the default slot, if available; otherwise get the audio element by id */
     mediaElement:
-      (audio.value as unknown as HTMLAudioElement) ??
-      document.getElementById('' + props.id),
+      document.getElementById('' + props.id)?.getElementsByTagName('audio')[0] ??
+      (document.getElementById('' + props.mediaElementId) ?? undefined),
     webAudio: {
       audioContext: new AudioContext(),
     },
@@ -72,26 +88,30 @@ function zoomOut() {
 </script>
 
 <template>
-  <slot name="overview">
-    <div class="peaks-overview" :id="'overview-' + props.id" ref="overview"></div>
-  </slot>
-  <slot name="zoomview">
-    <div class="peaks-zoomview" :id="'zoomview-' + props.id" ref="zoomview"></div>
-  </slot>
-  <slot name="default">
-    <audio class="peaks-audio" :id="props.id" ref="audio" controls>
-      <source :src="src" />
-    </audio>
-  </slot>
-  <slot name="controls">
-    <div class="peaks-controls">
-      <button ref="zoomInButton" @click="zoomIn()">
-        Zoom in</button>&nbsp;
-      <button ref="zoomOutButton" @click="zoomOut()">
-        Zoom out</button>&nbsp;
-      <span>Zoom level: {{ zoomLevel }}</span>
-    </div>
-  </slot>
+  <div :id="'' + props.id">
+    <slot name="overview">
+      <div class="peaks-overview" :id="'overview-' + props.id" ref="overview"></div>
+    </slot>
+    <slot name="zoomview">
+      <div class="peaks-zoomview" :id="'zoomview-' + props.id" ref="zoomview"></div>
+    </slot>
+    <!-- If an external media element is reference, the default slot is not used -->
+    <slot name="default" v-if="!props.mediaElementId">
+      <!-- The default content slot for the "slot" mode -->
+      <audio class="peaks-audio" :id="props.id" ref="audio" controls>
+        <source :src="src" />
+      </audio>
+    </slot>
+    <slot name="controls">
+      <div class="peaks-controls">
+        <button ref="zoomInButton" @click="zoomIn()">
+          Zoom in</button>&nbsp;
+        <button ref="zoomOutButton" @click="zoomOut()">
+          Zoom out</button>&nbsp;
+        <span>Zoom level: {{ zoomLevel }}</span>
+      </div>
+    </slot>
+  </div>
 </template>
 
 <style scoped>
@@ -103,6 +123,6 @@ function zoomOut() {
 
 .peaks-overview,
 .peaks-zoomview {
-  height: 250px;
+  height: 100px;
 }
 </style>
