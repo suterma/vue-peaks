@@ -13,4 +13,9 @@ export default defineConfig({
   },
   /* path /vue-peaks/ is suitable for publishing to github pages */
   base: '/vue-peaks/',
+  build: {
+    rollupOptions: {
+      external: [/^.*(.mp3)/, /^.*(.ogg)/],
+    },
+  },
 });
