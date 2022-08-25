@@ -49,7 +49,7 @@ import AudioPeaks from './../components/AudioPeaks.vue';
       </pre>
 
   <div class="example-display">
-    <AudioPeaks src="lidija_roos-decisions.ogg" id="customPanes">
+    <AudioPeaks src="https://suterma.github.io/vue-peaks/lidija_roos-decisions.ogg" id="customPanes">
       <template #overview>
         <div id="overview-customPanes" class="background-hover" style="width: 100%; height: 50px;" ref="overview">
         </div>
@@ -61,7 +61,7 @@ import AudioPeaks from './../components/AudioPeaks.vue';
       <template #default>
         <span>In this example, the audio control is not shown, but some custom buttons instead:</span>&nbsp;
         <audio id="audio-customPanes" ref="customPanesAudio">
-          <source src="lidija_roos-not_for_sale.mp3" />
+          <source src="https://suterma.github.io/vue-peaks/lidija_roos-not_for_sale.mp3" />
         </audio>
         <button @click="($refs.customPanesAudio as HTMLAudioElement).play()">
           Play

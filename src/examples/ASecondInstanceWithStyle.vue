@@ -34,7 +34,8 @@ import AudioPeaks from './../components/AudioPeaks.vue';
     and feel. Note however, that you can not style the waveforms themselves this way.
   </p>
   <div class="example-display">
-    <AudioPeaks src="lidija_roos-decisions.ogg" id="someSecondInstanceWithAnUniqueIdentifier" />
+    <AudioPeaks src="https://suterma.github.io/vue-peaks/lidija_roos-decisions.ogg"
+      id="someSecondInstanceWithAnUniqueIdentifier" />
   </div>
 </template>
 
