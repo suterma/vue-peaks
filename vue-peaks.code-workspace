@@ -1,14 +1,14 @@
 {
-	"folders": [
-		{
-			"path": "."
-		}
+  "folders": [
+    {
+      "path": "."
+    }
   ],
-"settings": {
+  "settings": {
     "editor.tabSize": 2,
-    "cSpell.words": [
-      "zoomview"
-    ],
-    "editor.formatOnSave": true
-}
+    "cSpell.words": ["zoomview"],
+    "editor.formatOnSave": true,
+    "prettier.singleAttributePerLine": true,
+    "prettier.singleQuote": true
+  }
 }
