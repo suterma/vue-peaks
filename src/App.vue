@@ -1,12 +1,18 @@
 <script setup lang="ts">
-import HelloWorld from "./components/HelloWorld.vue";
-import TheWelcome from "./components/TheWelcome.vue";
-import AudioPeaks from "./components/AudioPeaks.vue";
+import HelloWorld from './components/HelloWorld.vue';
+import TheWelcome from './components/TheWelcome.vue';
+import AudioPeaks from './components/AudioPeaks.vue';
 </script>
 
 <template>
   <header>
-    <img alt="Vue logo" class="logo" src="./assets/peaks-logo.svg" width="125" height="125" />
+    <img
+      alt="Vue logo"
+      class="logo"
+      src="./assets/peaks-logo.svg"
+      width="125"
+      height="125"
+    />
 
     <div class="wrapper">
       <HelloWorld msg="vue-peaks" />
@@ -23,8 +29,12 @@ import AudioPeaks from "./components/AudioPeaks.vue";
       <pre>
 &lt;AudioPeaks src="lidija_roos-not_for_sale.mp3" /&gt;
       </pre>
-      <p>By default, a new audio element and audio context is created for the given source URL, both panes (overview and
-        zoom) are shown, and their size is 100% width and 250px height.
+      <p>
+        By default, the [AudioPeaks Vue
+        component](https://github.com/suterma/vue-peaks/blob/main/src/components/AudioPeaks.vue)
+        template has a new audio element, with the given source URL, both panes
+        (overview and zoom) are rendered, and their size is 100% width and 250px
+        height. A new audio context is created and used.
       </p>
       <AudioPeaks src="lidija_roos-not_for_sale.mp3" />
     </article>
@@ -34,9 +44,15 @@ import AudioPeaks from "./components/AudioPeaks.vue";
       <pre>
 &lt;AudioPeaks src="lidija_roos-decisions.ogg" id="someIdentifier" /&gt;
       </pre>
-      <p>When using more than one audio.js component instance in the same HTML document, a unique id must be set.
+      <p>
+        When using more than one component (more than one Peaks.js) instance in
+        the same HTML document, a unique id must be set. This id is applied to
+        the panes and the the audio element, with a prefix.
       </p>
-      <AudioPeaks src="lidija_roos-decisions.ogg" id="someIdentifier" />
+      <AudioPeaks
+        src="lidija_roos-decisions.ogg"
+        id="someIdentifier"
+      />
     </article>
   </section>
 </template>
