@@ -47,29 +47,31 @@ import AudioPeaks from './../components/AudioPeaks.vue';
   </ul>
   In any case however, the id values for the overview, zoomview and the audio element must still match. You need to
   specify the appropriate prefix in addition to your chosen id.</p>
-  <AudioPeaks src="lidija_roos-decisions.ogg" id="customPanes">
-    <template #overview>
-      <div id="overview-customPanes" class="background-hover" style="width: 100%; height: 50px;" ref="overview">
-      </div>
-      <div><span><small>A small description for the audio as an example for slot content</small></span></div>
-    </template>
-    <template #zoomview>
-      <div>No zoomview is used here</div>
-    </template>
-    <template #audio>
-      <span>In this example, the audio control is not shown, but some custom buttons instead:</span>&nbsp;
-      <audio id="audio-customPanes" ref="customPanesAudio">
-        <source src="lidija_roos-not_for_sale.mp3" />
-      </audio>
-      <button @click="(this.$refs.customPanesAudio as HTMLAudioElement).play()">
-        Play
-      </button>&nbsp;
-      <button @click="(this.$refs.customPanesAudio as HTMLAudioElement).pause()">
-        Pause
-      </button>
-    </template>
-    <template #controls>
-      <div>No zoom controls here!</div>
-    </template>
-  </AudioPeaks>
+  <div class="example-display">
+    <AudioPeaks src="lidija_roos-decisions.ogg" id="customPanes">
+      <template #overview>
+        <div id="overview-customPanes" class="background-hover" style="width: 100%; height: 50px;" ref="overview">
+        </div>
+        <div><span><small>A small description for the audio as an example for slot content</small></span></div>
+      </template>
+      <template #zoomview>
+        <div>No zoomview is used here</div>
+      </template>
+      <template #audio>
+        <span>In this example, the audio control is not shown, but some custom buttons instead:</span>&nbsp;
+        <audio id="audio-customPanes" ref="customPanesAudio">
+          <source src="lidija_roos-not_for_sale.mp3" />
+        </audio>
+        <button @click="(this.$refs.customPanesAudio as HTMLAudioElement).play()">
+          Play
+        </button>&nbsp;
+        <button @click="(this.$refs.customPanesAudio as HTMLAudioElement).pause()">
+          Pause
+        </button>
+      </template>
+      <template #controls>
+        <div>No zoom controls here!</div>
+      </template>
+    </AudioPeaks>
+  </div>
 </template>

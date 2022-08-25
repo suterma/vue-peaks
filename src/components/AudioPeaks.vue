@@ -24,6 +24,7 @@ const props = defineProps<{
 const peaksInstance = shallowRef<Peaks.PeaksInstance | undefined>(undefined);
 const zoomInButton = shallowRef(null);
 const zoomOutButton = shallowRef(null);
+const audio = shallowRef(null);
 const zoomLevel = ref<number | undefined>(undefined);
 
 onMounted(() => {
@@ -41,7 +42,7 @@ function createPeaksInstance() {
       zoomview: document.getElementById('zoomview-' + props.id),
     },
     mediaElement:
-      (document.getElementById('audio-' + props.id) as HTMLAudioElement) ??
+      (audio.value as unknown as HTMLAudioElement) ??
       null,
     webAudio: {
       audioContext: new AudioContext(),
@@ -77,7 +78,7 @@ function zoomOut() {
     <div class="peaks-zoomview" :id="'zoomview-' + props.id" ref="zoomview"></div>
   </slot>
   <slot name="audio">
-    <audio class="peaks-audio" :id="'audio-' + props.id" controls>
+    <audio class="peaks-audio" :id="'audio-' + props.id" ref="audio" controls>
       <source :src="src" />
     </audio>
   </slot>

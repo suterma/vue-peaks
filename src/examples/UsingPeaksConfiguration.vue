@@ -46,12 +46,13 @@ onMounted(() => {
     <li>define scrolling behaviour</li>
   </ul>
   </p>
-
-  <div id="overview-customConfig" style="width: 100%; height: 50px" ref="overviewCustomConfig"></div>
-  <div id="zoomview-customConfig" style="width: 100%; height: 50px" ref="zoomviewCustomConfig"></div>
-  <audio id="audio-customConfig" style="width: 100%" controls>
-    <source src="lidija_roos-decisions.ogg" />
-  </audio>
-  <AudioPeaks src="lidija_roos-decisions.ogg" id="customConfig">
-  </AudioPeaks>
+  <div class="example-display">
+    <div id="overview-customConfig" style="width: 100%; height: 50px" ref="overviewCustomConfig"></div>
+    <div id="zoomview-customConfig" style="width: 100%; height: 50px" ref="zoomviewCustomConfig"></div>
+    <audio id="audio-customConfig" style="width: 100%" controls>
+      <source src="lidija_roos-decisions.ogg" />
+    </audio>
+    <AudioPeaks src="lidija_roos-decisions.ogg" id="customConfig">
+    </AudioPeaks>
+  </div>
 </template>
