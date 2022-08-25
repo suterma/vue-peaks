@@ -1,5 +1,13 @@
 # vue-peaks
 
+![License](https://img.shields.io/github/license/suterma/vue-peaks.svg "License")
+![GitHub All Releases](https://img.shields.io/github/downloads/suterma/vue-peaks/total.svg "GitHub All Releases")
+![Release](https://img.shields.io/github/release/suterma/vue-peaks.svg "Release")
+![Language](https://img.shields.io/github/languages/top/suterma/vue-peaks.svg "Language")
+![npm](https://img.shields.io/npm/dm/vue-peaks "NPM")
+[![](https://data.jsdelivr.com/v1/package/npm/vue-peaks/badge "jsDelivr")](https://www.jsdelivr.com/package/npm/vue-peaks)
+[![Rate this package](https://badges.openbase.com/js/rating/vue-peaks.svg?)](https://openbase.com/js/vue-peaks?utm_source=embedded&amp;utm_medium=badge&amp;utm_campaign=rate-badge)
+
 A Vue wrapper around the bbc/peaks.js audio waveform UI component.
 
 This project aims to simplify the use of peaks.js in a Vue3 environment.
