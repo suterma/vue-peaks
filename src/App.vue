@@ -30,8 +30,11 @@ import AudioPeaks from './components/AudioPeaks.vue';
 &lt;AudioPeaks src="lidija_roos-not_for_sale.mp3" /&gt;
       </pre>
       <p>
-        By default, the [AudioPeaks Vue
-        component](https://github.com/suterma/vue-peaks/blob/main/src/components/AudioPeaks.vue)
+        By default, the
+        <a
+          href="https://github.com/suterma/vue-peaks/blob/main/src/components/AudioPeaks.vue"
+          >AudioPeaks Vue component</a
+        >
         template has a new audio element, with the given source URL, both panes
         (overview and zoom) are rendered, and their size is 100% width and 250px
         height. A new audio context is created and used.
