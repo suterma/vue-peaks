@@ -10,6 +10,11 @@ const props = defineProps<{
    * audio.js component in the HTML document.
    */
   id?: string;
+
+  /** The peaks options MUST NOT be deeply reactive for performance reasons.
+   * @devdoc See the notes aboout performance with the peaksInstance property
+   */
+  options?: Peaks.PeaksOptions;
 }>();
 
 /** The peaks instance MUST NOT be deeply reactive for performance reasons.
@@ -25,8 +30,12 @@ onMounted(() => {
   createPeaksInstance();
 });
 
+/** Initializes the peaks instance
+ * @remarks If no options are provided by the respective component property, some default options are used.
+ * @devdoc Must be called only after mount, because the expected HTML elements must be addressable already by their id.
+ */
 function createPeaksInstance() {
-  const options: Peaks.PeaksOptions = {
+  const defaultOptions: Peaks.PeaksOptions = {
     containers: {
       overview: document.getElementById('overview-' + props.id),
       zoomview: document.getElementById('zoomview-' + props.id),
@@ -40,11 +49,14 @@ function createPeaksInstance() {
     zoomLevels: [256, 512, 1024, 2048, 4096],
   };
 
-  Peaks.init(options, function (err, peaks) {
-    console.log(err, peaks);
-    peaksInstance.value = peaks;
-    zoomLevel.value = peaks?.zoom.getZoom();
-  });
+  Peaks.init(
+    props.options ? props.options : defaultOptions,
+    function (err, peaks) {
+      console.log(err, peaks);
+      peaksInstance.value = peaks;
+      zoomLevel.value = peaks?.zoom.getZoom();
+    }
+  );
 }
 
 function zoomIn() {
