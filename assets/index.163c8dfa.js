@@ -26,28 +26,32 @@ import zr from"lidija_roos-not_for_sale.mp3";import"lidija_roos-decisions.ogg";(
 .peaks-zoomview {\r
   height: 50px;\r
 }\r
-</style>  `,-1),Zc=E("p",null,[de(" When using more than one component (more than one Peaks.js) instance in the same HTML document, a "),E("b",null,"unique id"),de(" must be set on each instance. This id is applied to the enclosing div, and respectively to the panes, with a prefix. ")],-1),jc=E("p",null,[de(" Each pane (overview, zoomview, audio, controls) has "),E("b",null,"dedicated CSS classes"),de(" which you can use to customize the look and feel. Note however, that you can not style the waveforms themselves this way. ")],-1),$c={class:"example-display"},qc=Ut({__name:"ASecondInstanceWithStyle",setup(t){return(e,i)=>(Ze(),lt(be,null,[Xc,Yc,Kc,Zc,jc,E("div",$c,[he(Xi,{src:"lidija_roos-decisions.ogg",id:"someSecondInstanceWithAnUniqueIdentifier"})])],64))}});const Jc=E("h1",null,"Using slots for custom panes",-1),Qc=E("p",null,[de(" To provide your own layout, you can also use the "),E("a",{href:"https://github.com/suterma/vue-peaks/blob/main/src/components/AudioPeaks.vue"},"named slots"),de(" for the overview, zoomview, audio (default) and controls pane. ")],-1),ep=E("p",null,[de("This allows you for example to "),E("ul",null,[E("li",null,"layout elements differently"),E("li",null,"not render (instead of just not show) elements"),E("li",null,"have a completely custom audio (or even video) element")]),de(" In any case however, the id values for the overview and zoomview must match. You need to specify the appropriate prefix in addition to your chosen id. You can use any of the audio element modes with named slots.")],-1),tp=E("pre",null,`<AudioPeaks src="lidija_roos-decisions.ogg" id="customPanes">\r
+</style>  `,-1),Zc=E("p",null,[de(" When using more than one component (more than one Peaks.js) instance in the same HTML document, a "),E("b",null,"unique id"),de(" must be set on each instance. This id is applied to the enclosing div, and respectively to the panes, with a prefix. ")],-1),jc=E("p",null,[de(" Each pane (overview, zoomview, audio, controls) has "),E("b",null,"dedicated CSS classes"),de(" which you can use to customize the look and feel. Note however, that you can not style the waveforms themselves this way. ")],-1),$c={class:"example-display"},qc=Ut({__name:"ASecondInstanceWithStyle",setup(t){return(e,i)=>(Ze(),lt(be,null,[Xc,Yc,Kc,Zc,jc,E("div",$c,[he(Xi,{src:"lidija_roos-decisions.ogg",id:"someSecondInstanceWithAnUniqueIdentifier"})])],64))}});const Jc=E("h1",null,"Using slots for custom panes",-1),Qc=E("p",null,[de(" To provide your own layout, you can also use the "),E("a",{href:"https://github.com/suterma/vue-peaks/blob/main/src/components/AudioPeaks.vue"},"named slots"),de(" for the overview, zoomview, audio (default) and controls pane. ")],-1),ep=E("p",null,[de("This allows you for example to "),E("ul",null,[E("li",null,"layout elements differently"),E("li",null,"not render (instead of just not show) elements"),E("li",null,"have a completely custom audio (or even video) element")]),de(" In any case however, the id values for the overview and zoomview must match. You need to specify the appropriate prefix in addition to your chosen id. You can use any of the audio element modes with named slots.")],-1),tp=E("pre",null,`<AudioPeaks src="lidija_roos-decisions.ogg"\r
+  id="customPanes">\r
   <template #overview>\r
-    <div id="overview-customPanes" class="background-hover" style="width: 100%; height: 50px;">\r
-    </div>\r
-    <div><span><small>A small description for the audio as an example for slot content</small></span></div>\r
+    <div id="overview-customPanes"\r
+      class="background-hover"\r
+      style="width: 100%; height: 50px;"\r
+      ref="overview"></div>\r
   </template>\r
   <template #zoomview>\r
     <div>No zoomview is used here</div>\r
   </template>\r
   <template #default>\r
     <span>In this example, the audio control is not shown, but some custom buttons instead:</span>&nbsp;\r
-    <audio id="audio-customPanes" ref="customPanesAudio">\r
+    <audio id="audio-customPanes"\r
+      ref="customPanesAudio">\r
       <source src="lidija_roos-not_for_sale.mp3" />\r
     </audio>\r
-    <button @click="(this.$refs.customPanesAudio as HTMLAudioElement).play()">\r
+    <button @click="($refs.customPanesAudio as HTMLAudioElement).play()">\r
       Play\r
     </button>&nbsp;\r
-    <button @click="(this.$refs.customPanesAudio as HTMLAudioElement).pause()">\r
+    <button @click="($refs.customPanesAudio as HTMLAudioElement).pause()">\r
       Pause\r
     </button>\r
   </template>\r
   <template #controls>\r
     <div>No zoom controls here!</div>\r
   </template>\r
-</AudioPeaks>`,-1),ip={class:"example-display"},np=E("div",{id:"overview-customPanes",class:"background-hover",style:{width:"100%",height:"50px"}},null,-1),rp=E("div",null,[E("span",null,[E("small",null,"A small description for the audio as an example for slot content")])],-1),sp=E("div",null,"No zoomview is used here",-1),ap=E("span",null,"In this example, the audio control is not shown, but some custom buttons instead:",-1),op=de("\xA0 "),lp={id:"audio-customPanes",ref:"customPanesAudio"},hp=E("source",{src:zr},null,-1),dp=[hp],fp=de("\xA0 "),up=E("div",null,"No zoom controls here!",-1),cp=Ut({__name:"UsingSlots",setup(t){return(e,i)=>(Ze(),lt(be,null,[Jc,Qc,ep,tp,E("div",ip,[he(Xi,{src:"lidija_roos-decisions.ogg",id:"customPanes"},{overview:Ve(()=>[np,rp]),zoomview:Ve(()=>[sp]),default:Ve(()=>[ap,op,E("audio",lp,dp,512),E("button",{onClick:i[0]||(i[0]=n=>this.$refs.customPanesAudio.play())}," Play "),fp,E("button",{onClick:i[1]||(i[1]=n=>this.$refs.customPanesAudio.pause())}," Pause ")]),controls:Ve(()=>[up]),_:1})])],64))}}),ll=t=>(eo("data-v-e254a12e"),t=t(),to(),t),pp=ll(()=>E("img",{alt:"Vue logo",class:"logo",src:Fd,width:"125",height:"125"},null,-1)),_p={class:"wrapper"},gp={class:"example"},mp={class:"example"},vp={class:"example"},yp=ll(()=>E("article",{class:"example"},null,-1)),wp=Ut({__name:"App",setup(t){return(e,i)=>(Ze(),lt(be,null,[E("header",null,[pp,E("div",_p,[he(Nd,{msg:"vue-peaks"})])]),E("main",null,[he(ff)]),E("section",null,[E("article",gp,[he(Uc)]),E("article",mp,[he(qc)]),E("article",vp,[he(cp)]),yp])],64))}});const bp=yi(wp,[["__scopeId","data-v-e254a12e"]]);Od(bp).mount("#app");
+</AudioPeaks>\r
+      `,-1),ip={class:"example-display"},np={id:"overview-customPanes",class:"background-hover",style:{width:"100%",height:"50px"},ref:"overview"},rp=E("div",null,[E("span",null,[E("small",null,"A small description for the audio as an example for slot content")])],-1),sp=E("div",null,"No zoomview is used here",-1),ap=E("span",null,"In this example, the audio control is not shown, but some custom buttons instead:",-1),op=de("\xA0 "),lp={id:"audio-customPanes",ref:"customPanesAudio"},hp=E("source",{src:zr},null,-1),dp=[hp],fp=de("\xA0 "),up=E("div",null,"No zoom controls here!",-1),cp=Ut({__name:"UsingSlots",setup(t){return(e,i)=>(Ze(),lt(be,null,[Jc,Qc,ep,tp,E("div",ip,[he(Xi,{src:"lidija_roos-decisions.ogg",id:"customPanes"},{overview:Ve(()=>[E("div",np,null,512),rp]),zoomview:Ve(()=>[sp]),default:Ve(()=>[ap,op,E("audio",lp,dp,512),E("button",{onClick:i[0]||(i[0]=n=>e.$refs.customPanesAudio.play())}," Play "),fp,E("button",{onClick:i[1]||(i[1]=n=>e.$refs.customPanesAudio.pause())}," Pause ")]),controls:Ve(()=>[up]),_:1})])],64))}}),ll=t=>(eo("data-v-e254a12e"),t=t(),to(),t),pp=ll(()=>E("img",{alt:"Vue logo",class:"logo",src:Fd,width:"125",height:"125"},null,-1)),_p={class:"wrapper"},gp={class:"example"},mp={class:"example"},vp={class:"example"},yp=ll(()=>E("article",{class:"example"},null,-1)),wp=Ut({__name:"App",setup(t){return(e,i)=>(Ze(),lt(be,null,[E("header",null,[pp,E("div",_p,[he(Nd,{msg:"vue-peaks"})])]),E("main",null,[he(ff)]),E("section",null,[E("article",gp,[he(Uc)]),E("article",mp,[he(qc)]),E("article",vp,[he(cp)]),yp])],64))}});const bp=yi(wp,[["__scopeId","data-v-e254a12e"]]);Od(bp).mount("#app");
