@@ -1,4 +1,4 @@
-@import "./base.css";
+@import './base.css';
 
 #app {
   max-width: 1280px;
@@ -22,8 +22,6 @@ a,
     background-color: hsla(160, 100%, 37%, 0.2);
   }
 }
-
- 
 
 @media (min-width: 1024px) {
   body {
@@ -53,4 +51,17 @@ button {
   background: var(--color-background);
   border-radius: 8px;
   line-height: 1.6;
+}
+
+.example-display {
+  border: 1px solid var(--color-border);
+  background: var(--color-background);
+  border-radius: 8px;
+  padding: 1rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+b {
+  font-weight: bold;
 }
