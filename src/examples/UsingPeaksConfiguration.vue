@@ -31,7 +31,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <h1>Using a Peaks.js configuration</h1>
+  <h1>[EXPERIMENTAL] Using a Peaks.js configuration</h1>
   <pre>
         ...
       </pre>
