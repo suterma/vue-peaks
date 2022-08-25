@@ -6,7 +6,7 @@
 ![Language](https://img.shields.io/github/languages/top/suterma/vue-peaks.svg "Language")
 ![npm](https://img.shields.io/npm/dm/vue-peaks "NPM")
 [![](https://data.jsdelivr.com/v1/package/npm/vue-peaks/badge "jsDelivr")](https://www.jsdelivr.com/package/npm/vue-peaks)
-[![Rate this package](https://badges.openbase.com/js/rating/vue-peaks.svg?)](https://openbase.com/js/vue-peaks?utm_source=embedded&amp;utm_medium=badge&amp;utm_campaign=rate-badge)
+[![Rate this package](https://badges.openbase.com/js/rating/vue-peaks.svg?token=vHkEYi5zzp1G84PyPGIiYYDN/9+SZtzXDlLAEe5ffRA=)](https://openbase.com/js/vue-peaks?utm_source=embedded&amp;utm_medium=badge&amp;utm_campaign=rate-badge)
 
 A Vue wrapper around the bbc/peaks.js audio waveform UI component.
 
