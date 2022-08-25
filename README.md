@@ -59,7 +59,8 @@ npm run dev
 
 ```sh
 npm run build
-# to publish to GitHub Pages (after committing the build in the /dist folder)
+# to publish to GitHub Pages (after committing and pushing the build in the /dist folder)
+git commit -m 'built for gh-pages' -- dist
 npm run publish-gh-pages
 ```
 
