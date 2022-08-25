@@ -11,5 +11,6 @@ export default defineConfig({
       '@': fileURLToPath(new URL('./src', import.meta.url)),
     },
   },
-  base: 'vue-peaks/',
+  /* path /vue-peaks/ is suitable for publishing to github pages */
+  base: '/vue-peaks/',
 });
