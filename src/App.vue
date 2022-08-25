@@ -21,17 +21,17 @@ import UsingPeaksConfiguration from './examples/UsingPeaksConfiguration.vue';
   </main>
   <!-- Examples -->
   <section>
-    <article>
+    <article class="example">
       <Basic />
     </article>
-    <article>
+    <article class="example">
       <ASecondInstanceWithStyle />
     </article>
-    <article>
+    <article class="example">
       <UsingSlots />
     </article>
-    <article>
-      <UsingPeaksConfiguration />
+    <article class="example">
+      <!-- <UsingPeaksConfiguration /> -->
     </article>
   </section>
 </template>
