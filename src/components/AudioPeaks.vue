@@ -28,8 +28,8 @@ onMounted(() => {
 function createPeaksInstance() {
   const options: Peaks.PeaksOptions = {
     containers: {
-      overview: document.getElementById('overview-container-' + props.id),
-      zoomview: document.getElementById('zoomview-container-' + props.id),
+      overview: document.getElementById('overview-' + props.id),
+      zoomview: document.getElementById('zoomview-' + props.id),
     },
     mediaElement:
       (document.getElementById('audio-' + props.id) as HTMLAudioElement) ??
@@ -58,36 +58,44 @@ function zoomOut() {
 </script>
 
 <template>
-  <div
-    :id="'overview-container-' + props.id"
-    style="width: 100%; height: 250px"
-    ref="overview"
-  ></div>
-  <div
-    :id="'zoomview-container-' + props.id"
-    style="width: 100%; height: 250px"
-    ref="zoomview"
-  ></div>
-  <audio
-    :id="'audio-' + props.id"
-    style="width: 100%"
-    controls
-  >
-    <source :src="src" />
-  </audio>
-  <div>
-    <button
-      ref="zoomInButton"
-      @click="zoomIn()"
+  <slot name="overview">
+    <div
+      :id="'overview-' + props.id"
+      style="width: 100%; height: 250px"
+      ref="overview"
+    ></div>
+  </slot>
+  <slot name="zoomview">
+    <div
+      :id="'zoomview-' + props.id"
+      style="width: 100%; height: 250px"
+      ref="zoomview"
+    ></div>
+  </slot>
+  <slot name="audio">
+    <audio
+      :id="'audio-' + props.id"
+      style="width: 100%"
+      controls
     >
-      Zoom in</button
-    >&nbsp;
-    <button
-      ref="zoomOutButton"
-      @click="zoomOut()"
-    >
-      Zoom out</button
-    >&nbsp;
-    <span>Zoom level: {{ zoomLevel }}</span>
-  </div>
+      <source :src="src" />
+    </audio>
+  </slot>
+  <slot name="controls">
+    <div>
+      <button
+        ref="zoomInButton"
+        @click="zoomIn()"
+      >
+        Zoom in</button
+      >&nbsp;
+      <button
+        ref="zoomOutButton"
+        @click="zoomOut()"
+      >
+        Zoom out</button
+      >&nbsp;
+      <span>Zoom level: {{ zoomLevel }}</span>
+    </div>
+  </slot>
 </template>
