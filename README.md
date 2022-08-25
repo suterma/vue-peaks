@@ -59,6 +59,8 @@ npm run dev
 
 ```sh
 npm run build
+# to publish to GitHub Pages (after committing the build in the /dist folder)
+npm run publish-gh-pages
 ```
 
 ### Run Unit Tests with [Vitest](https://vitest.dev/)
