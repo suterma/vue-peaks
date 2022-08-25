@@ -7,9 +7,7 @@ defineProps<{
 <template>
   <div class="greetings">
     <h1 class="green">{{ msg }}</h1>
-    <h3>
-      A Vue wrapper around the bbc/peaks.js audio waveform UI component.
-    </h3>
+    <h3>A Vue wrapper around the bbc/peaks.js audio waveform UI component.</h3>
   </div>
 </template>
 
@@ -30,7 +28,6 @@ h3 {
 }
 
 @media (min-width: 1024px) {
-
   .greetings h1,
   .greetings h3 {
     text-align: left;

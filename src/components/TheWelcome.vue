@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import WelcomeItem from "./WelcomeItem.vue";
-import DocumentationIcon from "./icons/IconDocumentation.vue";
-import EcosystemIcon from "./icons/IconEcosystem.vue";
+import WelcomeItem from './WelcomeItem.vue';
+import DocumentationIcon from './icons/IconDocumentation.vue';
+import EcosystemIcon from './icons/IconEcosystem.vue';
 </script>
 
 <template>
@@ -12,14 +12,18 @@ import EcosystemIcon from "./icons/IconEcosystem.vue";
     <template #heading>Documentation</template>
     <p>
       Explore the below examples or see the
-      <a target="_blank" href="https://github.com/suterma/vue-peaks#vue-peaks"
+      <a
+        target="_blank"
+        href="https://github.com/suterma/vue-peaks#vue-peaks"
         >vue-peaks documentation on GitHub</a
       >.
     </p>
 
     <p>
       See the
-      <a target="_blank" href="https://waveform.prototyping.bbc.co.uk/"
+      <a
+        target="_blank"
+        href="https://waveform.prototyping.bbc.co.uk/"
         >peaks.js documentation</a
       >
       for detailed information about the options and tools.
