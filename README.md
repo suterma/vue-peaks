@@ -25,21 +25,40 @@ Installing vue-peaks also installs Peaks.js as a dependency. However, Peaks.js u
 
 # How to use
 
-## A basic example
+## Basic examples
 
+### Using a media source URL ("simple" mode)
 ```html
 <AudioPeaks src="lidija_roos-not_for_sale.mp3" />
 ```
 
-By default, a new audio element and audio context is created for the given source URL, both panes (overview and zoom) are shown, and their size is 100% width and 250px height.
-
-## Another example
+### Alternative with enclosed media element ("slot" mode)
 
 ```html
-<AudioPeaks src="lidija_roos-decisions.ogg" id="someIdentifier" />
+<AudioPeaks id="enclosed">
+  <div>
+    <span>You can also add additional HTML content.</span>
+    <audio controls style="width: 100%;">
+      <source src="lidija_roos-not_for_sale.mp3" />
+    </audio>
+  </div>
+</AudioPeaks>
 ```
+### Using a specified media element ("external" mode)
 
+```html
+<div>
+  <span>External media element:</span>
+  <audio controls style="width: 100%;" id="mediaElement">
+    <source src="lidija_roos-not_for_sale.mp3" />
+  </audio>
+</div>
+<AudioPeaks id="external" mediaElementId="mediaElement">
+</AudioPeaks>  
+```
 When using more than one audio.js component instance in the same HTML document, a unique id must be set.
+
+See a more [detailed documentation and live examples on the GitHub Pages](https://suterma.github.io/vue-peaks/).
 
 # Build & Development
 
