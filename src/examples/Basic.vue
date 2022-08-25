@@ -47,10 +47,17 @@ import AudioPeaks from './../components/AudioPeaks.vue';
     If you already have an existing media element, you can link it by it's (unique) id. A new audio context is created
     and used to compute the waveform.
   </p>
-  <pre>//TODO</pre>
+  <pre>
+&lt;div&gt;
+  &lt;span&gt;External media element:&lt;/span&gt;
+  &lt;audio controls style=&quot;width: 100%;&quot; id=&quot;mediaElement&quot;&gt;
+    &lt;source src=&quot;lidija_roos-not_for_sale.mp3&quot; /&gt;
+  &lt;/audio&gt;
+&lt;/div&gt;
+&lt;AudioPeaks id=&quot;external&quot; mediaElementId=&quot;mediaElement&quot;&gt;
+&lt;/AudioPeaks&gt;  </pre>
 
   <div class="example-display">
-    <!-- External media element -->
     <div>
       <span>External media element:</span>
       <audio controls style="width: 100%;" id="mediaElement">
@@ -60,5 +67,4 @@ import AudioPeaks from './../components/AudioPeaks.vue';
     <AudioPeaks id="external" mediaElementId="mediaElement">
     </AudioPeaks>
   </div>
-
 </template>
