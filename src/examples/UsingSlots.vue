@@ -15,40 +15,43 @@ import AudioPeaks from './../components/AudioPeaks.vue';
     <li>not render (instead of just not show) elements</li>
     <li>have a completely custom audio (or even video) element</li>
   </ul>
-  In any case however, the id values for the overview and zoomview must match. You need to
-  specify the appropriate prefix in addition to your chosen id. You can use any of the audio element modes with named
-  slots.</p>
+  In any case however, the id values for the overview and zoomview must match. You need to specify the appropriate
+  prefix in addition to your chosen id. You can use any of the audio element modes with named slots.</p>
   <pre>
-&lt;AudioPeaks src=&quot;lidija_roos-decisions.ogg&quot; id=&quot;customPanes&quot;&gt;
+&lt;AudioPeaks src=&quot;lidija_roos-decisions.ogg&quot;
+  id=&quot;customPanes&quot;&gt;
   &lt;template #overview&gt;
-    &lt;div id=&quot;overview-customPanes&quot; class=&quot;background-hover&quot; style=&quot;width: 100%; height: 50px;&quot;&gt;
-    &lt;/div&gt;
-    &lt;div&gt;&lt;span&gt;&lt;small&gt;A small description for the audio as an example for slot content&lt;/small&gt;&lt;/span&gt;&lt;/div&gt;
+    &lt;div id=&quot;overview-customPanes&quot;
+      class=&quot;background-hover&quot;
+      style=&quot;width: 100%; height: 50px;&quot;
+      ref=&quot;overview&quot;&gt;&lt;/div&gt;
   &lt;/template&gt;
   &lt;template #zoomview&gt;
     &lt;div&gt;No zoomview is used here&lt;/div&gt;
   &lt;/template&gt;
   &lt;template #default&gt;
     &lt;span&gt;In this example, the audio control is not shown, but some custom buttons instead:&lt;/span&gt;&amp;nbsp;
-    &lt;audio id=&quot;audio-customPanes&quot; ref=&quot;customPanesAudio&quot;&gt;
+    &lt;audio id=&quot;audio-customPanes&quot;
+      ref=&quot;customPanesAudio&quot;&gt;
       &lt;source src=&quot;lidija_roos-not_for_sale.mp3&quot; /&gt;
     &lt;/audio&gt;
-    &lt;button @click=&quot;(this.$refs.customPanesAudio as HTMLAudioElement).play()&quot;&gt;
+    &lt;button @click=&quot;($refs.customPanesAudio as HTMLAudioElement).play()&quot;&gt;
       Play
     &lt;/button&gt;&amp;nbsp;
-    &lt;button @click=&quot;(this.$refs.customPanesAudio as HTMLAudioElement).pause()&quot;&gt;
+    &lt;button @click=&quot;($refs.customPanesAudio as HTMLAudioElement).pause()&quot;&gt;
       Pause
     &lt;/button&gt;
   &lt;/template&gt;
   &lt;template #controls&gt;
     &lt;div&gt;No zoom controls here!&lt;/div&gt;
   &lt;/template&gt;
-&lt;/AudioPeaks&gt;</pre>
+&lt;/AudioPeaks&gt;
+      </pre>
 
   <div class="example-display">
     <AudioPeaks src="lidija_roos-decisions.ogg" id="customPanes">
       <template #overview>
-        <div id="overview-customPanes" class="background-hover" style="width: 100%; height: 50px;">
+        <div id="overview-customPanes" class="background-hover" style="width: 100%; height: 50px;" ref="overview">
         </div>
         <div><span><small>A small description for the audio as an example for slot content</small></span></div>
       </template>
@@ -60,10 +63,10 @@ import AudioPeaks from './../components/AudioPeaks.vue';
         <audio id="audio-customPanes" ref="customPanesAudio">
           <source src="lidija_roos-not_for_sale.mp3" />
         </audio>
-        <button @click="(this.$refs.customPanesAudio as HTMLAudioElement).play()">
+        <button @click="($refs.customPanesAudio as HTMLAudioElement).play()">
           Play
         </button>&nbsp;
-        <button @click="(this.$refs.customPanesAudio as HTMLAudioElement).pause()">
+        <button @click="($refs.customPanesAudio as HTMLAudioElement).pause()">
           Pause
         </button>
       </template>
