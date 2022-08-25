@@ -71,43 +71,36 @@ function zoomOut() {
 
 <template>
   <slot name="overview">
-    <div
-      :id="'overview-' + props.id"
-      style="width: 100%; height: 250px"
-      ref="overview"
-    ></div>
+    <div class="peaks-overview" :id="'overview-' + props.id" ref="overview"></div>
   </slot>
   <slot name="zoomview">
-    <div
-      :id="'zoomview-' + props.id"
-      style="width: 100%; height: 250px"
-      ref="zoomview"
-    ></div>
+    <div class="peaks-zoomview" :id="'zoomview-' + props.id" ref="zoomview"></div>
   </slot>
   <slot name="audio">
-    <audio
-      :id="'audio-' + props.id"
-      style="width: 100%"
-      controls
-    >
+    <audio class="peaks-audio" :id="'audio-' + props.id" controls>
       <source :src="src" />
     </audio>
   </slot>
   <slot name="controls">
-    <div>
-      <button
-        ref="zoomInButton"
-        @click="zoomIn()"
-      >
-        Zoom in</button
-      >&nbsp;
-      <button
-        ref="zoomOutButton"
-        @click="zoomOut()"
-      >
-        Zoom out</button
-      >&nbsp;
+    <div class="peaks-controls">
+      <button ref="zoomInButton" @click="zoomIn()">
+        Zoom in</button>&nbsp;
+      <button ref="zoomOutButton" @click="zoomOut()">
+        Zoom out</button>&nbsp;
       <span>Zoom level: {{ zoomLevel }}</span>
     </div>
   </slot>
 </template>
+
+<style scoped>
+.peaks-audio,
+.peaks-overview,
+.peaks-zoomview {
+  width: 100%;
+}
+
+.peaks-overview,
+.peaks-zoomview {
+  height: 250px;
+}
+</style>

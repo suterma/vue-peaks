@@ -2,7 +2,7 @@
 import HelloWorld from './components/HelloWorld.vue';
 import TheWelcome from './components/TheWelcome.vue';
 import Basic from './examples/Basic.vue';
-import ASecondInstance from './examples/ASecondInstance.vue';
+import ASecondInstanceWithStyle from './examples/ASecondInstanceWithStyle.vue';
 import UsingSlots from './examples/UsingSlots.vue';
 import UsingPeaksConfiguration from './examples/UsingPeaksConfiguration.vue';
 </script>
@@ -21,15 +21,15 @@ import UsingPeaksConfiguration from './examples/UsingPeaksConfiguration.vue';
   </main>
   <!-- Examples -->
   <section>
-    <!-- <article>
+    <article>
       <Basic />
     </article>
     <article>
-      <ASecondInstance />
+      <ASecondInstanceWithStyle />
     </article>
     <article>
       <UsingSlots />
-    </article> -->
+    </article>
     <article>
       <UsingPeaksConfiguration />
     </article>
