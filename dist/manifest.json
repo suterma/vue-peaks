@@ -1,0 +1,11 @@
+{
+  "lib/main.js": {
+    "file": "vue-peaks.umd.cjs",
+    "src": "lib/main.js",
+    "isEntry": true
+  },
+  "style.css": {
+    "file": "style.css",
+    "src": "style.css"
+  }
+}
