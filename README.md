@@ -56,7 +56,7 @@ Installing vue-peaks also installs Peaks.js as a dependency. However, Peaks.js u
 <AudioPeaks id="external" mediaElementId="mediaElement">
 </AudioPeaks>  
 ```
-When using more than one audio.js component instance in the same HTML document, a unique id must be set.
+When using more than one component instance in the same HTML document, a unique id must be set.
 
 See a more [detailed documentation and live examples on the GitHub Pages](https://suterma.github.io/vue-peaks/).
 

@@ -15,7 +15,7 @@ import AudioPeaks from './../components/AudioPeaks.vue';
   <pre>
 &lt;AudioPeaks src="lidija_roos-not_for_sale.mp3" /&gt;</pre>
   <div class="example-display">
-    <AudioPeaks src="lidija_roos-not_for_sale.mp3" />
+    <AudioPeaks src="https://suterma.github.io/vue-peaks/lidija_roos-not_for_sale.mp3" />
   </div>
 
   <h3>Alternative with enclosed media element ("slot" mode)</h3>
@@ -37,7 +37,7 @@ import AudioPeaks from './../components/AudioPeaks.vue';
       <div>
         <span>You can also add additional HTML content.</span>
         <audio controls style="width: 100%;">
-          <source src="lidija_roos-not_for_sale.mp3" />
+          <source src="https://suterma.github.io/vue-peaks/lidija_roos-not_for_sale.mp3" />
         </audio>
       </div>
     </AudioPeaks>
@@ -61,7 +61,7 @@ import AudioPeaks from './../components/AudioPeaks.vue';
     <div>
       <span>External media element:</span>
       <audio controls style="width: 100%;" id="mediaElement">
-        <source src="lidija_roos-not_for_sale.mp3" />
+        <source src="https://suterma.github.io/vue-peaks/lidija_roos-not_for_sale.mp3" />
       </audio>
     </div>
     <AudioPeaks id="external" mediaElementId="mediaElement">

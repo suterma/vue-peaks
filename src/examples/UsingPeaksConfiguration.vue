@@ -31,7 +31,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <h1>Using a Peaks.js configuration</h1>
+  <h1>[EXPERIMENTAL] Using a Peaks.js configuration</h1>
   <pre>
         ...
       </pre>
@@ -50,9 +50,9 @@ onMounted(() => {
     <div id="overview-customConfig" style="width: 100%; height: 50px" ref="overviewCustomConfig"></div>
     <div id="zoomview-customConfig" style="width: 100%; height: 50px" ref="zoomviewCustomConfig"></div>
     <audio id="audio-customConfig" style="width: 100%" controls>
-      <source src="lidija_roos-decisions.ogg" />
+      <source src="https://suterma.github.io/vue-peaks/lidija_roos-decisions.ogg" />
     </audio>
-    <AudioPeaks src="lidija_roos-decisions.ogg" id="customConfig">
+    <AudioPeaks src="https://suterma.github.io/vue-peaks/lidija_roos-decisions.ogg" id="customConfig">
     </AudioPeaks>
   </div>
 </template>
