@@ -23,17 +23,9 @@ import AudioPeaks from './../components/AudioPeaks.vue';
     To provide your own media element, just place it inside the AudioPeaks element (a.k.a. the slot). Vue-peaks will use
     the first audio element in the slot. A new audio context is created and used to compute the waveform.
   </p>
-  <pre>
-&lt;AudioPeaks id=&quot;enclosed&quot;&gt;
-  &lt;div&gt;
-    &lt;span&gt;You can also add additional HTML content.&lt;/span&gt;
-    &lt;audio controls style=&quot;width: 100%;&quot;&gt;
-      &lt;source src=&quot;lidija_roos-not_for_sale.mp3&quot; /&gt;
-    &lt;/audio&gt;
-  &lt;/div&gt;
-&lt;/AudioPeaks&gt;</pre>
+  <pre>//TODO</pre>
   <div class="example-display">
-    <AudioPeaks id="enclosed">
+    <AudioPeaks>
       <div>
         <span>You can also add additional HTML content.</span>
         <audio controls style="width: 100%;">
@@ -64,7 +56,7 @@ import AudioPeaks from './../components/AudioPeaks.vue';
         <source src="https://suterma.github.io/vue-peaks/lidija_roos-not_for_sale.mp3" />
       </audio>
     </div>
-    <AudioPeaks id="external" mediaElementId="mediaElement">
+    <AudioPeaks mediaElementId="mediaElement">
     </AudioPeaks>
   </div>
 </template>

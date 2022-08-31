@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, shallowRef, onMounted } from 'vue';
+import { ref, shallowRef, defineProps, onMounted, onUnmounted, type ShallowRef } from 'vue';
 import Peaks from 'peaks.js';
 
 const props = defineProps<{
@@ -9,20 +9,44 @@ const props = defineProps<{
    */
   src?: string;
 
-  /** The unique identifier of this component
-   * @remarks Required, if you have more than one instance of a
-   * Peaks.js component in the HTML document.
-   */
-  id?: string;
+  /** The unique identifier of an external zoomview element to use.
+* @remarks Allows the use of an external zoomview element.
+* (no slot template is expected or used for the zoomview)
+*/
+  zoomviewElementId?: string;
+
+  /** The zoomview element to use.
+  * @remarks Allows the use of an external zoomview element.
+  * (no slot template is expected or used for the zoomview)
+  */
+  zoomviewElement?: HTMLDivElement;
+
+  /** The unique identifier of an external overview element to use.
+ * @remarks Allows the use of an external overview element.
+* (no slot template is expected or used for the overview)
+ */
+  overviewElementId?: string;
+
+  /** The overview element to use.
+* @remarks Allows the use of an external overview element.
+* (no slot template is expected or used for the overview)
+*/
+  overviewElement?: HTMLDivElement;
 
   /** The unique identifier of an external media element to use. (for the "external" mode)
- * @remarks Allows the use of an external media element.
- * (no slot template or audio source URL is expected)
- */
+* @remarks Allows the use of an external media element.
+* (no slot template or audio source URL is expected)
+*/
   mediaElementId?: string;
 
+  /** The external media element to use. (for the "external" mode)
+  * @remarks Allows the use of an external media element.
+  * (no slot template or audio source URL is expected)
+  */
+  mediaElement?: HTMLMediaElement;
+
   /** The peaks options MUST NOT be deeply reactive for performance reasons.
-   * @devdoc See the notes aboout performance with the peaksInstance property
+   * @devdoc See the notes about performance with the peaksInstance property
    */
   options?: Peaks.PeaksOptions;
 }>();
@@ -32,15 +56,20 @@ const props = defineProps<{
  * and this documentation https://vuejs.org/api/reactivity-advanced.html#shallowref about shallow references
  */
 const peaksInstance = shallowRef<Peaks.PeaksInstance | undefined>(undefined);
-const zoomInButton = shallowRef(null);
-const zoomOutButton = shallowRef(null);
+const overview = shallowRef(null);
+const overviewslot = shallowRef(null);
+const zoomview = shallowRef(null);
+const zoomviewslot = shallowRef(null);
+const audio = shallowRef(null);
+const audioslot = shallowRef(null);
 const zoomLevel = ref<number | undefined>(undefined);
 
 onMounted(() => {
-
-  //TODO add a warning when not all required propreties (src, id) are set.
   createPeaksInstance();
 });
+
+onUnmounted(() => { destroyPeaksInstance(); });
+
 
 /** Initializes the peaks instance
  * @remarks If no options are provided by the respective component property, some default options are used.
@@ -52,15 +81,14 @@ onMounted(() => {
  * (audio.value as unknown as HTMLAudioElement)
  */
 function createPeaksInstance() {
+  console.debug("AudioPeaks::createPeaksInstance")
+
   const defaultOptions: Peaks.PeaksOptions = {
     containers: {
-      overview: document.getElementById('overview-' + props.id),
-      zoomview: document.getElementById('zoomview-' + props.id),
+      overview: get<HTMLDivElement>(props.overviewElement, props.overviewElementId, overview, overviewslot, "div"),
+      zoomview: get<HTMLDivElement>(props.zoomviewElement, props.zoomviewElementId, zoomview, zoomviewslot, "div"),
     },
-    /* Either use the audio element from inside the default slot, if available; otherwise get the audio element by id */
-    mediaElement:
-      document.getElementById('' + props.id)?.getElementsByTagName('audio')[0] ??
-      (document.getElementById('' + props.mediaElementId) ?? undefined),
+    mediaElement: get<HTMLMediaElement>(props.mediaElement, props.mediaElementId, audio, audioslot, "audio"),
     webAudio: {
       audioContext: new AudioContext(),
     },
@@ -77,41 +105,139 @@ function createPeaksInstance() {
   );
 }
 
-function zoomIn() {
+/** Destroys the peaks instance
+ */
+function destroyPeaksInstance() {
+  console.log("//TODO implement destroyPeaksInstance")
+  peaksInstance.value?.destroy();
+}
+
+/** Gets the HTML element to act upon, using the first of the provided options
+ * @remarks This is either (first in the following order)
+ * - the element provided as object
+ * - the element provided by id
+ * - the element from the default slot template
+ * - the first element from a provided external slot template  
+ * If none is found 'undefined' is returned, which will throw an error in peaks.js
+ * @param elm The element
+ * @param htmlElementId The HTML element id
+ * @param ref The reference to the element
+ * @param slotref The reference to the slot containing the element
+ * @param slotrefHmtlTagName The required tag name of the element in the slot //TODO later remove this parameter by selecting by the HTML element type
+ * @return The found element or undefined if none is found
+ */
+function get<HEType extends HTMLElement>(
+  elm: HEType | undefined,
+  htmlElementId: string | undefined,
+  ref: ShallowRef,
+  slotref: ShallowRef,
+  slotrefHmtlTagName: string
+)
+  : HEType | undefined {
+  if (elm) {
+    console.debug("AudioPeaks::Found elm: ", elm)
+    return elm;
+  }
+  if (htmlElementId) {
+    console.debug("AudioPeaks::Found element by id: ", htmlElementId)
+    return document.getElementById('' + htmlElementId) as unknown as HEType;
+  }
+
+  // The reference can be used only with the default slot
+  const elementByRef = ref.value as unknown as HEType;
+  if (elementByRef) {
+    console.debug("AudioPeaks::Found element by Ref: ", elementByRef)
+    return elementByRef;
+  }
+
+  // With external slot templates, the element can not be referenced with a ref directly
+  // (because external slot templates can not set refs to enclosed elements from the outside)
+  // First get a reference to the slot then find the first element of the given type
+  const externalSlot = slotref.value as unknown as HTMLElement;
+  if (externalSlot) {
+    const elementByFirstInSlot = externalSlot.getElementsByTagName(slotrefHmtlTagName)[0] as unknown as HEType;
+    if (elementByFirstInSlot) {
+      console.debug("AudioPeaks::Found element by first in slot: ", elementByFirstInSlot);
+      return elementByFirstInSlot;
+    }
+  }
+}
+
+// function getMediaElement2(): HTMLMediaElement | undefined {
+//   if (props.mediaElement) {
+//     console.debug("AudioPeaks::Found mediaElement: ", props.mediaElement)
+//     return props.mediaElement;
+//   }
+//   if (props.mediaElementId) {
+//     console.debug("AudioPeaks::Found mediaElement by id: ", props.mediaElementId)
+//     return document.getElementById('' + props.mediaElementId) as HTMLMediaElement;
+//   }
+
+//   // The reference can be used only with the default slot
+//   const mediaElementByRef = audio.value as unknown as HTMLMediaElement;
+//   if (mediaElementByRef) {
+//     console.debug("AudioPeaks::Found mediaElement by Ref: ", mediaElementByRef)
+//     return mediaElementByRef;
+//   }
+
+//   // With external slot templates, the element can not be referenced with a ref 
+//   // (because external slot templates can not set refs from the outside)
+//   const externalSlot = audioslot.value as unknown as HTMLElement;
+//   if (externalSlot) {
+//     const mediaElementByFirstInSlot = externalSlot.getElementsByTagName('audio')[0] as unknown as HTMLMediaElement;
+//     if (mediaElementByFirstInSlot) {
+//       console.debug("AudioPeaks::Found mediaElement by first in slot: ", mediaElementByFirstInSlot);
+//       return mediaElementByFirstInSlot;
+//     }
+//   }
+
+//   console.debug("AudioPeaks::Found mediaElement undefined")
+//   return undefined;
+// }
+
+function zoomIn(): void {
   peaksInstance.value?.zoom.zoomIn();
   zoomLevel.value = peaksInstance.value?.zoom.getZoom();
 }
-function zoomOut() {
+function zoomOut(): void {
   peaksInstance.value?.zoom.zoomOut();
   zoomLevel.value = peaksInstance.value?.zoom.getZoom();
 }
 </script>
 
 <template>
-  <div :id="'' + props.id">
-    <slot name="overview">
-      <div class="peaks-overview" :id="'overview-' + props.id" ref="overview"></div>
+  <!-- If an external overview element is referenced, the default slot is not used -->
+  <div ref="overviewslot">
+    <slot name="overview" v-if="!props.overviewElementId && !props.overviewElement">
+      <div class="peaks-overview" ref="overview"></div>
     </slot>
-    <slot name="zoomview">
-      <div class="peaks-zoomview" :id="'zoomview-' + props.id" ref="zoomview"></div>
+  </div>
+
+  <!-- If an external zoomview element is referenced, the default slot is not used -->
+  <div ref="zoomviewslot">
+    <slot name="zoomview" v-if="!props.zoomviewElementId && !props.zoomviewElement">
+      <div class="peaks-zoomview" ref="zoomview"></div>
     </slot>
-    <!-- If an external media element is reference, the default slot is not used -->
-    <slot name="default" v-if="!props.mediaElementId">
+  </div>
+
+  <!-- If an external media element is referenced, the default slot is not used -->
+  <div ref="audioslot">
+    <slot name="default" v-if="!props.mediaElementId && !props.mediaElement">
       <!-- The default content slot for the "slot" mode -->
-      <audio class="peaks-audio" :id="props.id" ref="audio" controls>
+      <audio class="peaks-audio" ref="audio" controls>
         <source :src="src" />
       </audio>
     </slot>
-    <slot name="controls">
-      <div class="peaks-controls">
-        <button ref="zoomInButton" @click="zoomIn()">
-          Zoom in</button>&nbsp;
-        <button ref="zoomOutButton" @click="zoomOut()">
-          Zoom out</button>&nbsp;
-        <span>Zoom level: {{ zoomLevel }}</span>
-      </div>
-    </slot>
   </div>
+  <slot name="controls">
+    <div class="peaks-controls">
+      <button @click="zoomIn()">
+        Zoom in</button>&nbsp;
+      <button @click="zoomOut()">
+        Zoom out</button>&nbsp;
+      <span>Zoom level: {{ zoomLevel }}</span>
+    </div>
+  </slot>
 </template>
 
 <style scoped>

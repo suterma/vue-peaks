@@ -35,7 +35,7 @@ Installing vue-peaks also installs Peaks.js as a dependency. However, Peaks.js u
 ### Alternative with enclosed media element ("slot" mode)
 
 ```html
-<AudioPeaks id="enclosed">
+<AudioPeaks>
   <div>
     <span>You can also add additional HTML content.</span>
     <audio controls style="width: 100%;">
@@ -53,10 +53,9 @@ Installing vue-peaks also installs Peaks.js as a dependency. However, Peaks.js u
     <source src="lidija_roos-not_for_sale.mp3" />
   </audio>
 </div>
-<AudioPeaks id="external" mediaElementId="mediaElement">
+<AudioPeaks mediaElementId="mediaElement">
 </AudioPeaks>  
 ```
-When using more than one component instance in the same HTML document, a unique id must be set.
 
 See a more [detailed documentation and live examples on the GitHub Pages](https://suterma.github.io/vue-peaks/).
 

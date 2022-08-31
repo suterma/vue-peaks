@@ -52,7 +52,7 @@ onMounted(() => {
     <audio id="audio-customConfig" style="width: 100%" controls>
       <source src="https://suterma.github.io/vue-peaks/lidija_roos-decisions.ogg" />
     </audio>
-    <AudioPeaks src="https://suterma.github.io/vue-peaks/lidija_roos-decisions.ogg" id="customConfig">
+    <AudioPeaks src="https://suterma.github.io/vue-peaks/lidija_roos-decisions.ogg">
     </AudioPeaks>
   </div>
 </template>
