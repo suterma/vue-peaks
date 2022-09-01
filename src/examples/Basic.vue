@@ -23,15 +23,19 @@ import AudioPeaks from './../components/AudioPeaks.vue';
     To provide your own media element, just place it inside the AudioPeaks element (a.k.a. the slot). Vue-peaks will use
     the first audio element in the slot. A new audio context is created and used to compute the waveform.
   </p>
-  <pre>//TODO</pre>
+  <pre>
+&lt;AudioPeaks&gt;
+  &lt;span&gt;You can also add additional HTML content.&lt;/span&gt;
+  &lt;audio controls style=&quot;width: 100%;&quot;&gt;
+    &lt;source src=&quot;https://suterma.github.io/vue-peaks/lidija_roos-not_for_sale.mp3&quot; /&gt;
+  &lt;/audio&gt;
+&lt;/AudioPeaks&gt;  </pre>
   <div class="example-display">
     <AudioPeaks>
-      <div>
-        <span>You can also add additional HTML content.</span>
-        <audio controls style="width: 100%;">
-          <source src="https://suterma.github.io/vue-peaks/lidija_roos-not_for_sale.mp3" />
-        </audio>
-      </div>
+      <span>You can also add additional HTML content.</span>
+      <audio controls style="width: 100%;">
+        <source src="https://suterma.github.io/vue-peaks/lidija_roos-not_for_sale.mp3" />
+      </audio>
     </AudioPeaks>
   </div>
   <h3>Using a specified media element ("external" mode)</h3>
@@ -40,23 +44,18 @@ import AudioPeaks from './../components/AudioPeaks.vue';
     and used to compute the waveform.
   </p>
   <pre>
-&lt;div&gt;
-  &lt;span&gt;External media element:&lt;/span&gt;
-  &lt;audio controls style=&quot;width: 100%;&quot; id=&quot;mediaElement&quot;&gt;
-    &lt;source src=&quot;lidija_roos-not_for_sale.mp3&quot; /&gt;
-  &lt;/audio&gt;
-&lt;/div&gt;
-&lt;AudioPeaks id=&quot;external&quot; mediaElementId=&quot;mediaElement&quot;&gt;
+&lt;audio controls id=&quot;externalMediaElement&quot;&gt;
+  &lt;source src=&quot;https://suterma.github.io/vue-peaks/lidija_roos-not_for_sale.mp3&quot; /&gt;
+&lt;/audio&gt;
+&lt;div&gt;Using the external media element above&lt;/div&gt;
+&lt;AudioPeaks mediaElementId=&quot;externalMediaElement&quot;&gt;
 &lt;/AudioPeaks&gt;  </pre>
-
   <div class="example-display">
-    <div>
-      <span>External media element:</span>
-      <audio controls style="width: 100%;" id="mediaElement">
-        <source src="https://suterma.github.io/vue-peaks/lidija_roos-not_for_sale.mp3" />
-      </audio>
-    </div>
-    <AudioPeaks mediaElementId="mediaElement">
+    <audio controls id="externalMediaElement">
+      <source src="https://suterma.github.io/vue-peaks/lidija_roos-not_for_sale.mp3" />
+    </audio>
+    <div>Using the external media element above</div>
+    <AudioPeaks mediaElementId="externalMediaElement">
     </AudioPeaks>
   </div>
 </template>
