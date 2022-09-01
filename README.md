@@ -31,6 +31,7 @@ Installing vue-peaks also installs Peaks.js as a dependency. However, Peaks.js u
 ```html
 <AudioPeaks src="lidija_roos-not_for_sale.mp3" />
 ```
+![Display of a waveform with vue-peaks](vue-peaks-example.png)
 
 ### Alternative with enclosed media element ("slot" mode)
 To provide your own media element, just place it inside the AudioPeaks element (a.k.a. the slot). Vue-peaks will use the first audio element in the slot. A new audio context is created and used to compute the waveform.
