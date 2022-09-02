@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref, shallowRef, defineProps, onMounted, onUnmounted, type ShallowRef } from 'vue';
-import Peaks from 'peaks.js';
+import Peaks, { type PeaksOptions } from 'peaks.js';
 
 const props = defineProps<{
   /** The audio source URL (for the "simple" mode)
@@ -81,9 +81,10 @@ onUnmounted(() => { destroyPeaksInstance(); });
  * (audio.value as unknown as HTMLAudioElement)
  */
 function createPeaksInstance() {
-  console.debug("AudioPeaks::createPeaksInstance")
+  console.debug("AudioPeaks::createPeaksInstance:options:", props.options)
 
-  const defaultOptions: Peaks.PeaksOptions = {
+  //TODO later make a two-way binding for the options.
+  const options: PeaksOptions = props.options ? props.options : {
     containers: {
       overview: get<HTMLDivElement>(props.overviewElement, props.overviewElementId, overview, overviewslot, "div"),
       zoomview: get<HTMLDivElement>(props.zoomviewElement, props.zoomviewElementId, zoomview, zoomviewslot, "div"),
@@ -96,7 +97,7 @@ function createPeaksInstance() {
   };
 
   Peaks.init(
-    props.options ? props.options : defaultOptions,
+    options,
     function (err, peaks) {
       console.log(err, peaks);
       peaksInstance.value = peaks;
@@ -163,38 +164,6 @@ function get<HEType extends HTMLElement>(
   }
 }
 
-// function getMediaElement2(): HTMLMediaElement | undefined {
-//   if (props.mediaElement) {
-//     console.debug("AudioPeaks::Found mediaElement: ", props.mediaElement)
-//     return props.mediaElement;
-//   }
-//   if (props.mediaElementId) {
-//     console.debug("AudioPeaks::Found mediaElement by id: ", props.mediaElementId)
-//     return document.getElementById('' + props.mediaElementId) as HTMLMediaElement;
-//   }
-
-//   // The reference can be used only with the default slot
-//   const mediaElementByRef = audio.value as unknown as HTMLMediaElement;
-//   if (mediaElementByRef) {
-//     console.debug("AudioPeaks::Found mediaElement by Ref: ", mediaElementByRef)
-//     return mediaElementByRef;
-//   }
-
-//   // With external slot templates, the element can not be referenced with a ref 
-//   // (because external slot templates can not set refs from the outside)
-//   const externalSlot = audioslot.value as unknown as HTMLElement;
-//   if (externalSlot) {
-//     const mediaElementByFirstInSlot = externalSlot.getElementsByTagName('audio')[0] as unknown as HTMLMediaElement;
-//     if (mediaElementByFirstInSlot) {
-//       console.debug("AudioPeaks::Found mediaElement by first in slot: ", mediaElementByFirstInSlot);
-//       return mediaElementByFirstInSlot;
-//     }
-//   }
-
-//   console.debug("AudioPeaks::Found mediaElement undefined")
-//   return undefined;
-// }
-
 function zoomIn(): void {
   peaksInstance.value?.zoom.zoomIn();
   zoomLevel.value = peaksInstance.value?.zoom.getZoom();
@@ -206,23 +175,23 @@ function zoomOut(): void {
 </script>
 
 <template>
-  <!-- If an external overview element is referenced, the default slot is not used -->
   <div ref="overviewslot">
-    <slot name="overview" v-if="!props.overviewElementId && !props.overviewElement">
+    <!-- If an external overview element is referenced, the overview slot is not used -->
+    <slot name="overview" v-if="!props.overviewElementId && !props.overviewElement && !props.options">
       <div class="peaks-overview" ref="overview"></div>
     </slot>
   </div>
 
-  <!-- If an external zoomview element is referenced, the default slot is not used -->
   <div ref="zoomviewslot">
-    <slot name="zoomview" v-if="!props.zoomviewElementId && !props.zoomviewElement">
+    <!-- If an external zoomview element is referenced, the zoomview slot is not used -->
+    <slot name="zoomview" v-if="!props.zoomviewElementId && !props.zoomviewElement && !props.options">
       <div class="peaks-zoomview" ref="zoomview"></div>
     </slot>
   </div>
 
-  <!-- If an external media element is referenced, the default slot is not used -->
   <div ref="audioslot">
-    <slot name="default" v-if="!props.mediaElementId && !props.mediaElement">
+    <!-- If an external media element is referenced, the default slot is not used -->
+    <slot name="default" v-if="!props.mediaElementId && !props.mediaElement && !props.options">
       <!-- The default content slot for the "slot" mode -->
       <audio class="peaks-audio" ref="audio" controls>
         <source :src="src" />
