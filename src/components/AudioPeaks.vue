@@ -46,8 +46,8 @@ const props = defineProps<{
   mediaElement?: HTMLMediaElement;
 
   /** The peaks options to use. 
-   * @remarks The element references to the overview, zoomview and media elements should not be provided, because they are handeled internally by AudioPeaks.
-   * This removes the burden of management of the Vue ref lifecycles of elements from the user. 
+   * @remarks The element references to the overview, zoomview and media element should not be provided, because these are handled internally by AudioPeaks.
+   * This removes the burden of management of the Vue ref lifecycles from the user. 
    * @devdoc Refs to HTML elements can only be accessed after mount. See https://vuejs.org/guide/essentials/template-refs.html#accessing-the-refs
    */
   options?: Peaks.PeaksOptions;
