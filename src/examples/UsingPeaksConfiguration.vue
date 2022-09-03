@@ -1,60 +1,30 @@
 <script setup lang="ts">
 import type { PeaksOptions } from 'peaks.js';
-import { onMounted, reactive, shallowRef, type ShallowRef } from 'vue';
+import { reactive } from 'vue';
 import AudioPeaks from './../components/AudioPeaks.vue';
 
-const overviewCustomConfig = shallowRef(null);
-const zoomviewCustomConfig = shallowRef(null);
-const audioCustomConfig = shallowRef(null);
-
-const state = reactive({ options: {}, ready: false });
-
-onMounted(() => {
-  // state.options = getOptions();
-  // console.log("UsingPeaksConfiguration::onMounted:state.options", state.options)
-
-  //$nextTick(() => state.ready = true;)
-  state.ready = true;
-
-});
-
-/** Gets the config for the peaks instance
+/** The configuration options 
  */
-function getOptions(): PeaksOptions {
-  const options: PeaksOptions = {
-    overview: {
-      container: overviewCustomConfig.value,
-      waveformColor: 'lightgreen',
-      playedWaveformColor: 'darkgreen',
-      highlightColor: 'lightsalmon',
-      highlightOffset: 0
+const options = reactive<PeaksOptions>({
+  overview: {
+    /* container is provided and handled internally by AudioPeaks */
+    waveformColor: 'lightgreen',
+    playedWaveformColor: 'darkgreen',
+    highlightColor: 'lightsalmon',
+    highlightOffset: 0
 
-    },
-    zoomview:
-    {
-      container: zoomviewCustomConfig.value,
-      waveformColor: 'lightsalmon',
-      playedWaveformColor: 'darkorange'
-    },
-    // containers: {
-    //   zoomview: zoomviewCustomConfig.value,
-    //   overview: overviewCustomConfig.value,
-
-    // },
-    //overviewWaveformColor: 'orange',
-    //zoomWaveformColor: 'orange',
-    // overviewHighlightColor: 'purple',
-    // zoomWaveformColor: 'green',
-    // overviewWaveformColor: 'blue',
-    axisLabelColor: 'black',
-    mediaElement: audioCustomConfig.value as unknown as HTMLMediaElement | undefined,
-    webAudio: { audioContext: new AudioContext() },
-    zoomLevels: [1024, 2048, 4096],
-    playheadColor: 'red'
-
-  };
-  return options;
+  },
+  zoomview: {
+    /* container is provided and handled internally by AudioPeaks */
+    waveformColor: 'lightsalmon',
+    playedWaveformColor: 'darkorange'
+  },
+  /* mediaElement is provided and handled internally by AudioPeaks */
+  webAudio: { audioContext: new AudioContext() },
+  zoomLevels: [8, 16, 32, 64, 128, 256, 512, 1024, 2048, 4096],
+  playheadColor: 'red'
 }
+);
 
 </script>
 
@@ -75,21 +45,10 @@ function getOptions(): PeaksOptions {
   </ul>
   </p>
   <div class="example-display">
-
-    <div ref="overviewCustomConfig" style="width: 100%;height: 50px;"></div>
-    <div ref="zoomviewCustomConfig" style="width: 100%;height: 50px;"></div>
-    <audio controls ref="audioCustomConfig">
-      <source src="https://suterma.github.io/vue-peaks/lidija_roos-not_for_sale.mp3" />
-    </audio>
-    <AudioPeaks :options="getOptions()" v-if="state.ready">
-      <!-- <template #default>
-        <audio ref=" customPanesAudio">
-          <source controls src="https://suterma.github.io/vue-peaks/lidija_roos-not_for_sale.mp3" />
-        </audio>
-      </template>
-      <template #controls>
-        <div>No zoom controls here!</div>
-      </template> -->
+    <AudioPeaks :options="options">
+      <audio controls>
+        <source src="https://suterma.github.io/vue-peaks/lidija_roos-not_for_sale.mp3" />
+      </audio>
     </AudioPeaks>
   </div>
 </template>

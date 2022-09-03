@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, shallowRef, defineProps, onMounted, onUnmounted, type ShallowRef } from 'vue';
+import { ref, shallowRef, onMounted, onUnmounted, type ShallowRef } from 'vue';
 import Peaks, { type PeaksOptions } from 'peaks.js';
 
 const props = defineProps<{
@@ -45,8 +45,10 @@ const props = defineProps<{
   */
   mediaElement?: HTMLMediaElement;
 
-  /** The peaks options MUST NOT be deeply reactive for performance reasons.
-   * @devdoc See the notes about performance with the peaksInstance property
+  /** The peaks options to use. 
+   * @remarks The element references to the overview, zoomview and media elements should not be provided, because they are handeled internally by AudioPeaks.
+   * This removes the burden of management of the Vue ref lifecycles of elements from the user. 
+   * @devdoc Refs to HTML elements can only be accessed after mount. See https://vuejs.org/guide/essentials/template-refs.html#accessing-the-refs
    */
   options?: Peaks.PeaksOptions;
 }>();
@@ -65,6 +67,7 @@ const audioslot = shallowRef(null);
 const zoomLevel = ref<number | undefined>(undefined);
 
 onMounted(() => {
+  console.debug("AudioPeaks::onMounted");
   createPeaksInstance();
 });
 
@@ -82,6 +85,23 @@ onUnmounted(() => { destroyPeaksInstance(); });
  */
 function createPeaksInstance() {
   console.debug("AudioPeaks::createPeaksInstance:options:", props.options)
+
+
+  //WIP:Replace the references with the internally controlled elements
+  if (props.options) {
+
+    if (props.options.overview) {
+      props.options.overview.container = get<HTMLDivElement>(props.overviewElement, props.overviewElementId, overview, overviewslot, "div");
+    }
+    if (props.options.zoomview) {
+      props.options.zoomview.container = get<HTMLDivElement>(props.zoomviewElement, props.zoomviewElementId, zoomview, zoomviewslot, "div");
+    }
+    props.options.mediaElement = get<HTMLMediaElement>(props.mediaElement, props.mediaElementId, audio, audioslot, "audio");
+    console.debug("AudioPeaks::createPeaksInstance:enhanced-options:", props.options)
+  }
+
+
+
 
   //TODO later make a two-way binding for the options.
   const options: PeaksOptions = props.options ? props.options : {
@@ -177,21 +197,22 @@ function zoomOut(): void {
 <template>
   <div ref="overviewslot">
     <!-- If an external overview element is referenced, the overview slot is not used -->
-    <slot name="overview" v-if="!props.overviewElementId && !props.overviewElement && !props.options">
-      <div class="peaks-overview" ref="overview"></div>
+    <slot name="overview" v-if="!props.overviewElementId && !props.overviewElement">
+      <div class=" peaks-overview" ref="overview">
+      </div>
     </slot>
   </div>
 
   <div ref="zoomviewslot">
     <!-- If an external zoomview element is referenced, the zoomview slot is not used -->
-    <slot name="zoomview" v-if="!props.zoomviewElementId && !props.zoomviewElement && !props.options">
+    <slot name="zoomview" v-if="!props.zoomviewElementId && !props.zoomviewElement">
       <div class="peaks-zoomview" ref="zoomview"></div>
     </slot>
   </div>
 
   <div ref="audioslot">
     <!-- If an external media element is referenced, the default slot is not used -->
-    <slot name="default" v-if="!props.mediaElementId && !props.mediaElement && !props.options">
+    <slot name="default" v-if="!props.mediaElementId && !props.mediaElement">
       <!-- The default content slot for the "slot" mode -->
       <audio class="peaks-audio" ref="audio" controls>
         <source :src="src" />

@@ -25,7 +25,7 @@ import UsingReactivity from './examples/UsingReactivity.vue';
     <article class="example">
       <UsingPeaksConfiguration />
     </article>
-    <!-- <hr />
+    <hr />
     <article class="example">
       <Basic />
     </article>
@@ -40,7 +40,7 @@ import UsingReactivity from './examples/UsingReactivity.vue';
     </article>
     <article class="example">
       <UsingReactivity />
-    </article> -->
+    </article>
   </section>
 </template>
 
