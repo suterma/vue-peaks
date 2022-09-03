@@ -137,7 +137,7 @@ function destroyPeaksInstance() {
  * @remarks This is either (first in the following order)
  * - the element provided as object
  * - the element provided by id
- * - the element from the default slot template
+ * - the element from the (internal) slot template
  * - the first element from a provided external slot template  
  * If none is found 'undefined' is returned, which will throw an error in peaks.js
  * @param elm The element
