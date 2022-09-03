@@ -5,6 +5,7 @@ import Basic from './examples/Basic.vue';
 import ASecondInstanceWithStyle from './examples/ASecondInstanceWithStyle.vue';
 import UsingSlots from './examples/UsingSlots.vue';
 import UsingPeaksConfiguration from './examples/UsingPeaksConfiguration.vue';
+import UsingReactivity from './examples/UsingReactivity.vue';
 </script>
 
 <template>
@@ -22,6 +23,10 @@ import UsingPeaksConfiguration from './examples/UsingPeaksConfiguration.vue';
   <!-- Examples -->
   <section>
     <article class="example">
+      <UsingPeaksConfiguration />
+    </article>
+    <!-- <hr />
+    <article class="example">
       <Basic />
     </article>
     <article class="example">
@@ -31,8 +36,11 @@ import UsingPeaksConfiguration from './examples/UsingPeaksConfiguration.vue';
       <UsingSlots />
     </article>
     <article class="example">
-      <!-- <UsingPeaksConfiguration /> -->
+      <UsingPeaksConfiguration />
     </article>
+    <article class="example">
+      <UsingReactivity />
+    </article> -->
   </section>
 </template>
 
