@@ -4,36 +4,10 @@ import { reactive } from 'vue';
 import AudioPeaks from './../components/AudioPeaks.vue';
 
 const state = reactive({
-  isCreated: true,
+  isRendered: true,
+  mediaSource: ""
 })
-
-/** The configuration options 
- * @remarks The default colors are taken from the Bulma default color scheme.
- */
-const options = reactive<PeaksOptions>({
-  overview: {
-    /* container is provided and handled internally by AudioPeaks */
-    waveformColor: 'hsl(204, 86%, 53%)',
-    playedWaveformColor: 'hsl(204, 71%, 39%)',
-    highlightColor: 'hsl(206, 70%, 96%)',
-    highlightOffset: 0,
-    axisGridlineColor: 'hsl(0, 0%, 29%)',
-    axisLabelColor: 'hsl(0, 0%, 29%)',
-  },
-  zoomview: {
-    /* container is provided and handled internally by AudioPeaks */
-    waveformColor: 'hsl(48, 71%, 48%)',
-    playedWaveformColor: 'hsl(48, 53%, 31%)',
-    axisGridlineColor: 'hsl(0, 0%, 29%)',
-    axisLabelColor: 'hsl(0, 0%, 29%)',
-  },
-  /* mediaElement is provided and handled internally by AudioPeaks */
-  webAudio: { audioContext: new AudioContext() },
-  zoomLevels: [8, 16, 32, 64, 128, 256, 512, 1024, 2048, 4096],
-  playheadColor: 'hsl(348, 100%, 61%)'
-}
-);
-
+ 
 </script>
   
   <template>
@@ -42,26 +16,31 @@ const options = reactive<PeaksOptions>({
           //TODO
         </pre>
   <p>
-    To fully customize the appearance and behavior, the Peaks.js <a
-      href="https://github.com/bbc/peaks.js#Configuration">configuration options</a> can be provided, alongside the
-    matching HTML elements.
+    AudioPeaks supports basic reactivity. Currently the following aspects are reactive:
   </p>
-  <p>This allows you for example to
+  <p>
   <ul>
-    <li>customize the waveform styles</li>
-    <li>define scrolling behavior</li>
+    <li>Conditional Rendering of the component (by using Vue's built-in
+      <span class="code">v-if</span> directive. This also releases memory used.
+    </li>
+    <li>Replace the media source, causing a recreation of the waveform by property binding</li>
   </ul>
   </p>
   <div class="example-display">
-    <AudioPeaks :options="options" v-if="state.isCreated">
-      <audio controls>
-        <source src="https://suterma.github.io/vue-peaks/lidija_roos-not_for_sale.mp3" />
-      </audio>
-    </AudioPeaks>
-    <button @click="state.isCreated = !state.isCreated">
-      <span v-if="state.isCreated">Destroy</span>
-      <span v-else>Create</span>
+    <button @click="state.isRendered = !state.isRendered">
+      <span v-if="state.isRendered">Destroy</span>
+      <span v-else>Render</span>
     </button>
+    //TODO
+    <select v-model="state.mediaSource">
+      <option value="https://suterma.github.io/vue-peaks/lidija_roos-not_for_sale.mp3">An MP3 music file</option>
+      <option value="https://suterma.github.io/vue-peaks/lidija_roos-decisions.ogg">An OGG music file</option>
+      <option value="3">An PM* fle</option>
+      <option value="4">A very long podcast (MP3)</option>
+    </select>
+    <AudioPeaks v-if="state.isRendered">
+      <audio controls :src="state.mediaSource"></audio>
+    </AudioPeaks>
     <p>Choose overview waveform color (not yet working):</p>
     <div>
       <input type="color" id="head" value="#e66465">

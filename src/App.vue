@@ -24,6 +24,9 @@ import ExamplesVersion004 from './examples/ExamplesVersion004.vue';
   <!-- Examples -->
   <section>
     <article class="example">
+      <UsingReactivity />
+    </article>
+    <article class="example">
       <UsingPeaksConfiguration />
     </article>
     <hr />
