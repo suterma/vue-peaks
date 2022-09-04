@@ -35,8 +35,12 @@ const state = reactive({
     <select v-model="state.mediaSource">
       <option value="https://suterma.github.io/vue-peaks/lidija_roos-not_for_sale.mp3">An MP3 music file</option>
       <option value="https://suterma.github.io/vue-peaks/lidija_roos-decisions.ogg">An OGG music file</option>
-      <option value="3">An PM* fle</option>
-      <option value="4">A very long podcast (MP3)</option>
+      <option value="https://media.grc.com/sn/sn-886-lq.mp3">Security Now! Podcast, Episode #886: Wacky Data
+        Exfiltration, 112 min, 13MB MP3 (16kbps)</option>
+      <option value="https://pdst.fm/e/cdn.twit.tv/audio/sn/sn0886/sn0886.mp3">Security Now! Podcast, Episode #886:
+        Wacky Data
+        Exfiltration, 112 min, 55.5MB MP3</option>
+
     </select>
     <AudioPeaks v-if="state.isRendered">
       <audio controls :src="state.mediaSource"></audio>
