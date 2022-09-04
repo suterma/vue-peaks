@@ -13,10 +13,9 @@ import AudioPeaks from './../components/AudioPeaks.vue';
   <ul>
     <li>layout elements differently</li>
     <li>not render (instead of just not show) elements</li>
-    <li>have a completely custom audio (or even video) element</li>
+    <li>have a completely custom media element</li>
   </ul>
-  In any case however, the id values for the overview and zoomview must match. You need to specify the appropriate
-  prefix in addition to your chosen id. You can use any of the audio element modes with named slots.</p>
+  You can use any of the media element modes with named slots.</p>
   <pre>
 &lt;div id=&quot;overviewcustompane&quot; class=&quot;background-hover&quot; style=&quot;width: 100%; height: 50px;&quot; ref=&quot;overview&quot;&gt;
 &lt;/div&gt;
@@ -61,8 +60,9 @@ import AudioPeaks from './../components/AudioPeaks.vue';
         </button>
       </template>
       <template #controls>
-        <span>No zoom controls here!</span>
+        <template />
       </template>
     </AudioPeaks>
+    <span>No controls are shown, by providing an empty template to the named controls slot.</span>
   </div>
 </template>
