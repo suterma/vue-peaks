@@ -6,6 +6,7 @@ import ASecondInstanceWithStyle from './examples/ASecondInstanceWithStyle.vue';
 import UsingSlots from './examples/UsingSlots.vue';
 import UsingPeaksConfiguration from './examples/UsingPeaksConfiguration.vue';
 import UsingReactivity from './examples/UsingReactivity.vue';
+import ExamplesVersion004 from './examples/ExamplesVersion004.vue';
 </script>
 
 <template>
@@ -42,6 +43,10 @@ import UsingReactivity from './examples/UsingReactivity.vue';
       <UsingReactivity />
     </article>
   </section>
+  <div style="border:1px solid red;">
+    OLD EXAMPLES
+    <ExamplesVersion004 />
+  </div>
 </template>
 
 <style scoped>

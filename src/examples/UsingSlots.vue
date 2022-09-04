@@ -20,7 +20,7 @@ import AudioPeaks from './../components/AudioPeaks.vue';
   <pre>
 &lt;div id=&quot;overviewcustompane&quot; class=&quot;background-hover&quot; style=&quot;width: 100%; height: 50px;&quot; ref=&quot;overview&quot;&gt;
 &lt;/div&gt;
-&lt;div&gt;&lt;span&gt;&lt;small&gt;A small description for the custom overview pane above. Below, the default zoom page will be
+&lt;div&gt;&lt;span&gt;&lt;small&gt;A small description for the custom overview pane above. Below, the default zoom pane will be
 	  rendered.&lt;/small&gt;&lt;/span&gt;&lt;/div&gt;
 &lt;AudioPeaks src=&quot;https://suterma.github.io/vue-peaks/lidija_roos-decisions.ogg&quot;
   overviewElementId=&quot;overviewcustompane&quot;&gt;
@@ -37,14 +37,14 @@ import AudioPeaks from './../components/AudioPeaks.vue';
 	&lt;/button&gt;
   &lt;/template&gt;
   &lt;template #controls&gt;
-	&lt;div&gt;No zoom controls here!&lt;/div&gt;
+	&lt;span&gt;No zoom controls here!&lt;/span&gt;
   &lt;/template&gt;
 &lt;/AudioPeaks&gt;      </pre>
 
   <div class="example-display">
     <div id="overviewcustompane" class="background-hover" style="width: 100%; height: 50px;" ref="overview">
     </div>
-    <div><span><small>A small description for the custom overview pane above. Below, the default zoom page will be
+    <div><span><small>A small description for the custom overview pane above. Below, the default zoom pane will be
           rendered.</small></span></div>
     <AudioPeaks src="https://suterma.github.io/vue-peaks/lidija_roos-decisions.ogg"
       overviewElementId="overviewcustompane">
@@ -61,7 +61,7 @@ import AudioPeaks from './../components/AudioPeaks.vue';
         </button>
       </template>
       <template #controls>
-        <div>No zoom controls here!</div>
+        <span>No zoom controls here!</span>
       </template>
     </AudioPeaks>
   </div>
