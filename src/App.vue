@@ -26,7 +26,7 @@ import ExamplesVersion004 from './examples/ExamplesVersion004.vue';
     <article class="example">
       <UsingReactivity />
     </article>
-    <article class="example">
+    <!-- <article class="example">
       <UsingPeaksConfiguration />
     </article>
     <hr />
@@ -44,12 +44,12 @@ import ExamplesVersion004 from './examples/ExamplesVersion004.vue';
     </article>
     <article class="example">
       <UsingReactivity />
-    </article>
+    </article> -->
   </section>
-  <div style="border:1px solid red;">
+  <!-- <div style="border:1px solid red;">
     OLD EXAMPLES
     <ExamplesVersion004 />
-  </div>
+  </div> -->
 </template>
 
 <style scoped>
