@@ -46,9 +46,11 @@ const props = defineProps<{
     mediaElement?: HTMLMediaElement;
 
     /** The peaks options to use.
-     * @remarks The element references to the overview, zoomview and media element should not be provided, because these are handled internally by AudioPeaks.
-     * This removes the burden of management of the Vue ref lifecycles from the user.
-     * @devdoc Refs to HTML elements can only be accessed after mount. See https://vuejs.org/guide/essentials/template-refs.html#accessing-the-refs
+     * @remarks The element references to the overview, zoomview and media element
+     * should not be provided, because these are handled internally by AudioPeaks.
+     * This removes the burden of management of the Vue ref lifecycle from the user.
+     * @devdoc Refs to HTML elements can only be accessed after mount.
+     * See https://vuejs.org/guide/essentials/template-refs.html#accessing-the-refs
      */
     options?: Peaks.PeaksOptions;
 }>();
@@ -109,16 +111,14 @@ function createPeaksInstance() {
         'audio'
     );
 
-    //WIP:Replace the references with the internally controlled elements
     if (props.options) {
         (props.options.containers = {
             overview: overviewElement,
             zoomview: zoomviewElement,
         }),
-        (props.options.mediaElement = mediaElement);
+            (props.options.mediaElement = mediaElement);
     }
 
-    //TODO later make a two-way binding for the options.
     const options: PeaksOptions = props.options
         ? props.options
         : {
@@ -143,7 +143,6 @@ function createPeaksInstance() {
 /** Destroys the peaks instance
  */
 function destroyPeaksInstance() {
-    console.log('//TODO implement destroyPeaksInstance');
     peaksInstance.value?.destroy();
 }
 
