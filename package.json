@@ -26,7 +26,7 @@
     "component"
   ],
   "author": "Marcel Suter (https://marcelsuter.ch)",
-  "license": "GNU LGPLv3",
+  "license": "LGPL-3.0-or-later",
   "bugs": {
     "url": "https://github.com/suterma/vue-peaks/issues"
   },
