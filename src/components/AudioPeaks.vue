@@ -139,7 +139,9 @@ function createPeaksInstance() {
         };
 
     Peaks.init(options, function (err, peaks) {
-        console.error(err);
+        if (err) {
+            console.error(err);
+        }
         peaksInstance.value = peaks;
         zoomLevel.value = peaks?.zoom.getZoom();
     });
