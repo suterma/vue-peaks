@@ -1,5 +1,11 @@
 <script setup lang="ts">
-import { ref, shallowRef, onMounted, onUnmounted, type ShallowRef } from 'vue';
+import {
+    ref,
+    shallowRef,
+    onMounted,
+    type ShallowRef,
+    onBeforeUnmount,
+} from 'vue';
 import Peaks, { type PeaksOptions } from 'peaks.js';
 
 const props = defineProps<{
@@ -66,14 +72,13 @@ const zoomview = shallowRef(null);
 const zoomviewSlot = shallowRef(null);
 const audio = shallowRef(null);
 const audioSlot = shallowRef(null);
-const zoomLevel = ref<number | undefined>(undefined);
+const zoomLevel = shallowRef<number | undefined>(undefined);
 
 onMounted(() => {
-    console.debug('AudioPeaks::onMounted');
     createPeaksInstance();
 });
 
-onUnmounted(() => {
+onBeforeUnmount(() => {
     destroyPeaksInstance();
 });
 
@@ -122,19 +127,19 @@ function createPeaksInstance() {
     const options: PeaksOptions = props.options
         ? props.options
         : {
-              containers: {
-                  overview: overviewElement,
-                  zoomview: zoomviewElement,
-              },
-              mediaElement: mediaElement,
-              webAudio: {
-                  audioContext: new AudioContext(),
-              },
-              zoomLevels: [256, 512, 1024, 2048, 4096],
-          };
+            containers: {
+                overview: overviewElement,
+                zoomview: zoomviewElement,
+            },
+            mediaElement: mediaElement,
+            webAudio: {
+                audioContext: new AudioContext(),
+            },
+            zoomLevels: [256, 512, 1024, 2048, 4096],
+        };
 
     Peaks.init(options, function (err, peaks) {
-        console.log(err, peaks);
+        console.error(err);
         peaksInstance.value = peaks;
         zoomLevel.value = peaks?.zoom.getZoom();
     });
@@ -212,47 +217,47 @@ function zoomOut(): void {
 </script>
 
 <template>
-  <div ref="overviewSlot">
-    <!-- If an external overview element is referenced, the overview slot is not used -->
-    <slot name="overview" v-if="!props.overviewElementId && !props.overviewElement">
-      <div class="peaks-overview" ref="overview"></div>
-    </slot>
-  </div>
-
-  <div ref="zoomviewSlot">
-    <!-- If an external zoomview element is referenced, the zoomview slot is not used -->
-    <slot name="zoomview" v-if="!props.zoomviewElementId && !props.zoomviewElement">
-      <div class="peaks-zoomview" ref="zoomview"></div>
-    </slot>
-  </div>
-
-  <div ref="audioSlot">
-    <!-- If an external media element is referenced, the default slot is not used -->
-    <slot name="default" v-if="!props.mediaElementId && !props.mediaElement">
-      <!-- The default content slot for the "slot" mode -->
-      <audio class="peaks-audio" ref="audio" controls>
-        <source :src="src" />
-      </audio>
-    </slot>
-  </div>
-  <slot name="controls">
-    <div class="peaks-controls">
-      <button @click="zoomIn()">Zoom in</button>&nbsp;
-      <button @click="zoomOut()">Zoom out</button>&nbsp;
-      <span>Zoom level: {{ zoomLevel }}</span>
+    <div ref="overviewSlot">
+        <!-- If an external overview element is referenced, the overview slot is not used -->
+        <slot name="overview" v-if="!props.overviewElementId && !props.overviewElement">
+            <div class="peaks-overview" ref="overview"></div>
+        </slot>
     </div>
-  </slot>
+
+    <div ref="zoomviewSlot">
+        <!-- If an external zoomview element is referenced, the zoomview slot is not used -->
+        <slot name="zoomview" v-if="!props.zoomviewElementId && !props.zoomviewElement">
+            <div class="peaks-zoomview" ref="zoomview"></div>
+        </slot>
+    </div>
+
+    <div ref="audioSlot">
+        <!-- If an external media element is referenced, the default slot is not used -->
+        <slot name="default" v-if="!props.mediaElementId && !props.mediaElement">
+            <!-- The default content slot for the "slot" mode -->
+            <audio class="peaks-audio" ref="audio" controls>
+                <source :src="src" />
+            </audio>
+        </slot>
+    </div>
+    <slot name="controls">
+        <div class="peaks-controls">
+            <button @click="zoomIn()">Zoom in</button>&nbsp;
+            <button @click="zoomOut()">Zoom out</button>&nbsp;
+            <span>Zoom level: {{ zoomLevel }}</span>
+        </div>
+    </slot>
 </template>
 
 <style scoped>
 .peaks-audio,
 .peaks-overview,
 .peaks-zoomview {
-  width: 100%;
+    width: 100%;
 }
 
 .peaks-overview,
 .peaks-zoomview {
-  height: 100px;
+    height: 100px;
 }
 </style>
