@@ -16,46 +16,24 @@ import AudioPeaks from './../components/AudioPeaks.vue';
     <li>have a completely custom media element</li>
   </ul>
   You can use any of the media element modes with named slots.</p>
-  <pre>
-&lt;div id=&quot;overviewcustompane&quot; class=&quot;background-hover&quot; style=&quot;width: 100%; height: 50px;&quot; ref=&quot;overview&quot;&gt;
-&lt;/div&gt;
-&lt;div&gt;&lt;span&gt;&lt;small&gt;A small description for the custom overview pane above. Below, the default zoom pane will be
-	  rendered.&lt;/small&gt;&lt;/span&gt;&lt;/div&gt;
-&lt;AudioPeaks src=&quot;https://suterma.github.io/vue-peaks/lidija_roos-decisions.ogg&quot;
-  overviewElementId=&quot;overviewcustompane&quot;&gt;
-  &lt;template #default&gt;
-	&lt;span&gt;In this example, the audio control is not shown, but some custom buttons instead:&lt;/span&gt;&amp;nbsp;
-	&lt;audio ref=&quot;customPanesAudio&quot;&gt;
-	  &lt;source src=&quot;https://suterma.github.io/vue-peaks/lidija_roos-not_for_sale.mp3&quot; /&gt;
-	&lt;/audio&gt;
-	&lt;button @click=&quot;($refs.customPanesAudio as HTMLAudioElement).play()&quot;&gt;
-	  Play
-	&lt;/button&gt;&amp;nbsp;
-	&lt;button @click=&quot;($refs.customPanesAudio as HTMLAudioElement).pause()&quot;&gt;
-	  Pause
-	&lt;/button&gt;
-  &lt;/template&gt;
-  &lt;template #controls&gt;
-	&lt;span&gt;No zoom controls here!&lt;/span&gt;
-  &lt;/template&gt;
-&lt;/AudioPeaks&gt;      </pre>
+  <pre>//TODO</pre>
 
   <div class="example-display">
-    <div id="overviewcustompane" class="background-hover" style="width: 100%; height: 50px;" ref="overview">
+    <div id="overviewCustomSlotPane" class="background-hover" style="width: 100%; height: 50px;">
     </div>
     <div><span><small>A small description for the custom overview pane above. Below, the default zoom pane will be
           rendered.</small></span></div>
     <AudioPeaks src="https://suterma.github.io/vue-peaks/lidija_roos-decisions.ogg"
-      overviewElementId="overviewcustompane">
+      overviewElementId="overviewCustomSlotPane">
       <template #default>
         <span>In this example, the audio control is not shown, but some custom buttons instead:</span>&nbsp;
-        <audio ref="customPanesAudio">
+        <audio ref="customSlotPaneAudio">
           <source src="https://suterma.github.io/vue-peaks/lidija_roos-not_for_sale.mp3" />
         </audio>
-        <button @click="($refs.customPanesAudio as HTMLAudioElement).play()">
+        <button @click="($refs.customSlotPaneAudio as HTMLAudioElement).play()">
           Play
         </button>&nbsp;
-        <button @click="($refs.customPanesAudio as HTMLAudioElement).pause()">
+        <button @click="($refs.customSlotPaneAudio as HTMLAudioElement).pause()">
           Pause
         </button>
       </template>

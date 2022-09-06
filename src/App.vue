@@ -5,6 +5,7 @@ import Basic from './examples/Basic.vue';
 import ASecondInstanceWithStyle from './examples/ASecondInstanceWithStyle.vue';
 import UsingSlots from './examples/UsingSlots.vue';
 import UsingPeaksConfiguration from './examples/UsingPeaksConfiguration.vue';
+import DemoWidget from './examples/DemoWidget.vue';
 import UsingReactivity from './examples/UsingReactivity.vue';
 import ExamplesVersion004 from './examples/ExamplesVersion004.vue';
 </script>
@@ -24,9 +25,12 @@ import ExamplesVersion004 from './examples/ExamplesVersion004.vue';
   <!-- Examples -->
   <section>
     <article class="example">
+      <DemoWidget />
+    </article>
+    <article class="example">
       <UsingReactivity />
     </article>
-    <!-- <article class="example">
+    <article class="example">
       <UsingPeaksConfiguration />
     </article>
     <hr />
@@ -44,7 +48,7 @@ import ExamplesVersion004 from './examples/ExamplesVersion004.vue';
     </article>
     <article class="example">
       <UsingReactivity />
-    </article> -->
+    </article>
   </section>
   <!-- <div style="border:1px solid red;">
     OLD EXAMPLES
