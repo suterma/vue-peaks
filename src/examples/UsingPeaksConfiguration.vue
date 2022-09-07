@@ -3,10 +3,10 @@ import type { PeaksOptions } from 'peaks.js';
 import { reactive } from 'vue';
 import AudioPeaks from './../components/AudioPeaks.vue';
 
- /** The configuration options 
- * @remarks The colors are taken from the Bulma color scheme.
- */
-const options : PeaksOptions =  {
+/** The configuration options 
+* @remarks The colors are taken from the Bulma color scheme.
+*/
+const options: PeaksOptions = {
   overview: {
     /* container is provided and handled internally by AudioPeaks */
     waveformColor: 'hsl(204, 86%, 53%)',
@@ -25,24 +25,30 @@ const options : PeaksOptions =  {
   },
   /* mediaElement is provided and handled internally by AudioPeaks */
   webAudio: { audioContext: new AudioContext() },
-  zoomLevels: [   256 ],
+  zoomLevels: [256],
   playheadColor: 'hsl(348, 100%, 61%)'
 }
- 
+
 
 </script>
 
 <template>
-  <h1>[EXPERIMENTAL] Using a Peaks.js configuration</h1>
+  <h1>Using a Peaks.js configuration</h1>
   <pre>
         //TODO
       </pre>
   <p>
     To fully customize the appearance and behavior, the Peaks.js <a
-      href="https://github.com/bbc/peaks.js#Configuration">configuration options</a> can be provided, alongside the
-    matching HTML elements.
+      href="https://github.com/bbc/peaks.js#Configuration">configuration options</a> can be provided.
   </p>
-  <p>This allows you for example to
+  <p> Note, that you should omit the the
+    <span class="code">containers.overview</span>,
+    <span class="code">containers.zoomview</span> and
+    <span class="code">mediaElement</span> options, since these are set internally, depending on the view mode
+    (explained
+    with a different example).
+  </p>
+  <p>The options allow you for example to
   <ul>
     <li>customize the waveform styles</li>
     <li>define scrolling behavior</li>

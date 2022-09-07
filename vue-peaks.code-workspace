@@ -1,14 +1,14 @@
 {
-  "folders": [
-    {
-      "path": "."
+    "folders": [
+        {
+            "path": "."
+        }
+    ],
+    "settings": {
+        "editor.tabSize": 2,
+        "cSpell.words": ["Gridline", "playhead", "zoomview"],
+        "editor.formatOnSave": true,
+        "prettier.singleAttributePerLine": true,
+        "prettier.singleQuote": true
     }
-  ],
-  "settings": {
-    "editor.tabSize": 2,
-    "cSpell.words": ["zoomview"],
-    "editor.formatOnSave": true,
-    "prettier.singleAttributePerLine": true,
-    "prettier.singleQuote": true
-  }
 }
