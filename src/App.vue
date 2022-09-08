@@ -7,7 +7,6 @@ import UsingSlots from './examples/UsingSlots.vue';
 import UsingPeaksConfiguration from './examples/UsingPeaksConfiguration.vue';
 import DemoWidget from './examples/DemoWidget.vue';
 import UsingReactivity from './examples/UsingReactivity.vue';
-import ExamplesVersion004 from './examples/ExamplesVersion004.vue';
 </script>
 
 <template>
@@ -57,12 +56,6 @@ import ExamplesVersion004 from './examples/ExamplesVersion004.vue';
     <article class="example">
       <DemoWidget />
     </article>
-
-    <!-- <div style="border:1px solid red;">
-    OLD EXAMPLES
-    <ExamplesVersion004 />
-  </div> -->
-
     <hr />
     <div>
       <p><a href="https://github.com/suterma/vue-peaks">vue-peaks</a> is created with love
