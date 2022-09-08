@@ -57,11 +57,22 @@ import ExamplesVersion004 from './examples/ExamplesVersion004.vue';
     <article class="example">
       <DemoWidget />
     </article>
-  </section>
-  <!-- <div style="border:1px solid red;">
+
+    <!-- <div style="border:1px solid red;">
     OLD EXAMPLES
     <ExamplesVersion004 />
   </div> -->
+
+    <hr />
+    <div>
+      <p><a href="https://github.com/suterma/vue-peaks">vue-peaks</a> is created with love
+        by <a href="https://marcelsuter.ch">Marcel Suter</a> for the <a href="http://replayer.app">Replayer</a> project.
+      </p>
+    </div>
+  </section>
+
+
+
 </template>
 
 <style scoped>
