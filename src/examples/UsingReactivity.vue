@@ -7,17 +7,14 @@ const state = reactive({
   mediaSource: "https://suterma.github.io/vue-peaks/lidija_roos-not_for_sale.mp3"
 })
 
-
 function toggleRendering() {
   const currentState = state.isRendered;
   console.log("CurrentState", currentState);
   state.isRendered = !currentState;
 }
-
-
 </script>
   
-  <template>
+<template>
   <h1>Using reactivity</h1>
   <p>
     AudioPeaks currently does not support reactivity for the options. Still, you can use Vue's reactivity on the

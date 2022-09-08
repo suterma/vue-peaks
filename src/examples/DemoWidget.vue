@@ -22,12 +22,6 @@ const options: PeaksOptions = {
 }
 
 const audio = shallowRef<HTMLAudioElement | null>(null)
-
-//TODO put that in a separate article
-// Accessing the instance  
-//const audioPeaksWidget = ref<InstanceType<typeof AudioPeaks>>()
-//audioPeaksWidget.value?.peaksInstance?.player.pause();
-
 const state = reactive({ isPlaying: false, canPlay: false });
 
 function togglePlayback() {
