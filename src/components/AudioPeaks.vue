@@ -162,6 +162,7 @@ function destroyPeaksInstance() {
   peaksInstance.value?.destroy();
 }
 
+
 /** Gets the HTML element to act upon, using the first of the provided options
  * @remarks This is either (first in the following order)
  * - the element provided as object
@@ -173,7 +174,7 @@ function destroyPeaksInstance() {
  * @param htmlElementId The HTML element id
  * @param ref The reference to the element
  * @param slotRef The reference to the slot containing the element
- * @param slotRefHtmlTagName The required tag name of the element in the slot //TODO later remove this parameter by selecting by the HTML element type
+ * @param slotRefHtmlTagName The required tag name of the element in the slot
  * @return The found element or undefined if none is found
  */
 function get<HEType extends HTMLElement>(
