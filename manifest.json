@@ -1,11 +1,21 @@
 {
-  "lib/main.js": {
-    "file": "vue-peaks.umd.cjs",
-    "src": "lib/main.js",
-    "isEntry": true
+  "src/assets/peaks-logo.svg": {
+    "file": "assets/peaks-logo.72e98b64.svg",
+    "src": "src/assets/peaks-logo.svg"
   },
-  "style.css": {
-    "file": "style.css",
-    "src": "style.css"
+  "index.html": {
+    "file": "assets/index.898aa449.js",
+    "src": "index.html",
+    "isEntry": true,
+    "css": [
+      "assets/index.519e06bc.css"
+    ],
+    "assets": [
+      "assets/peaks-logo.72e98b64.svg"
+    ]
+  },
+  "index.css": {
+    "file": "assets/index.519e06bc.css",
+    "src": "index.css"
   }
 }
