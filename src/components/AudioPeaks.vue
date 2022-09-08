@@ -1,12 +1,11 @@
 <script setup lang="ts">
 import {
-  ref,
   shallowRef,
   onMounted,
   type ShallowRef,
   onBeforeUnmount,
 } from 'vue';
-import Peaks, { type PeaksOptions } from 'peaks.js';
+import Peaks, { type PeaksInstance, type PeaksOptions as PeaksOptions } from 'peaks.js';
 
 const props = defineProps<{
   /** The audio source URL (for the "simple" mode)
@@ -58,14 +57,14 @@ const props = defineProps<{
    * @devdoc Refs to HTML elements can only be accessed after mount.
    * See https://vuejs.org/guide/essentials/template-refs.html#accessing-the-refs
    */
-  options?: Peaks.PeaksOptions;
+  options?: PeaksOptions;
 }>();
 
 /** The peaks instance MUST NOT be deeply reactive for performance reasons.
  * @devdoc See https://github.com/bbc/peaks.js/issues/406#issuecomment-1225885020 in peaks.js
  * and this documentation https://vuejs.org/api/reactivity-advanced.html#shallowref about shallow references
  */
-const peaksInstance = shallowRef<Peaks.PeaksInstance | undefined>(undefined);
+const peaksInstance = shallowRef<PeaksInstance | undefined>(undefined);
 const overview = shallowRef(null);
 const overviewSlot = shallowRef(null);
 const zoomview = shallowRef(null);
