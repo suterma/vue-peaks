@@ -3,7 +3,7 @@ import AudioPeaks from './../components/AudioPeaks.vue';
 </script>
 
 <template>
-  <h1>A second instance with class styles</h1>
+  <h1>Setting styles</h1>
   <pre>
 &lt;style&gt;
 .style-example .peaks-overview:hover,

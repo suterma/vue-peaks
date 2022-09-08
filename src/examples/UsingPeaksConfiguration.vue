@@ -34,8 +34,9 @@ const options: PeaksOptions = {
 
 <template>
   <h1>Using a Peaks.js configuration</h1>
-  <pre>
-        //TODO
+  <pre><code>
+    //TODO
+  </code>
       </pre>
   <p>
     To fully customize the appearance and behavior, the Peaks.js <a
@@ -46,7 +47,7 @@ const options: PeaksOptions = {
     <span class="code">containers.zoomview</span> and
     <span class="code">mediaElement</span> options, since these are set internally, depending on the view mode
     (explained
-    with a different example).
+    with the basic examples).
   </p>
   <p>The options allow you for example to
   <ul>

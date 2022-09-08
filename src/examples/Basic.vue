@@ -4,12 +4,13 @@ import AudioPeaks from './../components/AudioPeaks.vue';
 
 <template>
   <h1>Basic examples</h1>
-  <h3>Using a media source URL ("simple" mode)</h3>
+  <h3>Just using a media source URL ("simple" mode)</h3>
   <p>
     By default, the
     <a href="https://github.com/suterma/vue-peaks/blob/main/src/components/AudioPeaks.vue">AudioPeaks Vue component</a>
-    template has a new audio element, with the given source URL, both panes
-    (overview and zoom) are rendered with a default size. A new audio context is created and used to compute the
+    template has a new audio element, with the given source URL, and both view panes
+    (overview and zoom, which are rendered with a default size) and a controls pane. A new audio context is created and
+    used to compute the
     waveform.
   </p>
   <pre>
@@ -18,7 +19,7 @@ import AudioPeaks from './../components/AudioPeaks.vue';
     <AudioPeaks src="https://suterma.github.io/vue-peaks/lidija_roos-not_for_sale.mp3" />
   </div>
 
-  <h3>Alternative with enclosed media element ("slot" mode)</h3>
+  <h3>Providing a media element ("slot" mode)</h3>
   <p>
     To provide your own media element, just place it inside the AudioPeaks element (a.k.a. the slot). Vue-peaks will use
     the first audio element in the slot. A new audio context is created and used to compute the waveform.
@@ -40,8 +41,9 @@ import AudioPeaks from './../components/AudioPeaks.vue';
   </div>
   <h3>Using a specified media element ("external" mode)</h3>
   <p>
-    If you already have an existing media element, you can link it by it's (unique) id. A new audio context is created
-    and used to compute the waveform.
+    If you already have an existing media element, you can reference it by it's (unique) id, or as an HTMLMediaElement
+    object. A new audio context is
+    created and used to compute the waveform.
   </p>
   <pre>
 &lt;audio controls id=&quot;externalMediaElement&quot;&gt;

@@ -25,16 +25,6 @@ import ExamplesVersion004 from './examples/ExamplesVersion004.vue';
   <!-- Examples -->
   <section>
     <article class="example">
-      <DemoWidget />
-    </article>
-    <article class="example">
-      <UsingReactivity />
-    </article>
-    <article class="example">
-      <UsingPeaksConfiguration />
-    </article>
-    <hr />
-    <article class="example">
       <Basic />
     </article>
     <article class="example">
@@ -46,19 +36,26 @@ import ExamplesVersion004 from './examples/ExamplesVersion004.vue';
     <article class="example">
       <UsingPeaksConfiguration />
     </article>
-    <article class="example">
-      <UsingReactivity />
-    </article>
     <article>
       <h1>Accessing the peaks.js instance</h1>
       <p>
         In the hosting component, get a reference to the AudioPeaks child component:
       <pre><code>const audioPeaksWidget = ref&lt;InstanceType&lt;typeof AudioPeaks&gt;&gt;()</code></pre>
-      Then, you can access the instance's methods by using the reference:
+      Then, you can access the instance and it's methods by using the reference:
       <pre><code>audioPeaksWidget.value?.peaksInstance?.player.play();</code></pre>
       Remember, that the instance is only available only after the child has been mounted and peaks.js has been
       initialized.
       </p>
+    </article>
+
+    <article class="example">
+      <UsingReactivity />
+    </article>
+    <article class="example">
+      <UsingPeaksConfiguration />
+    </article>
+    <article class="example">
+      <DemoWidget />
     </article>
   </section>
   <!-- <div style="border:1px solid red;">
