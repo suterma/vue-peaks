@@ -17,12 +17,12 @@ export default defineConfig({
     base: '/vue-peaks/',
     build: {
         /* Defining the assets to distribute for "Library Mode" */
-        lib: {
-            entry: resolve(__dirname, 'lib/main.js'),
-            name: 'vue-peaks',
-            // the proper extensions will be added
-            fileName: 'vue-peaks',
-        },
+        // lib: {
+        //     entry: resolve(__dirname, 'lib/main.js'),
+        //     name: 'vue-peaks',
+        //     // the proper extensions will be added
+        //     fileName: 'vue-peaks',
+        // },
         rollupOptions: {
             external: ['vue', 'peaks.js', /^.*(.mp3)/, /^.*(.ogg)/],
             output: {
