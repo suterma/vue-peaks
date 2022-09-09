@@ -4,7 +4,7 @@ import AudioPeaks from './../components/AudioPeaks.vue';
 
 const state = reactive({
   isRendered: true,
-  mediaSource: "https://suterma.github.io/vue-peaks/lidija_roos-not_for_sale.mp3"
+  mediaSource: ""
 })
 
 function toggleRendering() {
