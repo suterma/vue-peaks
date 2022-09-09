@@ -43,14 +43,11 @@ function toggleRendering() {
     <div>
       <label>Example menu to change the media URL, with automatic re-rendering of the component.
         <select v-model="state.mediaSource" class="highlight">
+          <option value="">-select option-</option>
           <option value="https://suterma.github.io/vue-peaks/lidija_roos-not_for_sale.mp3">An MP3 music file</option>
           <option value="https://suterma.github.io/vue-peaks/lidija_roos-decisions.ogg">An OGG music file</option>
-          <option value="https://media.grc.com/sn/sn-886-lq.mp3">Security Now! Podcast, Episode #886: Wacky Data
-            Exfiltration, 112 min, 13MB MP3 (16kbps)</option>
-          <option value="https://pdst.fm/e/cdn.twit.tv/audio/sn/sn0886/sn0886.mp3">Security Now! Podcast, Episode #886:
-            Wacky Data
-            Exfiltration, 112 min, 55.5MB MP3</option>
-          <option value="">none</option>
+          <option value="https://twit.cachefly.net/audio/sn/sn0886/sn0886.mp3">Security Now! Podcast, Episode #886:
+            Wacky Data Exfiltration (112 min, 55.5MB, MP3)</option>
         </select>
       </label>
     </div>
