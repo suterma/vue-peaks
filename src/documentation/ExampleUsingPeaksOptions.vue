@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import type { PeaksOptions } from 'peaks.js';
-import { reactive } from 'vue';
 import AudioPeaks from './../components/AudioPeaks.vue';
 
 /** The configuration options 
@@ -33,7 +32,6 @@ const options: PeaksOptions = {
 </script>
 
 <template>
-  <h1>Using a Peaks.js configuration</h1>
   <pre><code>
     //TODO
   </code>

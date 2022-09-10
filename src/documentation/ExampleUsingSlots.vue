@@ -3,7 +3,6 @@ import AudioPeaks from './../components/AudioPeaks.vue';
 </script>
 
 <template>
-  <h1>Using slots for custom panes</h1>
   <p>
     To provide your own layout, you can also use the
     <a href="https://vuejs.org/guide/components/slots.html#named-slots">named slots</a>

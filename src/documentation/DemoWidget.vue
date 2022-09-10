@@ -6,7 +6,6 @@ const state = reactive({ url: '' });
 
 </script>
 <template>
-  <h1>A waveform player widget</h1>
   <p>
     This is a showcase for a simple snippets player. This player is available as ready-made component, which you can use
     as-is

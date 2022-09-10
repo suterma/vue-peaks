@@ -15,7 +15,6 @@ function toggleRendering() {
 </script>
   
 <template>
-  <h1>Using reactivity</h1>
   <p>
     AudioPeaks currently does not support reactivity for the options. Still, you can use Vue's reactivity on the
     component

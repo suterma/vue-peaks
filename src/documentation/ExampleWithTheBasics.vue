@@ -3,7 +3,12 @@ import AudioPeaks from './../components/AudioPeaks.vue';
 </script>
 
 <template>
-  <h1>Basic examples</h1>
+  <p>vue-peaks provides two modes of operation:
+  <ul>
+    <li>Slot mode: the media element and additional areas are provided using named slots</li>
+    <li>External mode: the media element and additional areas are referenced by id or HTML element references</li>
+  </ul>
+  </p>
   <h3>Just using a media source URL ("simple" mode)</h3>
   <p>
     By default, the
