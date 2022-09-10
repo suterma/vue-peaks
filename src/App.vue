@@ -1,12 +1,13 @@
 <script setup lang="ts">
 import HelloWorld from './components/HelloWorld.vue';
 import TheWelcome from './components/TheWelcome.vue';
-import Basic from './examples/Basic.vue';
-import ASecondInstanceWithStyle from './examples/ASecondInstanceWithStyle.vue';
-import UsingSlots from './examples/UsingSlots.vue';
-import UsingPeaksConfiguration from './examples/UsingPeaksConfiguration.vue';
-import DemoWidget from './examples/DemoWidget.vue';
-import UsingReactivity from './examples/UsingReactivity.vue';
+import ExampleWithStyle from './documentation/ExampleWithStyle.vue';
+import ExampleWithTheBasics from './documentation/ExampleWithTheBasics.vue';
+import ExampleUsingPeaksOptions from './documentation/ExampleUsingPeaksOptions.vue';
+import DemoWidget from './documentation/DemoWidget.vue';
+import AccessingThePeaksInstance from './documentation/AccessingThePeaksInstance.vue';
+import ExampleUsingReactivity from './documentation/ExampleUsingReactivity.vue';
+import ExampleUsingSlots from './documentation/ExampleUsingSlots.vue';
 </script>
 
 <template>
@@ -24,34 +25,26 @@ import UsingReactivity from './examples/UsingReactivity.vue';
   <!-- Examples -->
   <section>
     <article class="example">
-      <Basic />
+      <ExampleWithTheBasics />
     </article>
     <article class="example">
-      <ASecondInstanceWithStyle />
+      <ExampleWithStyle />
     </article>
     <article class="example">
-      <UsingSlots />
+      <ExampleUsingSlots />
     </article>
     <article class="example">
-      <UsingPeaksConfiguration />
+      <ExampleUsingPeaksOptions />
     </article>
     <article>
-      <h1>Accessing the peaks.js instance</h1>
-      <p>
-        In the hosting component, get a reference to the AudioPeaks child component:
-      <pre><code>const audioPeaksWidget = ref&lt;InstanceType&lt;typeof AudioPeaks&gt;&gt;()</code></pre>
-      Then, you can access the instance and it's methods by using the reference:
-      <pre><code>audioPeaksWidget.value?.peaksInstance?.player.play();</code></pre>
-      Remember, that the instance is only available only after the child has been mounted and peaks.js has been
-      initialized.
-      </p>
+      <AccessingThePeaksInstance />
     </article>
 
     <article class="example">
-      <UsingReactivity />
+      <ExampleUsingReactivity />
     </article>
     <article class="example">
-      <UsingPeaksConfiguration />
+      <ExampleUsingPeaksOptions />
     </article>
     <article class="example">
       <DemoWidget />
@@ -63,9 +56,6 @@ import UsingReactivity from './examples/UsingReactivity.vue';
       </p>
     </div>
   </section>
-
-
-
 </template>
 
 <style scoped>
