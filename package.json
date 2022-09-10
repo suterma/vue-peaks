@@ -1,7 +1,7 @@
 {
   "name": "vue-peaks",
   "version": "1.0.0-alpha.0",
-  "description": "A Vue wrapper around the bbc/peaks.js audio waveform UI component",
+  "description": "A lightweight Vue wrapper around the bbc/peaks.js audio waveform UI component",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/suterma/vue-peaks.git"
@@ -11,6 +11,7 @@
     "peaks.js",
     "wrapper",
     "waveform",
+    "UI",
     "component"
   ],
   "author": "Marcel Suter (https://marcelsuter.ch)",
@@ -31,7 +32,7 @@
   },
   "dependencies": {
     "peaks.js": "^2.0.6",
-    "vue": "^3.2.38"
+    "vue": "^3.2.39"
   },
   "devDependencies": {
     "@rushstack/eslint-patch": "^1.1.4",
