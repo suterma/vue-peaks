@@ -1,11 +1,9 @@
 <script setup lang="ts">
-import {
-  shallowRef,
-  onMounted,
-  type ShallowRef,
-  onBeforeUnmount,
-} from 'vue';
-import Peaks, { type PeaksInstance, type PeaksOptions as PeaksOptions } from 'peaks.js';
+import { shallowRef, onMounted, type ShallowRef, onBeforeUnmount } from 'vue';
+import Peaks, {
+  type PeaksInstance,
+  type PeaksOptions as PeaksOptions,
+} from 'peaks.js';
 
 const props = defineProps<{
   /** The audio source URL (for the "simple" mode)
@@ -73,14 +71,13 @@ const audio = shallowRef(null);
 const audioSlot = shallowRef(null);
 const zoomLevel = shallowRef<number | undefined>(undefined);
 
-
 defineExpose({
   /** The peaks.js instance is deliberately exposed, to allow direct use of the various APIs.
    * @remarks The instance is only available after the mounted lifecycle event and once
-   * peaks.js has properly initialized. 
+   * peaks.js has properly initialized.
    */
-  peaksInstance
-})
+  peaksInstance,
+});
 
 onMounted(() => {
   createPeaksInstance();
@@ -160,7 +157,6 @@ function createPeaksInstance() {
 function destroyPeaksInstance() {
   peaksInstance.value?.destroy();
 }
-
 
 /** Gets the HTML element to act upon, using the first of the provided options
  * @remarks This is either (first in the following order)
