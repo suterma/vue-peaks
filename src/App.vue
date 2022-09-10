@@ -15,18 +15,18 @@ import Introduction from './documentation/Introduction.vue';
 
       <img alt="Vue logo" class="logo" src="./assets/peaks-logo.svg" width="125" height="125" />
 
-      <h1 class="title">vue-peaks</h1>
-      <h3 class="subtitle">
+      <h1 class="title is-1">vue-peaks</h1>
+      <h2 class="subtitle is-3">
         A lightweight Vue wrapper around the <a target="_blank" href="https://github.com/bbc/peaks.js/">bbc/peaks.js</a>
         audio waveform UI component.
-      </h3>
+      </h2>
     </div>
   </section>
 
   <section class="section">
-    <div class="container">
+    <div class="no-container">
       <div class="columns">
-        <div class="column is-3">
+        <div class="column is-2">
           <aside class="is-medium menu">
             <p class="menu-label">
               Topics
@@ -45,49 +45,48 @@ import Introduction from './documentation/Introduction.vue';
 
           </aside>
         </div>
-        <div class="column is-9">
+        <div class="column is-10">
           <div class="content is-medium">
-            <h3 class="title is-3">Documentation</h3>
 
-            <h4 id="introduction" class="title is-3">Introduction</h4>
+            <!-- <h3 id="introduction" class="title is-3">Introduction</h3> -->
             <article class="example">
               <Introduction />
             </article>
 
-            <h4 id="basic-examples" class="title is-3">Basic examples</h4>
+            <h3 id="basic-examples" class="title is-3">Basic examples</h3>
             <article class="example">
               <ExampleWithTheBasics />
             </article>
 
-            <h4 id="setting-styles" class="title is-3">Setting styles</h4>
+            <h3 id="setting-styles" class="title is-3">Setting styles</h3>
             <article class="example">
               <ExampleWithStyle />
             </article>
 
-            <h4 id="using-slots" class="title is-3">Using slots for custom views</h4>
+            <h3 id="using-slots" class="title is-3">Using slots for custom views</h3>
             <article class="example">
               <ExampleUsingSlots />
             </article>
 
-            <h4 id="using-options" class="title is-3">Using peaks.js configuration options
-            </h4>
+            <h3 id="using-options" class="title is-3">Using peaks.js configuration options
+            </h3>
             <article class="example">
               <ExampleUsingPeaksOptions />
             </article>
 
-            <h4 id="accessing-instance" class="title is-3"> Accessing the peaks.js instance
-            </h4>
+            <h3 id="accessing-instance" class="title is-3"> Accessing the peaks.js instance
+            </h3>
             <article>
               <AccessingThePeaksInstance />
             </article>
 
 
-            <h4 id="using-reactivity" class="title is-3">Using reactivity</h4>
+            <h3 id="using-reactivity" class="title is-3">Using reactivity</h3>
             <article class="example">
               <ExampleUsingReactivity />
             </article>
 
-            <h4 id="player-widget" class="title is-3">A waveform player widget</h4>
+            <h3 id="player-widget" class="title is-3">A waveform player widget</h3>
             <article class="example">
               <DemoWidget />
             </article>
