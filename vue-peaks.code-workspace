@@ -9,6 +9,7 @@
     "cSpell.words": ["Gridline", "highlightjs", "playhead", "zoomview"],
     "editor.formatOnSave": true,
     "prettier.singleAttributePerLine": true,
-    "prettier.singleQuote": true
+    "prettier.singleQuote": true,
+    "html.completion.attributeDefaultValue": "singlequotes"
   }
 }

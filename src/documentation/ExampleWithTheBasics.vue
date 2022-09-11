@@ -28,6 +28,7 @@ import AudioPeaks from './../components/AudioPeaks.vue';
       </p>
     </div>
     <div class="column">
+      <highlightjs language='vue-typescript' code="import AudioPeaks from 'vue-peaks/src/components/AudioPeaks.vue';" />
       <highlightjs language='vue-template' code="<AudioPeaks src='https://domain/file.mp3' />" />
     </div>
     <div class="column is-narrow">
