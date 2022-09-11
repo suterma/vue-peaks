@@ -46,7 +46,7 @@ import Credits from './documentation/Credits.vue';
           </aside>
         </div>
         <div class="column is-10">
-          <div class="content is-medium">
+          <div class="content">
 
             <!-- <h3 id="introduction" class="title is-3">Introduction</h3> -->
             <article class="example">

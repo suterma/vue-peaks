@@ -11,7 +11,8 @@ import AudioPeaks from './../components/AudioPeaks.vue';
     </li>
   </ul>
   </p>
-  <h4 class="is-4">Just using a media source URL ("simple" mode)</h4>
+  <h4 class="title is-4">Just using a media source URL ("simple" mode)</h4>
+  <p>
   <div class="columns">
     <div class="column">
       <p>
@@ -19,7 +20,8 @@ import AudioPeaks from './../components/AudioPeaks.vue';
         <a href="https://github.com/suterma/vue-peaks/blob/main/src/components/AudioPeaks.vue">AudioPeaks Vue
           component</a>
         template has a new audio element, with the given source URL, and both view panes
-        (overview and zoom, which are rendered with a default size) and a controls pane. A new audio context is created
+        (overview and zoom, which are rendered with a default size) and a controls pane. A new audio context is
+        created
         and
         used to compute the
         waveform.
@@ -30,20 +32,22 @@ import AudioPeaks from './../components/AudioPeaks.vue';
 &lt;AudioPeaks 
 src="lidija_roos-not_for_sale.mp3" /&gt;</pre>
     </div>
-    <div class="column">
-      <div class="example-display">
+    <div class="column  is-narrow">
+      <div class="box example-display-x">
         <AudioPeaks src="https://suterma.github.io/vue-peaks/lidija_roos-not_for_sale.mp3" />
       </div>
     </div>
   </div>
+  </p>
 
 
 
 
 
-  <h4 class="is-4">Providing a media element ("slot" mode)</h4>
+  <h4 class="title is-4">Providing a media element ("slot" mode)</h4>
   <p>
-    To provide your own media element, just place it inside the AudioPeaks element (a.k.a. the slot). Vue-peaks will use
+    To provide your own media element, just place it inside the AudioPeaks element (a.k.a. the slot). Vue-peaks will
+    use
     the first audio element in the slot. A new audio context is created and used to compute the waveform.
   </p>
   <pre>
@@ -61,7 +65,7 @@ src="lidija_roos-not_for_sale.mp3" /&gt;</pre>
       </audio>
     </AudioPeaks>
   </div>
-  <h4 class="is-4">Using a specified media element ("external" mode)</h4>
+  <h4 class="title is-4">Using a specified media element ("external" mode)</h4>
   <p>
     If you already have an existing media element, you can reference it by it's (unique) id, or as an HTMLMediaElement
     object. A new audio context is
