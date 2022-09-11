@@ -12,7 +12,7 @@ import AvailableProperties from './documentation/AvailableProperties.vue';
 </script>
   
 <template>
-  <section class="hero is-primary">
+  <section class="hero is-light">
     <div class="hero-body has-text-centered	">
 
       <img alt="Vue logo" class="logo" src="./assets/peaks-logo.svg" width="125" height="125" />
