@@ -7,6 +7,7 @@ import AccessingThePeaksInstance from './documentation/AccessingThePeaksInstance
 import ExampleUsingReactivity from './documentation/ExampleUsingReactivity.vue';
 import ExampleUsingSlots from './documentation/ExampleUsingSlots.vue';
 import Introduction from './documentation/Introduction.vue';
+import Credits from './documentation/Credits.vue';
 </script>
   
 <template>
@@ -34,15 +35,14 @@ import Introduction from './documentation/Introduction.vue';
             <ul class="menu-list">
               <li><a href="#basic-examples">
                   Basic examples</a></li>
-              <li><a href="#setting-styles"> Setting styles</a></li>
-              <li><a href="#using-slots"> Using slots</a></li>
+              <li><a href="#setting-styles">Setting styles</a></li>
+              <li><a href="#using-slots">Using slots</a></li>
               <li><a href="#using-options">Options</a></li>
-              <li><a href="#accessing-instance"> Accessing the instance</a></li>
-              <li><a href="#using-reactivity"> Using reactivity</a></li>
-              <li><a href="#player-widget"> A widget</a></li>
-
+              <li><a href="#accessing-instance">Accessing the instance</a></li>
+              <li><a href="#using-reactivity">Using reactivity</a></li>
+              <li><a href="#player-widget">A widget</a></li>
+              <li><a href="#credits">Credits</a></li>
             </ul>
-
           </aside>
         </div>
         <div class="column is-10">
@@ -89,6 +89,11 @@ import Introduction from './documentation/Introduction.vue';
             <h3 id="player-widget" class="title is-3">A waveform player widget</h3>
             <article class="example">
               <DemoWidget />
+            </article>
+
+            <h3 id="credits" class="title is-3">Credits</h3>
+            <article class="example">
+              <Credits />
             </article>
           </div>
         </div>
