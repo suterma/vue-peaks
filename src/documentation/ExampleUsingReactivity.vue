@@ -31,7 +31,7 @@ function toggleRendering() {
       technique</li>
   </ul>
   </p>
-  <div class="example-display">
+  <div class="box">
     <div>
       <label>Example button to create and destroy an AudioPeaks instance:
         <button @click="toggleRendering()" class="highlight">

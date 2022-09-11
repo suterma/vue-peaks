@@ -8,6 +8,7 @@ import ExampleUsingReactivity from './documentation/ExampleUsingReactivity.vue';
 import ExampleUsingSlots from './documentation/ExampleUsingSlots.vue';
 import Introduction from './documentation/Introduction.vue';
 import Credits from './documentation/Credits.vue';
+import AvailableProperties from './documentation/AvailableProperties.vue';
 </script>
   
 <template>
@@ -35,6 +36,8 @@ import Credits from './documentation/Credits.vue';
             <ul class="menu-list">
               <li><a href="#basic-examples">
                   Basic examples</a></li>
+              <li><a href="#available-properties">
+                  Properties</a></li>
               <li><a href="#setting-styles">Setting styles</a></li>
               <li><a href="#using-slots">Using slots</a></li>
               <li><a href="#using-options">Options</a></li>
@@ -56,6 +59,11 @@ import Credits from './documentation/Credits.vue';
             <h3 id="basic-examples" class="title is-3">Basic examples</h3>
             <article class="example">
               <ExampleWithTheBasics />
+            </article>
+
+            <h3 id="available-properties" class="title is-3">Available properties</h3>
+            <article class="example">
+              <AvailableProperties />
             </article>
 
             <h3 id="setting-styles" class="title is-3">Setting styles</h3>

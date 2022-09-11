@@ -1,46 +1,30 @@
 <script setup lang="ts">
-import AudioPeaks from './../components/AudioPeaks.vue';
 </script>
 
 <template>
-  <pre>
-&lt;style&gt;
-.style-example .peaks-overview:hover,
-.style-example .peaks-zoomview:hover {
-  background-color: hsla(160, 100%, 37%, 0.2);
-}
-
-.style-example .peaks-overview,
-.style-example .peaks-zoomview {
-  height: 50px;
-  border: 1px dotted;
-  border-color: black;
-}
-&lt;/style&gt;
-&lt;div class=&quot;style-example&quot;&gt;
-  &lt;AudioPeaks src=&quot;https://suterma.github.io/vue-peaks/lidija_roos-decisions.ogg&quot; /&gt;
-&lt;/div&gt;</pre>
-  <p>
-    Each pane (overview, zoomview, audio, controls) has <b>dedicated CSS classes</b> which you can use to customize the
-    look
-    and feel. Note however, that you can not style the waveforms themselves this way.
-  </p>
-
-  <div class="example-display style-example">
-    <AudioPeaks src="https://suterma.github.io/vue-peaks/lidija_roos-decisions.ogg" />
+  <div class="columns">
+    <div class="column">
+      <p>
+        Each pane (overview, zoomview, audio, controls) has <b> a dedicated CSS class</b> which you can use to select
+        for
+        your styles. Note however, that you can not style the waveforms themselves this way.
+      </p>
+      <p>
+        The following selectors are available:
+      </p>
+    </div>
+    <div class="column">
+      <highlightjs language='css' code="div.peaks-overview { 
+    /* The div with the overview waveform */ }
+div.peaks-zoomview { 
+    /* The div with the zoom waveform */ }
+div.peaks-controls { 
+    /* The div with the zoom controls */ }
+audio.peaks-audio { 
+    /* The audio control, when provided by vue-peaks 
+       (in the 'simple' mode) */ }" />
+    </div>
   </div>
+
 </template>
-
-<style>
-.style-example .peaks-overview:hover,
-.style-example .peaks-zoomview:hover {
-  background-color: hsla(160, 100%, 37%, 0.2);
-}
-
-.style-example .peaks-overview,
-.style-example .peaks-zoomview {
-  height: 50px;
-  border: 1px dotted;
-  border-color: black;
-}
-</style>
+ 

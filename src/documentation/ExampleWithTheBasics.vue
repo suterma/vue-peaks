@@ -12,7 +12,7 @@ import AudioPeaks from './../components/AudioPeaks.vue';
   </ul>
   </p>
   <h4 class="title is-4">Just using a media source URL ("simple" mode)</h4>
-  <p>
+
   <div class="columns">
     <div class="column">
       <p>
@@ -28,62 +28,78 @@ import AudioPeaks from './../components/AudioPeaks.vue';
       </p>
     </div>
     <div class="column">
-      <pre>
-&lt;AudioPeaks 
-src="lidija_roos-not_for_sale.mp3" /&gt;</pre>
+      <highlightjs language='vue-template' code="<AudioPeaks src='https://domain/file.mp3' />" />
     </div>
-    <div class="column  is-narrow">
-      <div class="box example-display-x">
+    <div class="column is-narrow">
+      <div class="box">
         <AudioPeaks src="https://suterma.github.io/vue-peaks/lidija_roos-not_for_sale.mp3" />
       </div>
     </div>
   </div>
-  </p>
-
-
 
 
 
   <h4 class="title is-4">Providing a media element ("slot" mode)</h4>
-  <p>
-    To provide your own media element, just place it inside the AudioPeaks element (a.k.a. the slot). Vue-peaks will
-    use
-    the first audio element in the slot. A new audio context is created and used to compute the waveform.
-  </p>
-  <pre>
-&lt;AudioPeaks&gt;
-  &lt;span&gt;You can also add additional HTML content.&lt;/span&gt;
-  &lt;audio controls style=&quot;width: 100%;&quot;&gt;
-    &lt;source src=&quot;https://suterma.github.io/vue-peaks/lidija_roos-not_for_sale.mp3&quot; /&gt;
-  &lt;/audio&gt;
-&lt;/AudioPeaks&gt;  </pre>
-  <div class="example-display">
-    <AudioPeaks>
-      <span>You can also add additional HTML content.</span>
-      <audio controls style="width: 100%;">
-        <source src="https://suterma.github.io/vue-peaks/lidija_roos-not_for_sale.mp3" />
-      </audio>
-    </AudioPeaks>
+  <div class="columns">
+    <div class="column">
+      <p>
+        To provide your own media element, just place it inside the AudioPeaks element (a.k.a. the slot). Vue-peaks will
+        use
+        the first audio element in the slot. A new audio context is created and used to compute the waveform.
+      </p>
+    </div>
+    <div class="column">
+      <highlightjs language='vue-template' code="<AudioPeaks>
+  <span>You can also add additional HTML content.</span>
+  <audio controls style='width: 100%;'>
+    <source src='https://domain/file.mp3' />
+  </audio>
+</AudioPeaks>" />
+    </div>
+    <div class="column">
+      <div class="box">
+        <AudioPeaks>
+          <span class="tag is-danger is-large">You can also add additional HTML content.</span>
+          <audio controls style='width: 100%;'>
+            <source src='https://suterma.github.io/vue-peaks/lidija_roos-not_for_sale.mp3' />
+          </audio>
+        </AudioPeaks>
+      </div>
+    </div>
   </div>
+
   <h4 class="title is-4">Using a specified media element ("external" mode)</h4>
-  <p>
-    If you already have an existing media element, you can reference it by it's (unique) id, or as an HTMLMediaElement
-    object. A new audio context is
-    created and used to compute the waveform.
-  </p>
-  <pre>
-&lt;audio controls id=&quot;externalMediaElement&quot;&gt;
-  &lt;source src=&quot;https://suterma.github.io/vue-peaks/lidija_roos-not_for_sale.mp3&quot; /&gt;
-&lt;/audio&gt;
-&lt;div&gt;Using the external media element above&lt;/div&gt;
-&lt;AudioPeaks mediaElementId=&quot;externalMediaElement&quot;&gt;
-&lt;/AudioPeaks&gt;  </pre>
-  <div class="example-display">
-    <audio controls id="externalMediaElement">
-      <source src="https://suterma.github.io/vue-peaks/lidija_roos-not_for_sale.mp3" />
-    </audio>
-    <div>Using the external media element above</div>
-    <AudioPeaks mediaElementId="externalMediaElement">
-    </AudioPeaks>
+  <div class="columns">
+    <div class="column">
+      <p>
+        If you already have an existing media element, you can reference it by it's (unique) id, or as an
+        HTMLMediaElement
+        object. A new audio context is
+        created and used to compute the waveform.
+      </p>
+      <p>
+        There are also properties available for overview area and the zoom view area.
+      </p>
+    </div>
+    <div class="column">
+      <highlightjs language='vue-template' code="<audio controls id='externalMediaElement'>
+  <source src='https://domain/file.mp3' />
+</audio>
+<div><span class='tag is-danger is-large'>
+    Using the external media element above.</span></div>
+<AudioPeaks mediaElementId='externalMediaElement'>
+</AudioPeaks>" />
+    </div>
+    <div class="column">
+      <div class="box">
+        <audio controls id='externalMediaElement'>
+          <source src='https://suterma.github.io/vue-peaks/lidija_roos-not_for_sale.mp3' />
+        </audio>
+        <div><span class='tag is-danger is-large'>
+            Using the external media element above.</span></div>
+        <AudioPeaks mediaElementId='externalMediaElement'>
+        </AudioPeaks>
+      </div>
+    </div>
   </div>
 </template>

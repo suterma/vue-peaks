@@ -1,23 +1,31 @@
-
-a{
+a {
   text-decoration: underline;
 }
 
+.content pre {
+  margin: 0;
+  padding: 0;
 
+  border-radius: 6px;
+}
+
+.code {
+  border: 1px solid var(--color-border);
+  background: var(--color-background);
+  border-radius: 8px;
+  font-family: monospace;
+  /* font-size: small; */
+  padding: 0.25rem;
+  margin-top: 0.25rem;
+  margin-bottom: 0.25rem;
+}
+
+/* 
 button {
   border: 1px solid var(--color-border);
   background: var(--color-background);
   border-radius: 8px;
   line-height: 1.6;
-}
-
-.example-display {
-  border: 1px solid var(--color-border);
-  background: var(--color-background);
-  border-radius: 8px;
-  padding: 1rem;
-  margin-top: 1rem;
-  margin-bottom: 1rem;
 }
 
 b {
@@ -48,4 +56,4 @@ pre {
 .highlight {
   border: 1px solid red;
   background: pink;
-}
+} */

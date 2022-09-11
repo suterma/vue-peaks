@@ -11,13 +11,10 @@ const state = reactive({ url: '' });
     as-is
     or copy and adapt it to your needs.</p>
   <pre><code>
-    import AudioPeaksWidget from '../components/AudioPeaksWidget.vue';
-    &lt;div class="example-display"&gt;
-    &lt;AudioPeaksWidget src="https://suterma.github.io/vue-peaks/lidija_roos-not_for_sale.mp3"&gt;&lt;/AudioPeaksWidget&gt;
-    &lt;/div&gt;
-  </code></pre>
 
-  <div class="example-display">
+  </code></pre>//TODO
+
+  <div class="">
     <input type="url" v-model="state.url" placeholder="Paste an URL to a media file" />
     <AudioPeaksWidget :src="state.url" :key="state.url">
     </AudioPeaksWidget>

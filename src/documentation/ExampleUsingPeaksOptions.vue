@@ -54,7 +54,7 @@ const options: PeaksOptions = {
     <li>use precomputed waveform data</li>
   </ul>
   </p>
-  <div class="example-display">
+  <div class="box">
     <AudioPeaks :options="options">
       <audio controls>
         <source src="https://suterma.github.io/vue-peaks/lidija_roos-not_for_sale.mp3" />
