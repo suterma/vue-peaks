@@ -83,9 +83,14 @@ onMounted(() => {
   createPeaksInstance();
 });
 
+
 onBeforeUnmount(() => {
   destroyPeaksInstance();
 });
+
+const emit = defineEmits<{
+  (e: 'error', error: Error): void
+}>();
 
 /** Initializes the peaks instance
  * @remarks If no options are provided by the respective component property, some default options are used.
@@ -143,9 +148,10 @@ function createPeaksInstance() {
       zoomLevels: [256, 512, 1024, 2048, 4096],
     };
 
-  Peaks.init(options, function (err, peaks) {
+  Peaks.init(options, function (err: Error, peaks: PeaksInstance | undefined): void {
     if (err) {
       console.error(err);
+      emit('error', err)
     }
     peaksInstance.value = peaks;
     zoomLevel.value = peaks?.zoom.getZoom();
@@ -224,36 +230,38 @@ function zoomOut(): void {
 </script>
 
 <template>
-  <div ref="overviewSlot">
-    <!-- If an external overview element is referenced, the overview slot is not used -->
-    <slot name="overview" v-if="!props.overviewElementId && !props.overviewElement">
-      <div class="peaks-overview" ref="overview"></div>
-    </slot>
-  </div>
-
-  <div ref="zoomviewSlot">
-    <!-- If an external zoomview element is referenced, the zoomview slot is not used -->
-    <slot name="zoomview" v-if="!props.zoomviewElementId && !props.zoomviewElement">
-      <div class="peaks-zoomview" ref="zoomview"></div>
-    </slot>
-  </div>
-
-  <div ref="audioSlot">
-    <!-- If an external media element is referenced, the default slot is not used -->
-    <slot name="default" v-if="!props.mediaElementId && !props.mediaElement">
-      <!-- The default content slot for the "slot" mode -->
-      <audio class="peaks-audio" ref="audio" controls>
-        <source :src="src" />
-      </audio>
-    </slot>
-  </div>
-  <slot name="controls">
-    <div class="peaks-controls">
-      <button @click="zoomIn()">Zoom in</button>&nbsp;
-      <button @click="zoomOut()">Zoom out</button>&nbsp;
-      <span>Zoom level: {{ zoomLevel }}</span>
+  <div>
+    <div ref="overviewSlot">
+      <!-- If an external overview element is referenced, the overview slot is not used -->
+      <slot name="overview" v-if="!props.overviewElementId && !props.overviewElement">
+        <div class="peaks-overview" ref="overview"></div>
+      </slot>
     </div>
-  </slot>
+
+    <div ref="zoomviewSlot">
+      <!-- If an external zoomview element is referenced, the zoomview slot is not used -->
+      <slot name="zoomview" v-if="!props.zoomviewElementId && !props.zoomviewElement">
+        <div class="peaks-zoomview" ref="zoomview"></div>
+      </slot>
+    </div>
+
+    <div ref="audioSlot">
+      <!-- If an external media element is referenced, the default slot is not used -->
+      <slot name="default" v-if="!props.mediaElementId && !props.mediaElement">
+        <!-- The default content slot for the "slot" mode -->
+        <audio class="peaks-audio" ref="audio" controls>
+          <source :src="src" />
+        </audio>
+      </slot>
+    </div>
+    <slot name="controls">
+      <div class="peaks-controls">
+        <button @click="zoomIn()">Zoom in</button>&nbsp;
+        <button @click="zoomOut()">Zoom out</button>&nbsp;
+        <span>Zoom level: {{ zoomLevel }}</span>
+      </div>
+    </slot>
+  </div>
 </template>
 
 <style scoped>

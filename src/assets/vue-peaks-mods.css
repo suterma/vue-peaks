@@ -21,6 +21,7 @@ a {
 }
 
 /* Multi-line tags */
+.label.is-multiline,
 .tag.is-multiline {
   white-space: break-spaces;
   word-wrap: break-word;

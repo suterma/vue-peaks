@@ -28,7 +28,7 @@ const options: PeaksOptions = {
 }
 </script>
 <template>
-  <div class="columns">
+  <div class="columns is-desktop">
     <div class="column">
       <p>
         To fully customize the appearance and behavior, the Peaks.js <a

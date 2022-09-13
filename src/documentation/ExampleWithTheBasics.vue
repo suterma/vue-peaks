@@ -13,7 +13,7 @@ import AudioPeaks from './../components/AudioPeaks.vue';
   </p>
   <h4 class="title is-4">Just using a media source URL ("simple" mode)</h4>
 
-  <div class="columns">
+  <div class="columns is-desktop">
     <div class="column">
       <p>
         By default, the
@@ -26,12 +26,10 @@ import AudioPeaks from './../components/AudioPeaks.vue';
         used to compute the
         waveform.
       </p>
-    </div>
-    <div class="column">
       <highlightjs language='vue-typescript' code="import AudioPeaks from 'vue-peaks/src/components/AudioPeaks.vue';" />
       <highlightjs language='vue-template' code="<AudioPeaks src='https://domain/file.mp3' />" />
     </div>
-    <div class="column is-narrow">
+    <div class="column">
       <div class="box">
         <AudioPeaks src="https://suterma.github.io/vue-peaks/lidija_roos-not_for_sale.mp3" />
       </div>
@@ -41,7 +39,7 @@ import AudioPeaks from './../components/AudioPeaks.vue';
 
 
   <h4 class="title is-4">Providing a media element ("slot" mode)</h4>
-  <div class="columns">
+  <div class="columns is-desktop">
     <div class="column">
       <p>
         To provide your own media element, just place it inside the AudioPeaks element (a.k.a. the slot). Vue-peaks will
@@ -60,7 +58,7 @@ import AudioPeaks from './../components/AudioPeaks.vue';
     <div class="column is-narrow">
       <div class="box">
         <AudioPeaks>
-          <span class="tag is-danger is-large">You can also add additional HTML content.</span>
+          <span class="tag is-danger is-large is-multiline">You can also add additional HTML content.</span>
           <audio controls style='width: 100%;'>
             <source src='https://suterma.github.io/vue-peaks/lidija_roos-not_for_sale.mp3' />
           </audio>
@@ -70,7 +68,7 @@ import AudioPeaks from './../components/AudioPeaks.vue';
   </div>
 
   <h4 class="title is-4">Using a specified media element ("external" mode)</h4>
-  <div class="columns">
+  <div class="columns is-desktop">
     <div class="column">
       <p>
         If you already have an existing media element, you can reference it by it's (unique) id, or as an

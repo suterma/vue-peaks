@@ -36,7 +36,8 @@
    * (no slot template is expected or used for the overview)
    */
   overviewElement?: HTMLDivElement;
-  /** The unique identifier of an external media element to use. (for the 'external' mode)
+  /** The unique identifier of an external media element to use. 
+   * (for the 'external' mode)
    * @remarks Allows the use of an external media element.
    * (no slot template or audio source URL is expected)
    */

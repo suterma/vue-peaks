@@ -13,6 +13,8 @@ const state = reactive({ url: '' });
         In the hosting component, get a reference to the AudioPeaks child component and, for convenience, a directly
         computed
         property to the actual peaks.js instance:
+      </p>
+      <p>
         <highlightjs language='vue-typescript' code="/** Reference to the AudioPeaks component */
 const audioPeaks = shallowRef<InstanceType<typeof AudioPeaks>>()
 
@@ -21,9 +23,11 @@ const audioPeaks = shallowRef<InstanceType<typeof AudioPeaks>>()
  * to call various functions on the API.
  */
 const peaksInstance = computed(() => audioPeaks.value?.peaksInstance);" />
-
+      </p>
+      <p>
         Now you can access the instance and it's methods by using the reference, like in this example:
-
+      </p>
+      <p>
         <highlightjs language='vue-typescript' code="/** Sets a bookmark at the current position
  */
 function setBookmark() {
@@ -35,13 +39,12 @@ function setBookmark() {
     state.bookmark = currentTime;
   }
 }" />
-
-        Remember, that the instance is only available only after the child has been mounted and peaks.js has been
+      </p>
+      <p>
+        Remember, that the instance is available only after the child has been mounted and peaks.js has been
         initialized.
       </p>
-
     </div>
-
   </div>
 </template>
  

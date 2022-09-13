@@ -3,7 +3,7 @@ import AudioPeaks from './../components/AudioPeaks.vue';
 </script>
 
 <template>
-  <div class="columns">
+  <div class="columns is-desktop">
     <div class="column">
       <p>
         To provide your own layout, you can also use the
@@ -52,7 +52,7 @@ import AudioPeaks from './../components/AudioPeaks.vue';
   </template>
 </AudioPeaks>
 <span class='tag is-danger is-large is-multiline'>
-  No controls are shown, by providing an empty template
+  No zoom controls are shown, by providing an empty template
   to the named controls slot.</span>" />
     </div>
     <div class="column is-narrow" style='max-width: 400px'>
@@ -83,7 +83,7 @@ import AudioPeaks from './../components/AudioPeaks.vue';
           </template>
         </AudioPeaks>
         <span class='tag is-danger is-large is-multiline'>
-          No controls are shown, by providing an empty template
+          No zoom controls are shown, by providing an empty template
           to the named controls slot.</span>
       </div>
     </div>
