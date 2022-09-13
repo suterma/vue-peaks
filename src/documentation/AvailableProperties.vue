@@ -5,7 +5,8 @@
   <div class="columns">
     <div class="column">
       <p>
-        vue-peaks offers the following properties for customization:
+        Vue-peaks offers it's own properties for customization. Plus you can configure the underlying peaks.js instance
+        via the options property (of type <span class='code'>PeaksOptions</span>).
       </p>
     </div>
     <div class="column">

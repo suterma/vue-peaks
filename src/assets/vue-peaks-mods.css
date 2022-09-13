@@ -20,6 +20,18 @@ a {
   margin-bottom: 0.25rem;
 }
 
+/* Multi-line tags */
+.tag.is-multiline {
+  white-space: break-spaces;
+  word-wrap: break-word;
+  display: block;
+  height: unset;
+}
+.tag.is-multiline.is-large {
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+}
+
 /* 
 button {
   border: 1px solid var(--color-border);

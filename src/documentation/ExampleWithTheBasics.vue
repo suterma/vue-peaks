@@ -57,7 +57,7 @@ import AudioPeaks from './../components/AudioPeaks.vue';
   </audio>
 </AudioPeaks>" />
     </div>
-    <div class="column">
+    <div class="column is-narrow">
       <div class="box">
         <AudioPeaks>
           <span class="tag is-danger is-large">You can also add additional HTML content.</span>
@@ -91,7 +91,7 @@ import AudioPeaks from './../components/AudioPeaks.vue';
 <AudioPeaks mediaElementId='externalMediaElement'>
 </AudioPeaks>" />
     </div>
-    <div class="column">
+    <div class="column is-narrow">
       <div class="box">
         <audio controls id='externalMediaElement'>
           <source src='https://suterma.github.io/vue-peaks/lidija_roos-not_for_sale.mp3' />

@@ -25,7 +25,7 @@ const state = reactive({ url: '' });" />
                   :key='state.url'>
 </AudioPeaksWidget>" />
     </div>
-    <div class="column">
+    <div class="column is-narrow">
       <div class="box">
         <div class="field">
           <div class="control">
