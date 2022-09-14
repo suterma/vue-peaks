@@ -1,6 +1,6 @@
 {
   "name": "vue-peaks",
-  "version": "1.0.0-alpha.1",
+  "version": "1.0.1",
   "description": "A lightweight Vue wrapper around the bbc/peaks.js audio waveform UI component",
   "repository": {
     "type": "git",
