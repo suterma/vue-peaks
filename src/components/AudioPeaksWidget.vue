@@ -24,11 +24,11 @@ const props = defineProps<{
 const options: PeaksOptions = {
   overview: {
     /* The container div is provided and handled internally by AudioPeaks */
-    waveformColor: 'hsl(141, 53%, 53%)',
-    playedWaveformColor: 'hsl(141, 53%, 31%)',
+    waveformColor: '#2ecc71',
+    playedWaveformColor: '#29b765',
     showAxisLabels: false,
     axisGridlineColor: 'hsl(0, 0%, 100%)',
-    playheadTextColor: 'hsl(348, 100%, 61%)',
+    playheadTextColor: '#e43725',
     showPlayheadTime: true
   },
   showPlayheadTime: true,
@@ -36,7 +36,7 @@ const options: PeaksOptions = {
 
   /* The mediaElement is provided and handled internally by AudioPeaks */
   webAudio: { audioContext: new AudioContext() },
-  playheadColor: 'hsl(348, 100%, 61%)',
+  playheadColor: '#e43725',
 };
 
 

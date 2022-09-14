@@ -46,8 +46,18 @@ const state = reactive({ url: '' });" />
           href='https://github.com/suterma/vue-peaks/blob/main/src/components/AudioPeaksWidget.vue'>GitHub</a>)</p>
       <highlightjs language='vue-sfc' code="<script setup lang='ts'>
 import type { PeaksOptions } from 'peaks.js';
-import { reactive, shallowRef } from 'vue';
+import { computed, reactive, shallowRef } from 'vue';
 import AudioPeaks from './AudioPeaks.vue';
+
+/** Reference to the AudioPeaks component */
+const audioPeaks = shallowRef<InstanceType<typeof AudioPeaks>>()
+
+/** Accessor to the peaks instance from the AudioPeaks component
+ * @remarks Allows access to the peaks.js instance to call various functions on the API.
+ */
+const peaksInstance = computed(() => audioPeaks.value?.peaksInstance);
+const audio = shallowRef<HTMLAudioElement | null>(null);
+const state = reactive({ isPlaying: false, canPlay: false, bookmark: 0, lastErrorMessage: '' });
 
 const props = defineProps<{
   /** The media source URL
@@ -60,21 +70,27 @@ const props = defineProps<{
 const options: PeaksOptions = {
   overview: {
     /* The container div is provided and handled internally by AudioPeaks */
-    waveformColor: 'hsl(141, 53%, 53%)',
-    playedWaveformColor: 'hsl(141, 53%, 31%)',
+    waveformColor: '#2ecc71',
+    playedWaveformColor: '#29b765',
     showAxisLabels: false,
     axisGridlineColor: 'hsl(0, 0%, 100%)',
+    playheadTextColor: '#e43725',
+    showPlayheadTime: true
   },
+  showPlayheadTime: true,
   /* The widget does not use a zoom area */
 
   /* The mediaElement is provided and handled internally by AudioPeaks */
   webAudio: { audioContext: new AudioContext() },
-  playheadColor: 'hsl(348, 100%, 61%)',
+  playheadColor: '#e43725',
 };
 
-const audio = shallowRef<HTMLAudioElement | null>(null);
-const state = reactive({ isPlaying: false, canPlay: false });
 
+
+/** Toggles playback
+ * @devdoc Directly uses the audio element instead of the peaks.js player API 
+ * to allow control even when the waveform is not yet ready.
+ */
 function togglePlayback() {
   state.isPlaying = !state.isPlaying;
   if (state.isPlaying) {
@@ -82,6 +98,27 @@ function togglePlayback() {
   } else {
     audio.value?.pause();
   }
+}
+
+/** Sets a bookmark at the current position
+ */
+function setBookmark() {
+  const currentTime = peaksInstance.value?.player.getCurrentTime();
+  if (currentTime) {
+    peaksInstance.value?.points.add({
+      time: currentTime,
+      editable: true,
+      labelText: 'Bookmark',
+      color: '#000000'
+    });
+    state.bookmark = currentTime;
+  }
+}
+
+/** Seeks to the stored bookmark
+ */
+function seekBookmark() {
+  peaksInstance.value?.player.seek(state.bookmark);
 }
 </script>
 <template>
@@ -96,7 +133,22 @@ function togglePlayback() {
         <path fill='currentColor' d='M8,5.14V19.14L19,12.14L8,5.14Z' />
       </svg>
     </button>
-    <AudioPeaks overviewElementId='widgetOverview' ref='audioPeaksWidget' :options='options'>
+    <button class='item' @click='setBookmark()' :disabled='!state.canPlay' title='set bookmark'>
+      <!-- bookmark icon -->
+      <svg style='width: 24px; height: 24px' viewBox='0 0 24 24'>
+        <path fill='currentColor'
+          d='M14.55 20C15 20.76 15.5 21.44 15.91 22H6C4.89 22 4 21.11 4 20V4C4 2.9 4.89 2 6 2H18C19.11 2 20 2.9 20 4V10.22C19.5 10.08 19 10 18.5 10C18.33 10 18.17 10 18 10.03V4H13V12L10.5 9.75L8 12V4H6V20H14.55M22 15.5C22 18.1 18.5 22 18.5 22S15 18.1 15 15.5C15 13.6 16.6 12 18.5 12S22 13.6 22 15.5M19.7 15.6C19.7 15 19.1 14.4 18.5 14.4S17.3 14.9 17.3 15.6C17.3 16.2 17.8 16.8 18.5 16.8S19.8 16.2 19.7 15.6Z' />
+      </svg>
+    </button>
+    <button class='item' @click='seekBookmark()' :disabled='!state.bookmark' title='seek bookmark'>
+      <!-- bookmark seek icon -->
+      <svg style='width: 24px; height: 24px' viewBox='0 0 24 24'>
+        <path fill='currentColor'
+          d='M13.09 20C13.21 20.72 13.46 21.39 13.81 22H6C4.89 22 4 21.11 4 20V4C4 2.9 4.89 2 6 2H18C19.11 2 20 2.9 20 4V13.09C19.67 13.04 19.34 13 19 13C18.66 13 18.33 13.04 18 13.09V4H13V12L10.5 9.75L8 12V4H6V20H13.09M17 16V22L22 19L17 16Z' />
+      </svg>
+    </button>
+    <AudioPeaks overviewElementId='widgetOverview' ref='audioPeaks' :options='options'
+      @error='(err) => state.lastErrorMessage = err.message'>
       <template #zoomview>
         <template />
       </template>
@@ -122,6 +174,7 @@ function togglePlayback() {
         </svg>
       </div>
       <span v-else>no media available</span>
+      <span v-if='state.lastErrorMessage' class='has-text-danger'>{{state.lastErrorMessage}}</span>
     </div>
   </div>
 </template>
@@ -179,8 +232,7 @@ function togglePlayback() {
 .spin {
   animation: spin 6s linear infinite;
 }
-</style>
-" />
+</style>" />
     </div>
   </div>
 </template>

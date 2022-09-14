@@ -8,23 +8,27 @@ import AudioPeaks from './../components/AudioPeaks.vue';
 const options: PeaksOptions = {
   overview: {
     /* container is handled separately by AudioPeaks */
-    waveformColor: 'hsl(204, 86%, 53%)',
-    playedWaveformColor: 'hsl(204, 71%, 39%)',
+    waveformColor: '#3298dc',
+    playedWaveformColor: '#238cd1',
     highlightColor: 'hsl(206, 70%, 96%)',
     highlightOffset: 0,
     axisGridlineColor: 'hsl(0, 0%, 29%)',
     axisLabelColor: 'hsl(0, 0%, 29%)',
+    showPlayheadTime: false
   },
   zoomview: {
     /* container is handled separately by AudioPeaks */
-    playedWaveformColor: 'hsl(48, 53%, 31%)',
+    waveformColor: '#f1b70e',
+    playedWaveformColor: '#d9a50d',
     axisGridlineColor: 'hsl(0, 0%, 29%)',
     axisLabelColor: 'hsl(0, 0%, 29%)',
+    playheadTextColor: '#e43725',
+    showPlayheadTime: true
   },
   /* mediaElement is handled separately by AudioPeaks */
   webAudio: { audioContext: new AudioContext() },
   zoomLevels: [256],
-  playheadColor: 'hsl(348, 100%, 61%)'
+  playheadColor: '#e43725'
 }
 </script>
 <template>
