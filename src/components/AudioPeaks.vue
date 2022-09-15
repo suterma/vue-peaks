@@ -88,19 +88,18 @@ onBeforeUnmount(() => {
   destroyPeaksInstance();
 });
 
-/** Emits an error, in case the initialization fails. */
 const emit = defineEmits<{
+  /**
+ * Triggers in case the initialization fails
+ *
+ * @property {Error} error The error
+ */
   (e: 'error', error: Error): void
 }>();
 
 /** Initializes the peaks instance
  * @remarks If no options are provided by the respective component property, some default options are used.
  * @devdoc Must be called only after mount, because the expected HTML elements must be addressable already by their id.
- * @devdoc A currently unused variant for referencing an audio element from the template via reference uses
- * // reference on the component level
- * const audio = shallowRef(null);
- * // getting the element
- * (audio.value as unknown as HTMLAudioElement)
  */
 function createPeaksInstance(): void {
   console.debug('AudioPeaks::createPeaksInstance:options:', props.options);
@@ -233,21 +232,21 @@ function zoomOut(): void {
 <template>
   <div>
     <div ref="overviewSlot">
-      <!-- If an external overview element is referenced, the overview slot is not used -->
+      <!-- @slot Named slot for the overview element. If an external overview element is referenced, the overview slot is not used -->
       <slot name="overview" v-if="!props.overviewElementId && !props.overviewElement">
         <div class="peaks-overview" ref="overview"></div>
       </slot>
     </div>
 
     <div ref="zoomviewSlot">
-      <!-- If an external zoomview element is referenced, the zoomview slot is not used -->
+      <!-- @slot Named slot for the zoomview element. If an external zoomview element is referenced, the zoomview slot is not used -->
       <slot name="zoomview" v-if="!props.zoomviewElementId && !props.zoomviewElement">
         <div class="peaks-zoomview" ref="zoomview"></div>
       </slot>
     </div>
 
     <div ref="audioSlot">
-      <!-- If an external media element is referenced, the default slot is not used -->
+      <!-- @slot Default slot for the media element. If an external media element is referenced, the default slot is not used -->
       <slot name="default" v-if="!props.mediaElementId && !props.mediaElement">
         <!-- The default content slot for the "slot" mode -->
         <audio class="peaks-audio" ref="audio" controls>
@@ -255,6 +254,7 @@ function zoomOut(): void {
         </audio>
       </slot>
     </div>
+    <!-- @slot Named slot for the zoom controls.  -->
     <slot name="controls">
       <div class="peaks-controls">
         <button @click="zoomIn()">Zoom in</button>&nbsp;
