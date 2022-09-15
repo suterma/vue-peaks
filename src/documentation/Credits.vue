@@ -76,4 +76,16 @@
       MIT License, by Johnson Chu)
     </li>
   </ul>
+
+  <p>Initial code is taken from</p>
+
+  <ul>
+    <li><a href="https://github.com/candeogi/peaks-vue-demo" target="_blank">peaks-vue-demo</a>, by Giovanni Candeo
+      (MIT-licensed)
+    </li>
+    <li><a href="https://github.com/thom4parisot/vue-waveform-template" target="_blank">vue-waveform-template</a>, by
+      Thomas Parisot (MIT-licensed)
+    </li>
+  </ul>
+
 </template>
