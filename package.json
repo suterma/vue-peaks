@@ -31,11 +31,11 @@
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore"
   },
   "dependencies": {
-    "@highlightjs/vue-plugin": "^2.1.0",
     "peaks.js": "^2.0.6",
     "vue": "^3.2.39"
   },
   "devDependencies": {
+    "@highlightjs/vue-plugin": "^2.1.0",
     "@rushstack/eslint-patch": "^1.1.4",
     "@types/jsdom": "^20.0.0",
     "@types/node": "^16.11.47",
