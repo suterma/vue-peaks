@@ -10,7 +10,9 @@
 
 A lightweight Vue wrapper around the [bbc/peaks.js](https://github.com/bbc/peaks.js) audio waveform UI component.
 
-This project aims to simplify the use of peaks.js in a Vue3 environment.
+vue-peaks aims to simplify the use of [peaks.js](https://github.com/bbc/peaks.js/) in a [Vue3]( https://vuejs.org/) environment. It provides a [Single File Component (SFC)](    https://vuejs.org/guide/scaling-up/sfc.html), AudioPeaks.
+
+See the documentation below or Explore the [live examples](https://suterma.github.io/vue-peaks/).
 
 # Installation
 
@@ -21,54 +23,53 @@ npm install konva
 npm install waveform-data
 ```
 
-Installing vue-peaks also installs Peaks.js as a dependency. However, Peaks.js uses [Konva](https://konvajs.org/) and [waveform-data](https://github.com/bbc/waveform-data.js) as peer dependencies, so you must also install those modules.
+Installing vue-peaks also installs [peaks.js](https://github.com/bbc/peaks.js/) as a dependency. However, peaks.js uses [Konva](https://konvajs.org/) and [waveform-data](https://github.com/bbc/waveform-data.js) as peer dependencies, so you must also install those modules.
 
 # How to use
 
 ## Basic examples
+vue-peaks provides three modes of operation:
 
-### Using a media source URL ("simple" mode)
+*   **Simple mode**: just set the media URL, and all views are automatically rendered by default
+*   **Slot mode**: the media element and additional views are provided using named slots
+*   **External mode**: the media element and additional views are referenced by id or HTML element references
 
-```html
-<AudioPeaks src="lidija_roos-not_for_sale.mp3" />
+#### Just using a media source URL ("simple" mode)
+
+By default, the [AudioPeaks Vue component](https://github.com/suterma/vue-peaks/blob/main/src/components/AudioPeaks.vue) template has a new audio element, with the given source URL, and both view panes (overview and zoom, which are rendered with a default size) and a controls pane. A new audio context is created and used to compute the waveform.
+
+```
+import AudioPeaks from 'vue-peaks/src/components/AudioPeaks.vue';
+<AudioPeaks src='https://domain/file.mp3' />
 ```
 
-![Display of a waveform with vue-peaks](vue-peaks-example-ui.png)
-
-### Alternative with enclosed media element ("slot" mode)
+#### Providing a media element ("slot" mode)
 
 To provide your own media element, just place it inside the AudioPeaks element (a.k.a. the slot). Vue-peaks will use the first audio element in the slot. A new audio context is created and used to compute the waveform.
 
-```html
+```
 <AudioPeaks>
-    <span>You can also add additional HTML content.</span>
-    <audio
-        controls
-        style="width: 100%;"
-    >
-        <source
-            src="https://suterma.github.io/vue-peaks/lidija_roos-not_for_sale.mp3"
-        />
-    </audio>
+  <span>You can also add additional HTML content.</span>
+  <audio controls style='width: 100%;'>
+    <source src='https://domain/file.mp3' />
+  </audio>
 </AudioPeaks>
 ```
 
-### Using a specified media element ("external" mode)
+#### Using a specified media element ("external" mode)
 
-If you already have an existing media element, you can link it by it's (unique) id. A new audio context is created and used to compute the waveform.
+If you already have an existing media element, you can reference it by it's (unique) id, or as an HTMLMediaElement object. A new audio context is created and used to compute the waveform.
 
-```html
-<div>
-    <span>External media element:</span>
-    <audio
-        controls
-        style="width: 100%;"
-        id="mediaElement"
-    >
-        <source src="lidija_roos-not_for_sale.mp3" />
-    </audio>
-</div>
-<AudioPeaks mediaElementId="mediaElement"> </AudioPeaks>
+There are also properties available for overview area and the zoom view area.
+
+```
+<audio controls id='externalMediaElement'>
+  <source src='https://domain/file.mp3' />
+</audio>
+<div><span class='tag is-danger is-large'>
+    Using the external media element above.</span></div>
+<AudioPeaks mediaElementId='externalMediaElement'>
+</AudioPeaks>
 ```
 
 See a more [detailed documentation and live examples on the GitHub Pages](https://suterma.github.io/vue-peaks/).
