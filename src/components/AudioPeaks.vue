@@ -88,6 +88,7 @@ onBeforeUnmount(() => {
   destroyPeaksInstance();
 });
 
+/** Emits an error, in case the initialization fails. */
 const emit = defineEmits<{
   (e: 'error', error: Error): void
 }>();
@@ -101,7 +102,7 @@ const emit = defineEmits<{
  * // getting the element
  * (audio.value as unknown as HTMLAudioElement)
  */
-function createPeaksInstance() {
+function createPeaksInstance(): void {
   console.debug('AudioPeaks::createPeaksInstance:options:', props.options);
 
   const overviewElement = get<HTMLDivElement>(
@@ -160,7 +161,7 @@ function createPeaksInstance() {
 
 /** Destroys the peaks instance
  */
-function destroyPeaksInstance() {
+function destroyPeaksInstance(): void {
   peaksInstance.value?.destroy();
 }
 
@@ -171,11 +172,11 @@ function destroyPeaksInstance() {
  * - the element from the (internal) slot template
  * - the first element from a provided external slot template
  * If none is found 'undefined' is returned, which will throw an error in peaks.js
- * @param elm The element
- * @param htmlElementId The HTML element id
- * @param ref The reference to the element
- * @param slotRef The reference to the slot containing the element
- * @param slotRefHtmlTagName The required tag name of the element in the slot
+ * @param {HTMLElement} elm The element
+ * @param {string | undefined} htmlElementId The HTML element id
+ * @param {ShallowRef} ref The reference to the element
+ * @param {ShallowRef} slotRef The reference to the slot containing the element
+ * @param {string} slotRefHtmlTagName The required tag name of the element in the slot
  * @return The found element or undefined if none is found
  */
 function get<HEType extends HTMLElement>(
