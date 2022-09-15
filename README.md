@@ -15,10 +15,10 @@ This project aims to simplify the use of peaks.js in a Vue3 environment.
 # Installation
 
 ```sh
-npm install --save vue-peaks
+npm install vue-peaks
 # peer dependencies of peaks.js
-npm install --save konva
-npm install --save waveform-data
+npm install konva
+npm install waveform-data
 ```
 
 Installing vue-peaks also installs Peaks.js as a dependency. However, Peaks.js uses [Konva](https://konvajs.org/) and [waveform-data](https://github.com/bbc/waveform-data.js) as peer dependencies, so you must also install those modules.
