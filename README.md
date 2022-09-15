@@ -10,9 +10,11 @@
 
 A lightweight Vue wrapper around the [bbc/peaks.js](https://github.com/bbc/peaks.js) audio waveform UI component.
 
-vue-peaks aims to simplify the use of [peaks.js](https://github.com/bbc/peaks.js/) in a [Vue3]( https://vuejs.org/) environment. It provides a [Single File Component (SFC)](    https://vuejs.org/guide/scaling-up/sfc.html), AudioPeaks.
+![Image](https://github.com/suterma/vue-peaks/blob/main/vue-peaks-example-ui.png)
 
-See the documentation below or Explore the [live examples](https://suterma.github.io/vue-peaks/).
+vue-peaks aims to simplify the use of [peaks.js](https://github.com/bbc/peaks.js/) in a [Vue3]( https://vuejs.org/) environment. It provides a [Single File Component (SFC)](https://vuejs.org/guide/scaling-up/sfc.html), AudioPeaks.
+
+Explore the [live examples](https://suterma.github.io/vue-peaks/).
 
 # Installation
 
