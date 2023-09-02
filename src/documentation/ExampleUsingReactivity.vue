@@ -33,6 +33,11 @@ function toggleRendering() {
           technique, and is required to trigger an update of the waveform.</li>
       </ul>
       </p>
+      <p>
+        Note that <code>audio</code> elements with an empty <code>src</code> attribute cause a <code>MediaError</code>. 
+        If this is a concern to you, you can use the <code>v-if</code> directive
+        to conditionally only render the element on non-emtpy URL values.
+      </p>
     </div>
     <div class='column is-narrow'>
       <div class='box'>
@@ -70,6 +75,7 @@ function toggleRendering() {
             <template />
           </template>
         </AudioPeaks>
+
       </div>
     </div>
     <div class='column'>
