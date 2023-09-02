@@ -19,8 +19,7 @@ function toggleRendering() {
     <div class='column'>
       <p>
         AudioPeaks currently does not support reactivity for the options. Still, you can use Vue's reactivity on the
-        component
-        itself. You can for example:
+        component itself. You can for example:
       </p>
       <p>
       <ul>
@@ -118,9 +117,12 @@ function toggleRendering() {
     <template />
   </template>
 </AudioPeaks>" />
+      <p>
+        vue-peaks internally handles resizing of the contained overview and zoomview areas. If you, in the "external mode",
+        have an external zoomview or overview area that are resizing independent from the <code>AudioPeaks</code> instance, 
+        please handle their resizing according to the <a href='https://github.com/bbc/peaks.js/blob/master/doc/API.md#viewfittocontainer'>peaks.js API docs about resizing</a>.
+      </p>
     </div>
   </div>
-
-
 </template>
   

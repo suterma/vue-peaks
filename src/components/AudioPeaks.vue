@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { shallowRef, onMounted, type ShallowRef, onBeforeUnmount } from 'vue';
+import { useResizeObserver, useThrottleFn, useDebounceFn } from '@vueuse/core';
 import Peaks, {
   type PeaksInstance,
   type PeaksOptions as PeaksOptions,
@@ -63,6 +64,7 @@ const props = defineProps<{
  * and this documentation https://vuejs.org/api/reactivity-advanced.html#shallowref about shallow references
  */
 const peaksInstance = shallowRef<PeaksInstance | undefined>(undefined);
+const audioPeaks = shallowRef(null);
 const overview = shallowRef(null);
 const overviewSlot = shallowRef(null);
 const zoomview = shallowRef(null);
@@ -166,6 +168,21 @@ function destroyPeaksInstance(): void {
   peaksInstance.value?.destroy();
 }
 
+/** Handles overview element resizes */
+useResizeObserver(audioPeaks, () => {
+  debouncedOverviewResize();
+});
+
+const resizeRateMilliseconds = 300;
+
+const debouncedOverviewResize = useDebounceFn(() => {
+  console.debug('AudioPeaks::debouncedOverviewResize');
+  const overview = peaksInstance.value?.views.getView('overview');
+  overview?.fitToContainer();
+  const zoomview = peaksInstance.value?.views.getView('zoomview');
+  zoomview?.fitToContainer();
+}, resizeRateMilliseconds);
+
 /** Gets the HTML element to act upon, using the first of the provided options
  * @remarks This is either (first in the following order)
  * - the element provided as object
@@ -232,7 +249,7 @@ function zoomOut(): void {
 </script>
 
 <template>
-  <div>
+  <div ref="audioPeaks">
     <div ref="overviewSlot">
       <!-- @slot Named slot for the overview element. If an external overview element is referenced, the overview slot is not used -->
       <slot

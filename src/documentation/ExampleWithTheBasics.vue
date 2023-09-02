@@ -76,9 +76,6 @@ import AudioPeaks from './../components/AudioPeaks.vue';
         object. A new audio context is
         created and used to compute the waveform.
       </p>
-      <p>
-        There are also properties available for overview area and the zoom view area.
-      </p>
     </div>
     <div class="column">
       <highlightjs language='vue-template' code="<audio controls id='externalMediaElement'>
@@ -97,6 +94,36 @@ import AudioPeaks from './../components/AudioPeaks.vue';
         <div><span class='tag is-danger is-large'>
             Using the external media element above.</span></div>
         <AudioPeaks mediaElementId='externalMediaElement'>
+        </AudioPeaks>
+      </div>
+    </div>
+  </div>
+  <div class="columns is-desktop">
+    <div class="column">
+      <p>
+        There are also properties available for overview area and the zoom view area.
+      </p>
+    </div>
+    <div class="column">
+      <highlightjs language='vue-template' code="<div id='externalBasicOverviewDivId'>Overview</div>
+<div id='externalBasicZoomviewDivId'>Zoomview</div>
+<div><span class='tag is-danger is-large'>
+Using the external overview and zoomview element above.</span></div>
+<AudioPeaks src='https://suterma.github.io/vue-peaks/lidija_roos-not_for_sale.mp3' 
+  overviewElementId='externalBasicOverviewDivId'
+  zoomviewElementId='externalBasicZoomviewDivId'>
+</AudioPeaks>" />
+    </div>
+    <div class="column is-narrow">
+      <div class="box">
+        <div id='externalBasicOverviewDivId'>Overview</div>
+        <div id='externalBasicZoomviewDivId'>Zoomview</div>
+        <div><span class='tag is-danger is-large'>
+            Using the external overview and zoomview element above.</span></div>
+        <AudioPeaks src='https://suterma.github.io/vue-peaks/lidija_roos-not_for_sale.mp3' 
+        overviewElementId='externalBasicOverviewDivId'
+        zoomviewElementId='externalBasicZoomviewDivId'
+          >
         </AudioPeaks>
       </div>
     </div>
