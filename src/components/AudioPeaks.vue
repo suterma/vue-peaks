@@ -83,18 +83,17 @@ onMounted(() => {
   createPeaksInstance();
 });
 
-
 onBeforeUnmount(() => {
   destroyPeaksInstance();
 });
 
 const emit = defineEmits<{
   /**
- * Triggers in case the initialization fails
- *
- * @property {Error} error The error
- */
-  (e: 'error', error: Error): void
+   * Triggers in case the initialization fails
+   *
+   * @property {Error} error The error
+   */
+  (e: 'error', error: Error): void;
 }>();
 
 /** Initializes the peaks instance
@@ -127,35 +126,38 @@ function createPeaksInstance(): void {
   );
 
   if (props.options) {
-    (props.options.containers = {
-      overview: overviewElement,
-      zoomview: zoomviewElement,
-    }),
-      (props.options.mediaElement = mediaElement);
+    props.options.zoomview = {
+      container: zoomviewElement,
+    };
+    props.options.overview = {
+      container: overviewElement,
+    };
+    props.options.mediaElement = mediaElement;
   }
 
   const options: PeaksOptions = props.options
     ? props.options
     : {
-      containers: {
-        overview: overviewElement,
-        zoomview: zoomviewElement,
-      },
-      mediaElement: mediaElement,
-      webAudio: {
-        audioContext: new AudioContext(),
-      },
-      zoomLevels: [256, 512, 1024, 2048, 4096],
-    };
+        overview: { container: overviewElement },
+        zoomview: { container: zoomviewElement },
+        mediaElement: mediaElement,
+        webAudio: {
+          audioContext: new AudioContext(),
+        },
+        zoomLevels: [256, 512, 1024, 2048, 4096],
+      };
 
-  Peaks.init(options, function (err: Error, peaks: PeaksInstance | undefined): void {
-    if (err) {
-      console.error(err);
-      emit('error', err)
+  Peaks.init(
+    options,
+    function (err: Error, peaks: PeaksInstance | undefined): void {
+      if (err) {
+        console.error(err);
+        emit('error', err);
+      }
+      peaksInstance.value = peaks;
+      zoomLevel.value = peaks?.zoom.getZoom();
     }
-    peaksInstance.value = peaks;
-    zoomLevel.value = peaks?.zoom.getZoom();
-  });
+  );
 }
 
 /** Destroys the peaks instance
@@ -233,23 +235,42 @@ function zoomOut(): void {
   <div>
     <div ref="overviewSlot">
       <!-- @slot Named slot for the overview element. If an external overview element is referenced, the overview slot is not used -->
-      <slot name="overview" v-if="!props.overviewElementId && !props.overviewElement">
-        <div class="peaks-overview" ref="overview"></div>
+      <slot
+        name="overview"
+        v-if="!props.overviewElementId && !props.overviewElement"
+      >
+        <div
+          class="peaks-overview"
+          ref="overview"
+        ></div>
       </slot>
     </div>
 
     <div ref="zoomviewSlot">
       <!-- @slot Named slot for the zoomview element. If an external zoomview element is referenced, the zoomview slot is not used -->
-      <slot name="zoomview" v-if="!props.zoomviewElementId && !props.zoomviewElement">
-        <div class="peaks-zoomview" ref="zoomview"></div>
+      <slot
+        name="zoomview"
+        v-if="!props.zoomviewElementId && !props.zoomviewElement"
+      >
+        <div
+          class="peaks-zoomview"
+          ref="zoomview"
+        ></div>
       </slot>
     </div>
 
     <div ref="audioSlot">
       <!-- @slot Default slot for the media element. If an external media element is referenced, the default slot is not used -->
-      <slot name="default" v-if="!props.mediaElementId && !props.mediaElement">
+      <slot
+        name="default"
+        v-if="!props.mediaElementId && !props.mediaElement"
+      >
         <!-- The default content slot for the "slot" mode -->
-        <audio class="peaks-audio" ref="audio" controls>
+        <audio
+          class="peaks-audio"
+          ref="audio"
+          controls
+        >
           <source :src="src" />
         </audio>
       </slot>
