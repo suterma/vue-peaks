@@ -8,24 +8,21 @@
 [![](https://data.jsdelivr.com/v1/package/npm/vue-peaks/badge 'jsDelivr')](https://www.jsdelivr.com/package/npm/vue-peaks)
 [![Rate this package](https://badges.openbase.com/js/rating/vue-peaks.svg?token=vHkEYi5zzp1G84PyPGIiYYDN/9+SZtzXDlLAEe5ffRA=)](https://openbase.com/js/vue-peaks?utm_source=embedded&utm_medium=badge&utm_campaign=rate-badge)
 
-A lightweight Vue wrapper around the [bbc/peaks.js (v3)](https://github.com/bbc/peaks.js) audio waveform UI component.
+A lightweight Vue wrapper around the [bbc/peaks.js](https://github.com/bbc/peaks.js) audio waveform UI component.
 
-![Image](https://github.com/suterma/vue-peaks/blob/main/vue-peaks-example-ui.png)
+![Image](https://github.com/suterma/vue-peaks/blob/main/vue-peaks-example-ui.png?raw=true)
 
-vue-peaks aims to simplify the use of [peaks.js](https://github.com/bbc/peaks.js/) in a [Vue3](https://vuejs.org/) environment. It provides a [Single File Component (SFC)](https://vuejs.org/guide/scaling-up/sfc.html), AudioPeaks.
+vue-peaks aims to simplify the use of [peaks.js](https://github.com/bbc/peaks.js/) in a [Vue3](https://vuejs.org/) environment. It provides a [Single File Component (SFC)](https://vuejs.org/guide/scaling-up/sfc.html), `AudioPeaks`.
 
 Explore the [live examples](https://suterma.github.io/vue-peaks/).
 
 # Installation
 
 ```sh
-npm install vue-peaks
-# peer dependencies of peaks.js
-npm install konva
-npm install waveform-data
+npm install vue-peaks --save
 ```
 
-Installing vue-peaks also installs [peaks.js](https://github.com/bbc/peaks.js/) as a dependency. However, peaks.js uses [Konva](https://konvajs.org/) and [waveform-data](https://github.com/bbc/waveform-data.js) as peer dependencies, so you must also install those modules.
+Installing vue-peaks also installs [peaks.js (version 3)](https://github.com/bbc/peaks.js/) as a dependency. Additionally, peaks.js uses [Konva (version 8 or 9)](https://konvajs.org/) and [waveform-data (version 4)](https://github.com/bbc/waveform-data.js) as peer dependencies; these will get installed with vue-peaks, if not already available.
 
 # How to use
 
@@ -37,18 +34,18 @@ vue-peaks provides three modes of operation:
 - **Slot mode**: the media element and additional views are provided using named slots
 - **External mode**: the media element and additional views are referenced by id or HTML element references
 
-#### Just using a media source URL ("simple" mode)
+#### Simple mode
 
-By default, the [AudioPeaks Vue component](https://github.com/suterma/vue-peaks/blob/main/src/components/AudioPeaks.vue) template has a new audio element, with the given source URL, and both view panes (overview and zoom, which are rendered with a default size) and a controls pane. A new audio context is created and used to compute the waveform.
+By default, the [AudioPeaks Vue component](https://github.com/suterma/vue-peaks/blob/main/src/components/AudioPeaks.vue) template creates a new audio element, with the given source URL, and both view panes (overview and zoom, which are rendered with a default size) and a controls pane. A new audio context is created and used to compute the waveform.
 
 ```
 import AudioPeaks from 'vue-peaks/src/components/AudioPeaks.vue';
 <AudioPeaks src='https://domain/file.mp3' />
 ```
 
-#### Providing a media element ("slot" mode)
+#### Slot mode
 
-To provide your own media element, just place it inside the AudioPeaks element (a.k.a. the slot). Vue-peaks will use the first audio element in the slot. A new audio context is created and used to compute the waveform.
+To provide your own media element, just place it inside the `AudioPeaks` element (a.k.a. the slot). Vue-peaks will use the first media element in the slot. A new audio context is created and used to compute the waveform.
 
 ```
 <AudioPeaks>
@@ -63,7 +60,7 @@ To provide your own media element, just place it inside the AudioPeaks element (
 
 If you already have an existing media element, you can reference it by it's (unique) id, or as an HTMLMediaElement object. A new audio context is created and used to compute the waveform.
 
-There are also properties available for overview area and the zoom view area.
+There are also properties available for the overview area and the zoom view area.
 
 ```
 <audio controls id='externalMediaElement'>

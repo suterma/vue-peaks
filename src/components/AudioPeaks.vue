@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { shallowRef, onMounted, type ShallowRef, onBeforeUnmount } from 'vue';
-import { useResizeObserver, useThrottleFn, useDebounceFn } from '@vueuse/core';
+import { useResizeObserver, useDebounceFn } from '@vueuse/core';
 import Peaks, {
   type PeaksInstance,
   type PeaksOptions as PeaksOptions,
