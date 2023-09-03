@@ -32,19 +32,17 @@ const options: PeaksOptions = {
 }
 </script>
 <template>
-  //TODO fix with new version
   <div class="columns is-desktop">
     <div class="column">
       <p>
         To fully customize the appearance and behavior, the Peaks.js <a
-          href="https://github.com/bbc/peaks.js#Configuration">configuration options</a> can be provided.
+          href="https://github.com/bbc/peaks.js/blob/master/doc/API.md#configuration">configuration options</a> can be provided.
       </p>
       <p> Note, that you should omit the the
-        <span class="code">containers.overview</span>,
-        <span class="code">containers.zoomview</span> and
-        <span class="code">mediaElement</span> options, since these are set internally, depending on the view mode
-        (explained
-        with the basic examples).
+        <span class="code">zoomview.container</span>,
+        <span class="code">overview.container</span> and
+        <span class="code">mediaElement</span> options, since these are already handled internally, depending on the view mode
+        (see explanation with the basic examples).
       </p>
       <p>The options allow you for example to
       <ul>
