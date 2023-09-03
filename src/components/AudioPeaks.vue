@@ -7,53 +7,57 @@ import Peaks, {
 } from 'peaks.js';
 
 const props = defineProps<{
-  /** The audio source URL (for the "simple" mode)
+  /** The audio source URL (for the "simple" mode).
    * @remarks This URL is to be used internally with the default media slot
    * (no slot template or external media element id is expected)
+   * @devdoc Note that audio elements with an empty src attribute cause a MediaError.
+   * If this is a concern to you, you can use the v-if directive to conditionally only
+   * render the element on non-emtpy URL values.
    */
   src?: string;
 
-  /** The unique identifier of an external zoomview element to use.
-   * @remarks Allows the use of an external zoomview element.
-   * (no slot template is expected or used for the zoomview)
+  /** The unique identifier of an external zoomview element to use (for the "external" mode).
+   * @remarks Allows the use of an external zoomview element by id.
+   * (if set, no slot template is expected or used for the zoomview)
    */
   zoomviewElementId?: string;
 
-  /** The zoomview element to use.
-   * @remarks Allows the use of an external zoomview element.
-   * (no slot template is expected or used for the zoomview)
+  /** The zoomview element to use (for the "external" mode).
+   * @remarks Allows the use of an external zoomview element by object reference.
+   * (if set, no slot template is expected or used for the zoomview)
    */
   zoomviewElement?: HTMLDivElement;
 
-  /** The unique identifier of an external overview element to use.
-   * @remarks Allows the use of an external overview element.
-   * (no slot template is expected or used for the overview)
+  /** The unique identifier of an external overview element to use (for the "external" mode).
+   * @remarks Allows the use of an external overview element by id.
+   * (if set, no slot template is expected or used for the overview)
    */
   overviewElementId?: string;
 
-  /** The overview element to use.
-   * @remarks Allows the use of an external overview element.
-   * (no slot template is expected or used for the overview)
+  /** The overview element to use (for the "external" mode).
+   * @remarks Allows the use of an external overview element by object reference.
+   * (if set, no slot template is expected or used for the overview)
    */
   overviewElement?: HTMLDivElement;
 
-  /** The unique identifier of an external media element to use. (for the "external" mode)
-   * @remarks Allows the use of an external media element.
-   * (no slot template or audio source URL is expected)
+  /** The unique identifier of an external media element to use (for the "external" mode).
+   * @remarks Allows the use of an external media element by id.
+   * (if set, no slot template or audio source URL is expected)
    */
   mediaElementId?: string;
 
-  /** The external media element to use. (for the "external" mode)
-   * @remarks Allows the use of an external media element.
-   * (no slot template or audio source URL is expected)
+  /** The external media element to use (for the "external" mode).
+   * @remarks Allows the use of an external media element by object reference.
+   * (if set, no slot template or audio source URL is expected)
    */
   mediaElement?: HTMLMediaElement;
 
   /** The peaks options to use.
    * @remarks The element references to the overview, zoomview and media element
-   * should not be provided, because these are handled internally by AudioPeaks.
-   * This removes the burden of management of the Vue ref lifecycle from the user.
-   * @devdoc Refs to HTML elements can only be accessed after mount.
+   * should not be provided, because these are already handled internally by AudioPeaks
+   * using the other properties.
+   * Doing so relieves the user from the burden of Vue's life cycle management for these elements.
+   * @devdoc Note: Refs to HTML elements can only be accessed after mount.
    * See https://vuejs.org/guide/essentials/template-refs.html#accessing-the-refs
    */
   options?: PeaksOptions;
@@ -124,7 +128,7 @@ function createPeaksInstance(): void {
     props.mediaElementId,
     audio,
     audioSlot,
-    'audio'
+    'audio,video'
   );
 
   if (props.options) {
@@ -194,7 +198,8 @@ const debouncedOverviewResize = useDebounceFn(() => {
  * @param {string | undefined} htmlElementId The HTML element id
  * @param {ShallowRef} ref The reference to the element
  * @param {ShallowRef} slotRef The reference to the slot containing the element
- * @param {string} slotRefHtmlTagName The required tag name of the element in the slot
+ * @param {string} slotRefHtmlTagName The required tag name of the element in the slot.
+ * This can be a comma-separated list of multiple tags.
  * @return The found element or undefined if none is found
  */
 function get<HEType extends HTMLElement>(
@@ -225,7 +230,7 @@ function get<HEType extends HTMLElement>(
   // First get a reference to the slot then find the first element of the given type
   const externalSlot = slotRef.value as unknown as HTMLElement;
   if (externalSlot) {
-    const elementByFirstInSlot = externalSlot.getElementsByTagName(
+    const elementByFirstInSlot = externalSlot.querySelectorAll(
       slotRefHtmlTagName
     )[0] as unknown as HEType;
     if (elementByFirstInSlot) {
