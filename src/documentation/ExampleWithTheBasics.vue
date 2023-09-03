@@ -41,7 +41,7 @@ import AudioPeaks from './../components/AudioPeaks.vue';
   <div class="columns is-desktop">
     <div class="column">
       <p>
-        To provide your own media element, just place it inside the <code>AudioPeaks</code> element (a.k.a. the slot). Vue-peaks will
+        To provide your own media element, just place it inside the <span class='code'>AudioPeaks</span> element (a.k.a. the slot). Vue-peaks will
         use
         the first media element in the slot. A new audio context is created and used to compute the waveform.
       </p>

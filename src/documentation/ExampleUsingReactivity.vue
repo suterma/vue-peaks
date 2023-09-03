@@ -33,8 +33,8 @@ function toggleRendering() {
       </ul>
       </p>
       <p>
-        Note that <code>audio</code> elements with an empty <code>src</code> attribute cause a <code>MediaError</code>. 
-        If this is a concern to you, you can use the <code>v-if</code> directive
+        Note that <span class='code'>audio</span> elements with an empty <span class='code'>src</span> attribute cause a <span class='code'>MediaError</span>. 
+        If this is a concern to you, you can use the <span class='code'>v-if</span> directive
         to conditionally only render the element on non-emtpy URL values.
       </p>
     </div>
@@ -119,7 +119,7 @@ function toggleRendering() {
 </AudioPeaks>" />
       <p>
         vue-peaks internally handles resizing of the contained overview and zoomview areas. If you, in the "external mode",
-        have an external zoomview or overview area that are resizing independent from the <code>AudioPeaks</code> instance, 
+        have an external zoomview or overview area that are resizing independent from the <span class='code'>AudioPeaks</span> instance, 
         please handle their resizing according to the <a href='https://github.com/bbc/peaks.js/blob/master/doc/API.md#viewfittocontainer'>peaks.js API docs about resizing</a>.
       </p>
     </div>
