@@ -34,12 +34,17 @@ vue-peaks provides three modes of operation:
 - **Slot mode**: the media element and additional views are provided using named slots
 - **External mode**: the media element and additional views are referenced by id or HTML element references
 
+First import the Single File Component (SFC):
+
+```
+import AudioPeaks from 'vue-peaks/src/components/AudioPeaks.vue';
+```
+
 #### Simple mode
 
 By default, the [AudioPeaks Vue component](https://github.com/suterma/vue-peaks/blob/main/src/components/AudioPeaks.vue) template creates a new audio element, with the given source URL, and both view panes (overview and zoom, which are rendered with a default size) and a controls pane. A new audio context is created and used to compute the waveform.
 
 ```
-import AudioPeaks from 'vue-peaks/src/components/AudioPeaks.vue';
 <AudioPeaks src='https://domain/file.mp3' />
 ```
 
