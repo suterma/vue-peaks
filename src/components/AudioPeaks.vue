@@ -289,6 +289,7 @@ function zoomOut(): void {
           controls
         >
           <source :src="src" />
+          Your browser does not support the audio element.
         </audio>
       </slot>
     </div>
