@@ -1,16 +1,18 @@
-<script setup lang="ts">
-</script>
+<script setup lang="ts"></script>
 
 <template>
   <div class="columns">
     <div class="column">
       <p>
-        Vue-peaks offers it's own properties for customization. Plus you can configure the underlying peaks.js instance
-        via the options property (of type <span class='code'>PeaksOptions</span>).
+        Vue-peaks offers it's own properties for customization. Plus, you can
+        configure the underlying peaks.js instance via the options property (of
+        type <span class="code">PeaksOptions</span>).
       </p>
     </div>
     <div class="column">
-      <highlightjs language='vue-typescript' code="const props = defineProps<{
+      <highlightjs
+        language="vue-typescript"
+        code="const props = defineProps<{
   /** The audio source URL (for the 'simple' mode)
    * @remarks This URL is to be used internally with the default media slot
    * (no slot template or external media element id is expected)
@@ -55,9 +57,8 @@
    * See https://vuejs.org/guide/essentials/template-refs.html#accessing-the-refs
    */
   options?: PeaksOptions;
-}>();" />
+}>();"
+      />
     </div>
   </div>
-
 </template>
- 
