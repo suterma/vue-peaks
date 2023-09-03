@@ -142,16 +142,32 @@ function createPeaksInstance(): void {
     'audio,video'
   );
 
+  // Take over only the internally handled options
   if (props.options) {
-    props.options.zoomview = {
-      container: zoomviewElement,
-    };
-    props.options.overview = {
-      container: overviewElement,
-    };
+    if (props.options.zoomview) {
+      //if the zoomview is already specified, only take the container
+      props.options.zoomview.container = zoomviewElement;
+    } else {
+      //create the container option
+      props.options.zoomview = {
+        container: zoomviewElement,
+      };
+    }
+    if (props.options.overview) {
+      //if the overview is already specified, only take the container
+      props.options.overview.container = overviewElement;
+    } else {
+      //create the container option
+      props.options.overview = {
+        container: overviewElement,
+      };
+    }
+
     props.options.mediaElement = mediaElement;
   }
 
+  // either take the prepared options from above, or if not available
+  // create and use the bare minimum
   const options: PeaksOptions = props.options
     ? props.options
     : {
