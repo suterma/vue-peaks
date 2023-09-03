@@ -32,6 +32,7 @@ const options: PeaksOptions = {
 }
 </script>
 <template>
+  //TODO fix with new version
   <div class="columns is-desktop">
     <div class="column">
       <p>

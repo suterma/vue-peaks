@@ -7,7 +7,8 @@ import Peaks, {
 } from 'peaks.js';
 
 const props = defineProps<{
-  /** The audio source URL (for the "simple" mode).
+  /** The audio source URL
+   * (for the "simple" mode).
    * @remarks This URL is to be used internally with the default media slot
    * (no slot template or external media element id is expected)
    * @devdoc Note that audio elements with an empty src attribute cause a MediaError.
@@ -16,37 +17,47 @@ const props = defineProps<{
    */
   src?: string;
 
-  /** The unique identifier of an external zoomview element to use (for the "external" mode).
+  /** Whether to render a video element instead of an audio element
+   * (for the "simple" mode). */
+  video?: boolean;
+
+  /** The unique identifier of an external zoomview element to use
+   * (for the "external" mode).
    * @remarks Allows the use of an external zoomview element by id.
    * (if set, no slot template is expected or used for the zoomview)
    */
   zoomviewElementId?: string;
 
-  /** The zoomview element to use (for the "external" mode).
+  /** The zoomview element to use
+   * (for the "external" mode).
    * @remarks Allows the use of an external zoomview element by object reference.
    * (if set, no slot template is expected or used for the zoomview)
    */
   zoomviewElement?: HTMLDivElement;
 
-  /** The unique identifier of an external overview element to use (for the "external" mode).
+  /** The unique identifier of an external overview element to use
+   * (for the "external" mode).
    * @remarks Allows the use of an external overview element by id.
    * (if set, no slot template is expected or used for the overview)
    */
   overviewElementId?: string;
 
-  /** The overview element to use (for the "external" mode).
+  /** The overview element to use
+   * (for the "external" mode).
    * @remarks Allows the use of an external overview element by object reference.
    * (if set, no slot template is expected or used for the overview)
    */
   overviewElement?: HTMLDivElement;
 
-  /** The unique identifier of an external media element to use (for the "external" mode).
+  /** The unique identifier of an external media element to use
+   * (for the "external" mode).
    * @remarks Allows the use of an external media element by id.
    * (if set, no slot template or audio source URL is expected)
    */
   mediaElementId?: string;
 
-  /** The external media element to use (for the "external" mode).
+  /** The external media element to use
+   * (for the "external" mode).
    * @remarks Allows the use of an external media element by object reference.
    * (if set, no slot template or audio source URL is expected)
    */
@@ -288,8 +299,20 @@ function zoomOut(): void {
         v-if="!props.mediaElementId && !props.mediaElement"
       >
         <!-- The default content slot for the "slot" mode -->
+        <!-- The video element (if requested) -->
+        <video
+          v-if="video"
+          class="peaks"
+          ref="audio"
+          controls
+        >
+          <source :src="src" />
+          Your browser does not support the video element.
+        </video>
+        <!-- The audio element (for backwards compatibility, the peaks-audio css class is additionally provided) -->
         <audio
-          class="peaks-audio"
+          v-else
+          class="peaks peaks-audio"
           ref="audio"
           controls
         >
@@ -310,7 +333,8 @@ function zoomOut(): void {
 </template>
 
 <style scoped>
-.peaks-audio,
+audio.peaks,
+video.peaks,
 .peaks-overview,
 .peaks-zoomview {
   width: 100%;
@@ -318,6 +342,6 @@ function zoomOut(): void {
 
 .peaks-overview,
 .peaks-zoomview {
-  height: 100px;
+  height: 80px;
 }
 </style>

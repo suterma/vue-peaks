@@ -23,7 +23,7 @@ import AudioPeaks from './../components/AudioPeaks.vue';
       You can use any of the media element modes with named slots. Use <span class="code">$refs</span> to access the
       relevant HTML elements.</p>
       <p>You can use a different mode for each slot, thus mixing the "slot" mode with the "external" mode in the same
-        component.</p>
+        component instance.</p>
     </div>
     <div class="column">
       <highlightjs language='vue-template' code="<AudioPeaks>
