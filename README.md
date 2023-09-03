@@ -34,7 +34,7 @@ vue-peaks provides three modes of operation:
 - **Slot mode**: the media element and additional views are provided using named slots
 - **External mode**: the media element and additional views are referenced by id or HTML element references
 
-First import the Single File Component (SFC):
+First, import the Single File Component (SFC):
 
 ```
 import AudioPeaks from 'vue-peaks/src/components/AudioPeaks.vue';
