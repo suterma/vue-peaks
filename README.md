@@ -71,7 +71,7 @@ There are also properties available for the overview area and the zoom view area
 <audio controls id='externalMediaElement'>
   <source src='https://domain/file.mp3' />
 </audio>
-<div><span class='tag is-danger is-large'>
+<div><span>
     Using the external media element above.</span></div>
 <AudioPeaks mediaElementId='externalMediaElement'>
 </AudioPeaks>
