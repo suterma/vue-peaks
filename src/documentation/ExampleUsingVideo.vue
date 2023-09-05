@@ -101,7 +101,7 @@ import AudioPeaks from './../components/AudioPeaks.vue';
         code="<audio controls id='externalVideoElement'>
   <source src='https://domain/video-file.mp4' />
 </audio>
-<div><span class='tag is-danger is-large'>
+<div><span class='tag is-danger'>
     Using the external media element above.</span></div>
 <AudioPeaks mediaElementId='externalVideoElement'>
 </AudioPeaks>"
@@ -125,7 +125,7 @@ import AudioPeaks from './../components/AudioPeaks.vue';
           />
         </video>
         <div>
-          <span class="tag is-danger is-large">
+          <span class="tag is-danger">
             Using the external video element above.</span
           >
         </div>

@@ -57,7 +57,7 @@ import AudioPeaks from './../components/AudioPeaks.vue';
     <div class="column is-narrow">
       <div class="box">
         <AudioPeaks>
-          <span class="tag is-danger is-large is-multiline">You can also add additional HTML content.</span>
+          <span class="tag is-danger is-multiline">You can also add additional HTML content.</span>
           <audio controls>
             <source src='https://suterma.github.io/vue-peaks/lidija_roos-not_for_sale.mp3' />
           </audio>
@@ -80,7 +80,7 @@ import AudioPeaks from './../components/AudioPeaks.vue';
       <highlightjs language='vue-template' code="<audio controls id='externalMediaElement'>
   <source src='https://domain/file.mp3' />
 </audio>
-<div><span class='tag is-danger is-large'>
+<div><span class='tag is-danger'>
     Using the external media element above.</span></div>
 <AudioPeaks mediaElementId='externalMediaElement'>
 </AudioPeaks>" />
@@ -90,7 +90,7 @@ import AudioPeaks from './../components/AudioPeaks.vue';
         <audio controls id='externalMediaElement'>
           <source src='https://suterma.github.io/vue-peaks/lidija_roos-not_for_sale.mp3' />
         </audio>
-        <div><span class='tag is-danger is-large'>
+        <div><span class='tag is-danger'>
             Using the external media element above.</span></div>
         <AudioPeaks mediaElementId='externalMediaElement'>
         </AudioPeaks>
@@ -106,7 +106,7 @@ import AudioPeaks from './../components/AudioPeaks.vue';
     <div class="column">
       <highlightjs language='vue-template' code="<div id='externalBasicOverviewDivId'>Overview</div>
 <div id='externalBasicZoomviewDivId'>Zoomview</div>
-<div><span class='tag is-danger is-large'>
+<div><span class='tag is-danger'>
 Using the external overview and zoomview element above.</span></div>
 <AudioPeaks src='https://suterma.github.io/vue-peaks/lidija_roos-not_for_sale.mp3' 
   overviewElementId='externalBasicOverviewDivId'
@@ -117,7 +117,7 @@ Using the external overview and zoomview element above.</span></div>
       <div class="box">
         <div id='externalBasicOverviewDivId'>Overview</div>
         <div id='externalBasicZoomviewDivId'>Zoomview</div>
-        <div><span class='tag is-danger is-large'>
+        <div><span class='tag is-danger'>
             Using the external overview and zoomview element above.</span></div>
         <AudioPeaks src='https://suterma.github.io/vue-peaks/lidija_roos-not_for_sale.mp3' 
         overviewElementId='externalBasicOverviewDivId'

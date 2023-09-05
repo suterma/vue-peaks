@@ -29,11 +29,11 @@ import AudioPeaks from './../components/AudioPeaks.vue';
       <highlightjs language='vue-template' code="<AudioPeaks>
   <template #overview>
     <div style='height: 50px;'></div>
-    <span class='tag is-danger is-large'>
+    <span class='tag is-danger'>
       Some slot content here.</span>
   </template>
   <template #default>
-    <span class='tag is-danger is-large is-multiline'>
+    <span class='tag is-danger is-multiline'>
       In this example, the audio control is not shown,
       but some custom
       buttons instead:</span>
@@ -51,7 +51,7 @@ import AudioPeaks from './../components/AudioPeaks.vue';
     <template />
   </template>
 </AudioPeaks>
-<span class='tag is-danger is-large is-multiline'>
+<span class='tag is-danger is-multiline'>
   No zoom controls are shown, by providing an empty template
   to the named controls slot.</span>" />
     </div>
@@ -60,11 +60,11 @@ import AudioPeaks from './../components/AudioPeaks.vue';
         <AudioPeaks>
           <template #overview>
             <div style='height: 50px;'></div>
-            <span class='tag is-danger is-large'>
+            <span class='tag is-danger'>
               Some slot content here.</span>
           </template>
           <template #default>
-            <span class='tag is-danger is-large is-multiline'>
+            <span class='tag is-danger is-multiline'>
               In this example, the audio control is not shown,
               but some custom
               buttons instead:</span>
@@ -82,7 +82,7 @@ import AudioPeaks from './../components/AudioPeaks.vue';
             <template />
           </template>
         </AudioPeaks>
-        <span class='tag is-danger is-large is-multiline'>
+        <span class='tag is-danger is-multiline'>
           No zoom controls are shown, by providing an empty template
           to the named controls slot.</span>
       </div>
