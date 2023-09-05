@@ -281,7 +281,10 @@ function zoomOut(): void {
 </script>
 
 <template>
-  <div ref="audioPeaks">
+  <div
+    ref="audioPeaks"
+    class="peaks"
+  >
     <div ref="overviewSlot">
       <!-- @slot Named slot for the overview element. If an external overview element is referenced, the overview slot is not used -->
       <slot
