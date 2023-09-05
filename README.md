@@ -55,7 +55,7 @@ To provide your own media element, just place it inside the `AudioPeaks` element
 ```
 <AudioPeaks>
   <span>You can also add additional HTML content.</span>
-  <audio controls style='width: 100%;'>
+  <audio controls>
     <source src='https://domain/file.mp3' />
   </audio>
 </AudioPeaks>

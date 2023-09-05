@@ -52,7 +52,7 @@ import AudioPeaks from './../components/AudioPeaks.vue';
       <highlightjs
         language="vue-template"
         code="<AudioPeaks>
-  <video controls style='width: 100%;'>
+  <video controls>
     <source src='https://domain/video-file.mp4' />
   </video>
 </AudioPeaks>"

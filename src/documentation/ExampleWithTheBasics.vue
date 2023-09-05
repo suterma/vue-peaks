@@ -49,7 +49,7 @@ import AudioPeaks from './../components/AudioPeaks.vue';
     <div class="column">
       <highlightjs language='vue-template' code="<AudioPeaks>
   <span>You can also add additional HTML content.</span>
-  <audio controls style='width: 100%;'>
+  <audio controls>
     <source src='https://domain/file.mp3' />
   </audio>
 </AudioPeaks>" />
@@ -58,7 +58,7 @@ import AudioPeaks from './../components/AudioPeaks.vue';
       <div class="box">
         <AudioPeaks>
           <span class="tag is-danger is-large is-multiline">You can also add additional HTML content.</span>
-          <audio controls style='width: 100%;'>
+          <audio controls>
             <source src='https://suterma.github.io/vue-peaks/lidija_roos-not_for_sale.mp3' />
           </audio>
         </AudioPeaks>
