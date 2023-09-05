@@ -146,6 +146,14 @@
       >, a Collection of essential Vue Composition Utilities (Released under the
       MIT License, by the VueUse team)
     </li>
+    <li>
+      <a
+        href="https://github.com/Wikiki/bulma-slider"
+        target="_blank"
+        >bulma-slider</a
+      >, Bulma's extension to display sliders (Released under the MIT License,
+      by Wikiki)
+    </li>
   </ul>
 
   <p>Initial code is taken from</p>

@@ -1,10 +1,12 @@
 <script setup lang='ts'>
-import { reactive } from 'vue';
+import { reactive, ref } from 'vue';
 import AudioPeaks from './../components/AudioPeaks.vue';
 
+/** reactive properties */
 const state = reactive({
   isRendered: true,
-  mediaSource: ''
+  mediaSource: 'https://suterma.github.io/vue-peaks/lidija_roos-not_for_sale.mp3',
+  peaksWidth: 50
 })
 
 function toggleRendering() {
@@ -12,11 +14,60 @@ function toggleRendering() {
   console.log('CurrentState', currentState);
   state.isRendered = !currentState;
 }
+
 </script>
   
 <template>
   <div class='columns is-desktop'>
     <div class='column'>
+      <div class='box'>
+        <div class='field'>
+          <label class='label is-multiline'>Create
+            and destroy an AudioPeaks instance:</label>
+          <div class='control'>
+            <button @click='toggleRendering()' class='button  is-danger'>
+              <span>{{ state.isRendered ? 'Destroy' : 'Render' }}</span>
+            </button>
+          </div>
+        </div>
+        <div class='field'>
+          <label class='label is-multiline'>Change the media URL (triggers re-rendering).</label>
+          <div class='control'>
+            <div class='select is-danger'>
+              <select v-model='state.mediaSource' class='highlight'>
+                <option value=''>none</option>
+                <option value='https://suterma.github.io/vue-peaks/lidija_roos-not_for_sale.mp3'>An MP3 music file
+                </option>
+                <option value='https://suterma.github.io/vue-peaks/lidija_roos-decisions.ogg'>An OGG music file
+                </option>
+                <option value='https://twit.cachefly.net/audio/sn/sn0886/sn0886.mp3'>Security Now! Podcast,
+                  Episode #886 (112 min, 55.5MB, MP3)</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class='field'>
+          <label class='label is-multiline'>Change the size (triggers re-drawing).</label>
+          <div class='control'>
+            <input 
+              id='peaksWidthSlider' 
+              class='slider is-fullwidth is-danger is-circle'
+              step='1' min='0' max='100' 
+              v-model='state.peaksWidth' 
+              type='range'>
+           </div>
+        </div>        
+        <AudioPeaks v-if='state.isRendered' :key='state.mediaSource' :style="{ width: state.peaksWidth + '%' }">
+          <audio controls :src='state.mediaSource'></audio>
+          <template #zoomview>
+            <template />
+          </template>
+          <template #controls>
+            <template />
+          </template>
+        </AudioPeaks>
+
+      </div>
       <p>
         AudioPeaks currently does not support reactivity for the options. Still, you can use Vue's reactivity on the
         component itself. You can for example:
@@ -33,88 +84,20 @@ function toggleRendering() {
       </ul>
       </p>
       <p>
-        Note that <span class='code'>audio</span> elements with an empty <span class='code'>src</span> attribute cause a <span class='code'>MediaError</span>. 
-        If this is a concern to you, you can use the <span class='code'>v-if</span> directive
+        Note that media elements with an empty <span class='code'>src</span> attribute cause a <span class='code'>MediaError</span>. 
+        If this is a concern to you, use the <span class='code'>v-if</span> directive
         to conditionally only render the element on non-emtpy URL values.
       </p>
-    </div>
-    <div class='column is-narrow'>
-      <div class='box'>
-        <div class='field'>
-          <label class='label is-multiline'>Create
-            and destroy an AudioPeaks instance:</label>
-          <div class='control'>
-            <button @click='toggleRendering()' class='button  is-danger'>
-              <span>{{ state.isRendered ? 'Destroy' : 'Render' }}</span>
-            </button>
-          </div>
-        </div>
-        <div class='field'>
-          <label class='label is-multiline'>Change the media URL (triggers re-rendering).</label>
-          <div class='control'>
-            <div class='select is-danger'>
-              <select v-model='state.mediaSource' class='highlight'>
-                <option value=''>-select option-</option>
-                <option value='https://suterma.github.io/vue-peaks/lidija_roos-not_for_sale.mp3'>An MP3 music file
-                </option>
-                <option value='https://suterma.github.io/vue-peaks/lidija_roos-decisions.ogg'>An OGG music file
-                </option>
-                <option value='https://twit.cachefly.net/audio/sn/sn0886/sn0886.mp3'>Security Now! Podcast,
-                  Episode #886 (112 min, 55.5MB, MP3)</option>
-              </select>
-            </div>
-          </div>
-        </div>
-        <AudioPeaks v-if='state.isRendered' :key='state.mediaSource'>
-          <audio controls :src='state.mediaSource'></audio>
-          <template #zoomview>
-            <template />
-          </template>
-          <template #controls>
-            <template />
-          </template>
-        </AudioPeaks>
-
-      </div>
+      
     </div>
     <div class='column'>
-      <highlightjs language='vue-template' code="<div class='field'>
-  <label class='label'>Example button to create
-    and destroy an AudioPeaks instance:</label>
-  <div class='control'>
-    <button @click='toggleRendering()' class='button  is-danger'>
-      <span>{{ state.isRendered ? 'Destroy' : 'Render' }}</span>
-    </button>
-  </div>
-</div>
-<div class='field'>
-  <label class='label'>Example menu to change the media URL,
-    with automatic re-rendering of the
-    component.</label>
-  <div class='control'>
-    <div class='select is-danger'>
-      <select v-model='state.mediaSource' class='highlight'>
-        <option value=''>-select option-</option>
-        <option value='https://example.com/file1.mp3'>
-          An MP3 music file
-        </option>
-        <option value='https://example.com/file2.ogg'>
-          An OGG music file
-        </option>
-        <option value='https://example.com/file3.mp3'>
-          Podcast
-        </option>
-      </select>
-    </div>
-  </div>
-</div>
-<AudioPeaks v-if='state.isRendered' :key='state.mediaSource'>
+      <highlightjs language='vue-template' code="<AudioPeaks v-if='state.isRendered' :key='state.mediaSource' :style='{ width: state.peaksWidth + '%' }'>
   <audio controls :src='state.mediaSource'></audio>
   <template #zoomview>
-    <template />
+	<template />
   </template>
   <template #controls>
-    <template />
+	<template />
   </template>
 </AudioPeaks>" />
       <p>
