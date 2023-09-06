@@ -257,9 +257,9 @@ function get<HEType extends HTMLElement>(
   // First get a reference to the slot then find the first element of the given type
   const externalSlot = slotRef.value as unknown as HTMLElement;
   if (externalSlot) {
-    const elementByFirstInSlot = externalSlot.querySelectorAll(
+    const elementByFirstInSlot = externalSlot.querySelector<HEType>(
       slotRefHtmlTagName
-    )[0] as unknown as HEType;
+    ) as unknown as HEType;
     if (elementByFirstInSlot) {
       console.debug(
         'AudioPeaks::Found element by first in slot: ',
