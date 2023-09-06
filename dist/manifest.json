@@ -4,18 +4,18 @@
     "src": "src/assets/peaks-logo.svg"
   },
   "index.html": {
-    "file": "assets/index.403b3782.js",
+    "file": "assets/index.06d8f6ff.js",
     "src": "index.html",
     "isEntry": true,
     "css": [
-      "assets/index.d327e088.css"
+      "assets/index.131a3991.css"
     ],
     "assets": [
       "assets/peaks-logo.72e98b64.svg"
     ]
   },
   "index.css": {
-    "file": "assets/index.d327e088.css",
+    "file": "assets/index.131a3991.css",
     "src": "index.css"
   }
 }
