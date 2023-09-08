@@ -1,5 +1,11 @@
 <script setup lang="ts">
-import { shallowRef, onMounted, type ShallowRef, onBeforeUnmount } from 'vue';
+import {
+  shallowRef,
+  onMounted,
+  type ShallowRef,
+  onBeforeUnmount,
+  computed,
+} from 'vue';
 import { useResizeObserver, useDebounceFn } from '@vueuse/core';
 import Peaks, {
   type PeaksInstance,
@@ -278,6 +284,16 @@ function zoomOut(): void {
   peaksInstance.value?.zoom.zoomOut();
   zoomLevel.value = peaksInstance.value?.zoom.getZoom();
 }
+
+/** The zoomview progress color. */
+const zoomviewWaveformProgressColor = computed(
+  () => props.options?.zoomview?.waveformColor ?? 'rgba(0, 225, 128, 1)'
+);
+
+/** The overview progress color. */
+const overviewWaveformProgressColor = computed(
+  () => props.options?.overview?.waveformColor ?? 'rgba(0, 0, 0, 0.2)'
+);
 </script>
 
 <template>
@@ -351,27 +367,57 @@ function zoomOut(): void {
   </div>
 </template>
 
-<style scoped>
+<style>
 audio.peaks,
 video.peaks,
-.peaks-overview,
-.peaks-zoomview {
+div.peaks-overview,
+div.peaks-zoomview {
   width: 100%;
 }
 
-.peaks-overview,
-.peaks-zoomview {
+div.peaks-overview,
+div.peaks-zoomview {
   height: 80px;
 }
 
-/** During loading, no waveform is displayed */
-.peaks-overview:empty,
-.peaks-zoomview:empty {
+/** During loading, no waveform is displayed, but a progress indication shown */
+
+/** progress colors */
+div.peaks-overview:empty {
+  background: linear-gradient(
+    90deg,
+    rgba(128, 128, 128, 0),
+    v-bind(overviewWaveformProgressColor),
+    rgba(128, 128, 128, 0)
+  );
+}
+
+div.peaks-zoomview:empty {
+  background: linear-gradient(
+    90deg,
+    v-bind(zoomviewWaveformProgressColor),
+    rgba(128, 128, 128, 0),
+    v-bind(zoomviewWaveformProgressColor)
+  );
+}
+
+div.peaks-overview:empty,
+div.peaks-zoomview:empty {
   pointer-events: none;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='currentcolor' d='M12 19C13.1 19 14 19.9 14 21S13.1 23 12 23 10 22.1 10 21 10.9 19 12 19M12 1C13.1 1 14 1.9 14 3S13.1 5 12 5 10 4.1 10 3 10.9 1 12 1M6 16C7.1 16 8 16.9 8 18S7.1 20 6 20 4 19.1 4 18 4.9 16 6 16M3 10C4.1 10 5 10.9 5 12S4.1 14 3 14 1 13.1 1 12 1.9 10 3 10M6 4C7.1 4 8 4.9 8 6S7.1 8 6 8 4 7.1 4 6 4.9 4 6 4M18 16C19.1 16 20 16.9 20 18S19.1 20 18 20 16 19.1 16 18 16.9 16 18 16M21 10C22.1 10 23 10.9 23 12S22.1 14 21 14 19 13.1 19 12 19.9 10 21 10M18 4C19.1 4 20 4.9 20 6S19.1 8 18 8 16 7.1 16 6 16.9 4 18 4Z'/%3E%3C/svg%3E");
-  background-repeat: no-repeat;
-  background-position: center;
-  animation: spinAround 3s infinite linear;
-  background-size: 41% 41%;
+  background-size: 200% 200%;
+  animation-duration: 2s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-direction: reverse;
+  animation-name: viewProgress;
+}
+
+@keyframes viewProgress {
+  0% {
+    background-position: -200% -200%;
+  }
+  100% {
+    background-position: 200% 200%;
+  }
 }
 </style>

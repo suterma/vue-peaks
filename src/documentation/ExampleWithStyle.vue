@@ -6,9 +6,13 @@
       <p>
         The <span class="code">AudioPeaks</span> component has it's own CSS
         class, plus each generated pane (overview, zoomview, audio/video
-        element, controls) has a dedicated CSS class which you can select for
-        your styles. Note however, that you can not style the waveforms
+        element, controls) also has a dedicated CSS class which you can select
+        for your styles. Note however, that you can not style the waveforms
         themselves this way.
+      </p>
+      <p>
+        To use the default style also for external or slotted panes, you need to
+        set the corresponding classes yourself.
       </p>
       <p>The following selectors are available:</p>
     </div>
@@ -28,7 +32,12 @@ audio.peaks {
        (in the 'simple' mode) */ }
 video.peaks { 
     /* The video element, when provided by vue-peaks 
-       (in the 'simple' mode) */ }"
+       (in the 'simple' mode) */ }
+div.peaks-overview:empty,
+div.peaks-zoomview:empty {       
+    /* The overview and zommview pane, respectively, as long as data is loading.
+    You can use this to show you own custom progress indication */ }
+    "
       />
     </div>
   </div>

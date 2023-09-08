@@ -59,7 +59,7 @@ import AudioPeaks from './../components/AudioPeaks.vue';
       <div class="box">
         <AudioPeaks>
           <template #overview>
-            <div style='height: 50px;'></div>
+            <div class='peaks-overview' style='height: 50px;'></div>
             <span class='tag is-danger'>
               Some slot content here.</span>
           </template>

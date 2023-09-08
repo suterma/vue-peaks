@@ -104,8 +104,8 @@ import AudioPeaks from './../components/AudioPeaks.vue';
       </p>
     </div>
     <div class="column">
-      <highlightjs language='vue-template' code="<div id='externalBasicOverviewDivId'>Overview</div>
-<div id='externalBasicZoomviewDivId'>Zoomview</div>
+      <highlightjs language='vue-template' code="<div id='externalBasicOverviewDivId' class='peaks-overview'>Overview</div>
+<div id='externalBasicZoomviewDivId'class='peaks-zoomview'>Zoomview</div>
 <div><span class='tag is-danger'>
 Using the external overview and zoomview element above.</span></div>
 <AudioPeaks src='https://suterma.github.io/vue-peaks/lidija_roos-not_for_sale.mp3' 
@@ -115,8 +115,8 @@ Using the external overview and zoomview element above.</span></div>
     </div>
     <div class="column is-narrow">
       <div class="box">
-        <div id='externalBasicOverviewDivId'>Overview</div>
-        <div id='externalBasicZoomviewDivId'>Zoomview</div>
+        <div id='externalBasicOverviewDivId' class='peaks-overview'>Overview</div>
+        <div id='externalBasicZoomviewDivId' class='peaks-zoomview'>Zoomview</div>
         <div><span class='tag is-danger'>
             Using the external overview and zoomview element above.</span></div>
         <AudioPeaks src='https://suterma.github.io/vue-peaks/lidija_roos-not_for_sale.mp3' 
