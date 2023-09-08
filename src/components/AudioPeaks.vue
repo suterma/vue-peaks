@@ -5,8 +5,14 @@ import {
   type ShallowRef,
   onBeforeUnmount,
   computed,
+  watch,
 } from 'vue';
-import { useResizeObserver, useDebounceFn } from '@vueuse/core';
+import {
+  useResizeObserver,
+  useDebounceFn,
+  useElementVisibility,
+} from '@vueuse/core';
+
 import Peaks, {
   type PeaksInstance,
   type PeaksOptions as PeaksOptions,
@@ -26,6 +32,10 @@ const props = defineProps<{
   /** Whether to render a video element instead of an audio element
    * (for the "simple" mode). */
   video?: boolean;
+
+  /** Whether to immediately start calculating the waveform. By default, calculation only starts
+   * when the component is visible. */
+  eager?: boolean;
 
   /** The unique identifier of an external zoomview element to use
    * (for the "external" mode).
@@ -85,7 +95,10 @@ const props = defineProps<{
  * and this documentation https://vuejs.org/api/reactivity-advanced.html#shallowref about shallow references
  */
 const peaksInstance = shallowRef<PeaksInstance | undefined>(undefined);
+
+/** A reference to the encompassing div */
 const audioPeaks = shallowRef(null);
+
 const overview = shallowRef(null);
 const overviewSlot = shallowRef(null);
 const zoomview = shallowRef(null);
@@ -103,7 +116,9 @@ defineExpose({
 });
 
 onMounted(() => {
-  createPeaksInstance();
+  if (props.eager) {
+    createPeaksInstance();
+  }
 });
 
 onBeforeUnmount(() => {
@@ -118,6 +133,28 @@ const emit = defineEmits<{
    */
   (e: 'error', error: Error): void;
 }>();
+
+// --- lazy loading, only when visible ---
+
+const audioPeaksIsVisible = useElementVisibility(audioPeaks);
+
+watch(
+  audioPeaksIsVisible,
+  async () => {
+    if (
+      !props.eager &&
+      audioPeaksIsVisible.value == true &&
+      peaksInstance.value == null
+    ) {
+      createPeaksInstance();
+    }
+  },
+  {
+    immediate: true,
+  }
+);
+
+// --- setup ---
 
 /** Initializes the peaks instance
  * @remarks If no options are provided by the respective component property, some default options are used.

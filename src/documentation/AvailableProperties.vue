@@ -16,18 +16,22 @@
         >.
       </p>
     </div>
-    <div class="column">
+    <div
+      class="column"
+      style="overflow-x: auto"
+    >
       <highlightjs
         language="vue-typescript"
-        code="src?: string | undefined;
-video?: boolean | undefined;
-zoomviewElementId?: string | undefined;
-zoomviewElement?: HTMLDivElement | undefined;
-overviewElementId?: string | undefined;
-overviewElement?: HTMLDivElement | undefined;
-mediaElementId?: string | undefined;
-mediaElement?: HTMLMediaElement | undefined;
-options?: PeaksOptions | undefined;"
+        code="src?: string;
+video?: boolean;
+eager?: boolean;
+zoomviewElementId?: string;
+zoomviewElement?: HTMLDivElement;
+overviewElementId?: string;
+overviewElement?: HTMLDivElement;
+mediaElementId?: string;
+mediaElement?: HTMLMediaElement;
+options?: PeaksOptions;"
       />
     </div>
   </div>
