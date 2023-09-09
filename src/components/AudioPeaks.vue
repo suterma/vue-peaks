@@ -109,7 +109,7 @@ const zoomviewSlot = shallowRef(null);
 const media = shallowRef(null);
 
 /** A reference to the (default) slot with the media element */
-const audioSlot = shallowRef(null);
+const mediaSlot = shallowRef(null);
 const zoomLevel = shallowRef<number | undefined>(undefined);
 
 defineExpose({
@@ -186,7 +186,7 @@ function createPeaksInstance(): void {
     props.mediaElement,
     props.mediaElementId,
     media,
-    audioSlot,
+    mediaSlot,
     'audio,video'
   );
 
@@ -327,20 +327,27 @@ function zoomOut(): void {
   zoomLevel.value = peaksInstance.value?.zoom.getZoom();
 }
 
+// --- styling values ---
+
 /** The zoomview progress color. */
 const zoomviewWaveformProgressColor = computed(
-  () => props.options?.zoomview?.waveformColor ?? 'rgba(0, 225, 128, 1)'
+  () =>
+    props.options?.zoomview?.waveformColor ??
+    /* the peaks.js default */ 'rgba(0, 225, 128, 1)'
 );
 
 /** The overview progress color. */
 const overviewWaveformProgressColor = computed(
-  () => props.options?.overview?.waveformColor ?? 'rgba(0, 0, 0, 0.2)'
+  () =>
+    props.options?.overview?.waveformColor ??
+    /* the peaks.js default */ 'rgba(0, 0, 0, 0.2)'
 );
 
 /** Whether a media source is defined */
 const hasMediaSource = computed(
   //() => (props.options?.mediaElement as HTMLMediaElement)?.src
-  () => peaksInstance.value?.player.getDuration() != null
+  //() => peaksInstance.value?.player.getDuration() != null
+  () => props.src
 );
 </script>
 
@@ -378,7 +385,7 @@ const hasMediaSource = computed(
       </slot>
     </div>
 
-    <div ref="audioSlot">
+    <div ref="mediaSlot">
       <!-- @slot Default slot for the media element. If an external media element is referenced, the default slot is not used -->
       <slot
         name="default"
@@ -429,6 +436,12 @@ div.peaks-zoomview {
 div.peaks-overview,
 div.peaks-zoomview {
   height: 80px;
+}
+
+/** When no audio source is defined, an error indication is shown */
+div.peaks:not(.has-source) div.peaks-overview,
+div.peaks:not(.has-source) div.peaks-zoomview {
+  background-color: red;
 }
 
 /** During loading, no waveform is displayed, but a progress indication shown */
