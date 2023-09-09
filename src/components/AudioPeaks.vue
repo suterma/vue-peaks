@@ -365,6 +365,7 @@ const hasMediaSource = computed(
         name="overview"
         v-if="!props.overviewElementId && !props.overviewElement"
       >
+        <!-- The slot content for the "simple" mode -->
         <div
           class="peaks-overview"
           ref="overview"
@@ -378,6 +379,7 @@ const hasMediaSource = computed(
         name="zoomview"
         v-if="!props.zoomviewElementId && !props.zoomviewElement"
       >
+        <!-- The slot content for the "simple" mode -->
         <div
           class="peaks-zoomview"
           ref="zoomview"
@@ -416,6 +418,7 @@ const hasMediaSource = computed(
     </div>
     <!-- @slot Named slot for the zoom controls.  -->
     <slot name="controls">
+      <!-- The slot content for the "simple" mode -->
       <div class="peaks-controls">
         <button @click="zoomIn()">Zoom in</button>&nbsp;
         <button @click="zoomOut()">Zoom out</button>&nbsp;
