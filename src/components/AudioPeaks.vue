@@ -103,7 +103,12 @@ const overview = shallowRef(null);
 const overviewSlot = shallowRef(null);
 const zoomview = shallowRef(null);
 const zoomviewSlot = shallowRef(null);
-const audio = shallowRef(null);
+
+/** A reference to the media element from the audio slot
+ * (only when used in the "simple" mode) */
+const media = shallowRef(null);
+
+/** A reference to the (default) slot with the media element */
 const audioSlot = shallowRef(null);
 const zoomLevel = shallowRef<number | undefined>(undefined);
 
@@ -180,7 +185,7 @@ function createPeaksInstance(): void {
   const mediaElement = get<HTMLMediaElement>(
     props.mediaElement,
     props.mediaElementId,
-    audio,
+    media,
     audioSlot,
     'audio,video'
   );
@@ -331,12 +336,21 @@ const zoomviewWaveformProgressColor = computed(
 const overviewWaveformProgressColor = computed(
   () => props.options?.overview?.waveformColor ?? 'rgba(0, 0, 0, 0.2)'
 );
+
+/** Whether a media source is defined */
+const hasMediaSource = computed(
+  //() => (props.options?.mediaElement as HTMLMediaElement)?.src
+  () => peaksInstance.value?.player.getDuration() != null
+);
 </script>
 
 <template>
   <div
     ref="audioPeaks"
     class="peaks"
+    :class="{
+      'has-source': hasMediaSource,
+    }"
   >
     <div ref="overviewSlot">
       <!-- @slot Named slot for the overview element. If an external overview element is referenced, the overview slot is not used -->
@@ -370,12 +384,12 @@ const overviewWaveformProgressColor = computed(
         name="default"
         v-if="!props.mediaElementId && !props.mediaElement"
       >
-        <!-- The default content slot for the "slot" mode -->
+        <!-- The slot content for the "simple" mode -->
         <!-- The video element (if requested) -->
         <video
           v-if="video"
           class="peaks"
-          ref="audio"
+          ref="media"
           controls
         >
           <source :src="src" />
@@ -385,7 +399,7 @@ const overviewWaveformProgressColor = computed(
         <audio
           v-else
           class="peaks peaks-audio"
-          ref="audio"
+          ref="media"
           controls
         >
           <source :src="src" />
