@@ -11,4 +11,8 @@
 
 - Added a default progress indicator
 
-- updated internal handling
+- Added video support
+
+- Updated the documentation
+
+- Updated internal handling
