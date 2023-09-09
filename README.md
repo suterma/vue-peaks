@@ -12,7 +12,7 @@ A lightweight Vue wrapper around the [bbc/peaks.js](https://github.com/bbc/peaks
 
 ![Image](https://github.com/suterma/vue-peaks/blob/main/vue-peaks-example-ui.png?raw=true)
 
-vue-peaks aims to simplify the use of [peaks.js](https://github.com/bbc/peaks.js/) in a [Vue3](https://vuejs.org/) environment. It provides a [Single File Component (SFC)](https://vuejs.org/guide/scaling-up/sfc.html), `AudioPeaks`.
+vue-peaks aims to simplify the use of [peaks.js](https://github.com/bbc/peaks.js/) in a [Vue3](https://vuejs.org/) environment. It provides a single component, `AudioPeaks`.
 
 Explore the [live examples](https://suterma.github.io/vue-peaks/).
 
@@ -37,7 +37,7 @@ vue-peaks provides three modes of operation:
 First, import the Single File Component (SFC):
 
 ```
-import AudioPeaks from 'vue-peaks/src/components/AudioPeaks.vue';
+import AudioPeaks from 'vue-peaks';
 ```
 
 #### Simple mode
