@@ -14,12 +14,8 @@
           href=" https://vuejs.org/"
           >Vue3</a
         >
-        environment. It provides a
-        <a
-          target="_blank"
-          href="    https://vuejs.org/guide/scaling-up/sfc.html"
-          >Single File Component (SFC)</a
-        >, <span class="code">AudioPeaks</span>.
+        environment. It provides a single component,
+        <span class="code">AudioPeaks</span>.
       </p>
       <p>
         Explore the below examples or see the

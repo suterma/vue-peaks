@@ -14,7 +14,7 @@ import AudioPeaks from './../components/AudioPeaks.vue';
   <p>
     First, import the Single File Component (SFC):
   </p>
-  <highlightjs language='vue-typescript' code="import AudioPeaks from 'vue-peaks/src/components/AudioPeaks.vue';" />
+  <highlightjs language='vue-typescript' code="import AudioPeaks from 'vue-peaks';" />
   <h4 class="title is-4">Simple mode</h4>
   <div class="columns is-desktop">
     <div class="column">
