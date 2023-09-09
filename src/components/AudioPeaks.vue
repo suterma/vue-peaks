@@ -97,11 +97,11 @@ const props = defineProps<{
 const peaksInstance = shallowRef<PeaksInstance | undefined>(undefined);
 
 /** A reference to the encompassing div */
-const audioPeaks = shallowRef(null);
+const audioPeaks = shallowRef<HTMLDivElement | null>(null);
 
-const overview = shallowRef(null);
+const overview = shallowRef<HTMLDivElement | null>(null);
 const overviewSlot = shallowRef(null);
-const zoomview = shallowRef(null);
+const zoomview = shallowRef<HTMLDivElement | null>(null);
 const zoomviewSlot = shallowRef(null);
 
 /** A reference to the media element from the audio slot
@@ -342,22 +342,11 @@ const overviewWaveformProgressColor = computed(
     props.options?.overview?.waveformColor ??
     /* the peaks.js default */ 'rgba(0, 0, 0, 0.2)'
 );
-
-/** Whether a media source is defined */
-const hasMediaSource = computed(
-  //() => (props.options?.mediaElement as HTMLMediaElement)?.src
-  //() => peaksInstance.value?.player.getDuration() != null
-  () => props.src
-);
 </script>
-
 <template>
   <div
     ref="audioPeaks"
     class="peaks"
-    :class="{
-      'has-source': hasMediaSource,
-    }"
   >
     <div ref="overviewSlot">
       <!-- @slot Named slot for the overview element. If an external overview element is referenced, the overview slot is not used -->
@@ -439,12 +428,6 @@ div.peaks-zoomview {
 div.peaks-overview,
 div.peaks-zoomview {
   height: 80px;
-}
-
-/** When no audio source is defined, an error indication is shown */
-div.peaks:not(.has-source) div.peaks-overview,
-div.peaks:not(.has-source) div.peaks-zoomview {
-  background-color: red;
 }
 
 /** During loading, no waveform is displayed, but a progress indication shown */
