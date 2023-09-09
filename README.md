@@ -79,6 +79,26 @@ There are also properties available for the overview area and the zoom view area
 
 See a more [detailed documentation and live examples on the GitHub Pages](https://suterma.github.io/vue-peaks/).
 
+# Troubleshooting
+
+**Uncaught TypeError: Cannot read properties of null (reading 'isCE')**
+When you use Webpack and locally link to the vue-peaks library, make sure vue is not included twice. See https://github.com/vuejs/core/issues/4478#issuecomment-912235940
+
+Your vue.config.js should look like
+
+```
+const { defineConfig } = require('@vue/cli-service')
+const path = require('path') //add
+
+module.exports = defineConfig({
+  transpileDependencies: true,
+  chainWebpack(config) {
+    config.resolve.symlinks(false) //add
+    config.resolve.alias.set( 'vue', path.resolve('./node_modules/vue')) // add
+  },
+})
+```
+
 # Build & Development
 
 ## Project Setup
@@ -93,9 +113,11 @@ npm install
 npm run dev
 ```
 
-### Type-Check, Compile and Minify for Production
+### Compile and publish on GitHub pages
 
 ```sh
+# cleanup
+rm -rf dist
 npm run build
 # to publish to GitHub Pages (requires committing and pushing the build in the /dist folder)
 git add dist
@@ -103,6 +125,26 @@ git commit -m 'built for gh-pages'
 git push
 npm run publish-gh-pages
 ```
+
+### Type-Check, Compile and Minify for Production as Library
+
+- Update version
+- Update CHANGELOG.md
+- Disable the App mode and enable the [library mode](https://vitejs.dev/guide/build.html#library-mode)
+  - in `vite.donfig.ts`
+    - uncomment the `resolve` import
+    - comment the `rollupOptions`
+    - uncomment the `lib` property
+
+```sh
+# cleanup
+rm -rf dist
+npm run build
+# to publish to npm
+npm publish
+```
+
+- Change back to App mode
 
 ### Run Unit Tests with [Vitest](https://vitest.dev/)
 

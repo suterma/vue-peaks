@@ -1,5 +1,9 @@
 # vue-peaks
 
+## 2.0.0-beta.5 (2023/09/09)
+
+- Added library mode
+
 ## 2.0.0-beta.4 (2023/09/09)
 
 - Used the new peaks.js version 3

@@ -1,6 +1,18 @@
 {
   "name": "vue-peaks",
-  "version": "2.0.0-beta.4",
+  "version": "2.0.0-beta.5",
+  
+  "type": "module",
+  "files": ["dist"],
+  "main": "./dist/vue-peaks.umd.cjs",
+  "module": "./dist/vue-peaks.js",
+  "exports": {
+    ".": {
+      "import": "./dist/vue-peaks.js",
+      "require": "./dist/vue-peaks.umd.cjs"
+    }
+  },
+
   "description": "A lightweight Vue wrapper around the bbc/peaks.js audio waveform UI component",
   "repository": {
     "type": "git",
