@@ -102,8 +102,9 @@ function toggleRendering() {
 </AudioPeaks>" />
       <p>
         vue-peaks internally handles resizing of the contained overview and zoomview areas. If you, in the "external mode",
-        have an external zoomview or overview area that are resizing independent from the <span class='code'>AudioPeaks</span> instance, 
-        please handle their resizing according to the <a href='https://github.com/bbc/peaks.js/blob/master/doc/API.md#viewfittocontainer'>peaks.js API docs about resizing</a>.
+        have an external zoomview or overview area that are resizing completely independent from the <span class='code'>AudioPeaks</span> instance, 
+        please handle their resizing according to the <a href='https://github.com/bbc/peaks.js/blob/master/doc/API.md#viewfittocontainer'>
+        peaks.js API docs about resizing</a>.
       </p>
     </div>
   </div>

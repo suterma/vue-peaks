@@ -100,29 +100,44 @@ import AudioPeaks from './../components/AudioPeaks.vue';
   <div class="columns is-desktop">
     <div class="column">
       <p>
-        There are also properties available for overview area and the zoom view area.
+        There are also properties available for the overview area and the zoom view area.
       </p>
     </div>
     <div class="column">
-      <highlightjs language='vue-template' code="<div id='externalBasicOverviewDivId' class='peaks-overview'>Overview</div>
-<div id='externalBasicZoomviewDivId'class='peaks-zoomview'>Zoomview</div>
+      <highlightjs language='vue-template' code="<div id='externalBasicOverviewDivId' class='peaks-overview'>External overview</div>
+<div id='externalBasicZoomviewDivId' class='peaks-zoomview'>External zoomview</div>
+<audio controls id='externalBasicMediaElement'>
+  <source src='https://suterma.github.io/vue-peaks/lidija_roos-not_for_sale.mp3' />
+</audio>        
 <div><span class='tag is-danger'>
-Using the external overview and zoomview element above.</span></div>
-<AudioPeaks src='https://suterma.github.io/vue-peaks/lidija_roos-not_for_sale.mp3' 
+    Using the external overview, zoomview and audio element above.</span></div>
+<AudioPeaks 
+  mediaElementId='externalBasicMediaElement'
   overviewElementId='externalBasicOverviewDivId'
-  zoomviewElementId='externalBasicZoomviewDivId'>
+  zoomviewElementId='externalBasicZoomviewDivId'
+  >
+  <template #controls>
+    <template />
+  </template>
 </AudioPeaks>" />
     </div>
     <div class="column is-narrow">
       <div class="box">
-        <div id='externalBasicOverviewDivId' class='peaks-overview'>Overview</div>
-        <div id='externalBasicZoomviewDivId' class='peaks-zoomview'>Zoomview</div>
+        <div id='externalBasicOverviewDivId' class='peaks-overview'>External overview</div>
+        <div id='externalBasicZoomviewDivId' class='peaks-zoomview'>External zoomview</div>
+        <audio controls id='externalBasicMediaElement'>
+          <source src='https://suterma.github.io/vue-peaks/lidija_roos-not_for_sale.mp3' />
+        </audio>        
         <div><span class='tag is-danger'>
-            Using the external overview and zoomview element above.</span></div>
-        <AudioPeaks src='https://suterma.github.io/vue-peaks/lidija_roos-not_for_sale.mp3' 
-        overviewElementId='externalBasicOverviewDivId'
-        zoomviewElementId='externalBasicZoomviewDivId'
+            Using the external overview, zoomview and audio element above.</span></div>
+        <AudioPeaks 
+          mediaElementId='externalBasicMediaElement'
+          overviewElementId='externalBasicOverviewDivId'
+          zoomviewElementId='externalBasicZoomviewDivId'
           >
+          <template #controls>
+            <template />
+          </template>
         </AudioPeaks>
       </div>
     </div>
