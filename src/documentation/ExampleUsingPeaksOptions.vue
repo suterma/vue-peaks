@@ -93,7 +93,7 @@ const options: PeaksOptions = {
 }" />
       <highlightjs language='vue-template' code="<AudioPeaks :options='options'>
   <audio controls>
-    <source src='https://domain/file.mp3' />
+    <source src='https://lib.replayer.app/your-light-by-lidija-roos.mp3' />
   </audio>
   <template #controls><template />
     <!-- Using an empty template on a slot 

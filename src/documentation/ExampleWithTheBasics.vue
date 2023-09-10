@@ -28,7 +28,7 @@ import 'vue-peaks/dist/style.css';
         (overview and zoom, which are rendered with a default size) and a controls pane. A new audio context is
         created and used to compute the waveform.
       </p>
-      <highlightjs language='vue-template' code="<AudioPeaks src='https://domain/file.mp3' />" />
+      <highlightjs language='vue-template' code="<AudioPeaks src='https://lib.replayer.app/your-light-by-lidija-roos.mp3' />" />
     </div>
     <div class="column">
       <div class="box">
@@ -52,7 +52,7 @@ import 'vue-peaks/dist/style.css';
       <highlightjs language='vue-template' code="<AudioPeaks>
   <span>You can also add additional HTML content.</span>
   <audio controls>
-    <source src='https://domain/file.mp3' />
+    <source src='https://lib.replayer.app/your-light-by-lidija-roos.mp3' />
   </audio>
 </AudioPeaks>" />
     </div>
@@ -81,7 +81,7 @@ import 'vue-peaks/dist/style.css';
     </div>
     <div class="column">
       <highlightjs language='vue-template' code="<audio controls id='externalMediaElement'>
-  <source src='https://domain/file.mp3' />
+  <source src='https://lib.replayer.app/your-light-by-lidija-roos.mp3' />
 </audio>
 <div><span class='tag is-danger'>
     Using the external media element above.</span></div>

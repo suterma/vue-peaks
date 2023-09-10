@@ -38,7 +38,7 @@ import AudioPeaks from './../components/AudioPeaks.vue';
       but some custom
       buttons instead:</span>
     <audio ref='audio'>
-      <source src='https://domain/file.mp3' />
+      <source src='https://lib.replayer.app/your-light-by-lidija-roos.mp3' />
     </audio>
     <button @click='($refs.audio as HTMLAudioElement).play()'>
       Play

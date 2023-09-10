@@ -49,7 +49,7 @@ Note: Even if you do not use the default (or any other) styles, the overview and
 By default, the [AudioPeaks Vue component](https://github.com/suterma/vue-peaks/blob/main/src/components/AudioPeaks.vue) template creates a new audio element, with the given source URL, and both view panes (overview and zoom, which are rendered with a default size) and a controls pane. A new audio context is created and used to compute the waveform.
 
 ```
-<AudioPeaks src='https://domain/file.mp3' />
+<AudioPeaks src='https://lib.replayer.app/your-light-by-lidija-roos.mp3' />
 ```
 
 #### Slot mode
@@ -60,7 +60,7 @@ To provide your own media element, just place it inside the `AudioPeaks` element
 <AudioPeaks>
   <span>You can also add additional HTML content.</span>
   <audio controls>
-    <source src='https://domain/file.mp3' />
+    <source src='https://lib.replayer.app/your-light-by-lidija-roos.mp3' />
   </audio>
 </AudioPeaks>
 ```
@@ -73,7 +73,7 @@ There are also properties available for the overview area and the zoom view area
 
 ```
 <audio controls id='externalMediaElement'>
-  <source src='https://domain/file.mp3' />
+  <source src='https://lib.replayer.app/your-light-by-lidija-roos.mp3' />
 </audio>
 <div><span>
     Using the external media element above.</span></div>
