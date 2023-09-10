@@ -190,7 +190,7 @@ function createPeaksInstance(): void {
     'audio,video'
   );
 
-  // Take over only the internally handled options
+  // If the options are given, take over only the internally handled options
   if (props.options) {
     if (props.options.zoomview) {
       //if the zoomview is already specified, only take the container
@@ -210,11 +210,23 @@ function createPeaksInstance(): void {
         container: overviewElement,
       };
     }
+    if (
+      props.options.webAudio?.audioContext ||
+      props.options.dataUri ||
+      props.options.waveformData
+    ) {
+      //if the audioContext or waveform data is already specified, use it
+    } else {
+      //create the audioContext
+      props.options.webAudio = {
+        audioContext: new AudioContext(),
+      };
+    }
 
     props.options.mediaElement = mediaElement;
   }
 
-  // either take the prepared options from above, or if not available
+  // either take the prepared options from above, or, if not available,
   // create and use the bare minimum
   const options: PeaksOptions = props.options
     ? props.options

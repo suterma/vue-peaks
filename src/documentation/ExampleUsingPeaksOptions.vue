@@ -26,8 +26,14 @@ const options: PeaksOptions = {
     showPlayheadTime: true
   },
   /* mediaElement is handled separately by AudioPeaks */
+
+  /** webAudio is optional. If omitted, a new AudioContext is created */
   webAudio: { audioContext: new AudioContext() },
+  
+  /** zoomLevels is optional. If omitted, a default set of 4 zoom levels is used */
   zoomLevels: [256],
+  
+  /** playheadColor is optional. If omitted, a default black color is used */
   playheadColor: '#e43725'
 }
 </script>
@@ -42,7 +48,7 @@ const options: PeaksOptions = {
         <span class="code">zoomview.container</span>,
         <span class="code">overview.container</span> and
         <span class="code">mediaElement</span> options, since these are already handled internally, depending on the view mode
-        (see explanation with the basic examples).
+        (see explanation with the <a href="#basic-examples">basic examples</a>).
       </p>
       <p>The options allow you for example to
       <ul>
@@ -54,7 +60,8 @@ const options: PeaksOptions = {
     </div>
     <div class="column">
 
-      <highlightjs language='vue-typescript' code="/** The configuration options 
+      <highlightjs language='vue-typescript' code="import { PeaksOptions } from 'peaks.js';
+/** The configuration options 
 * @remarks The colors are taken from a Bulma color scheme.
 */
 const options: PeaksOptions = {
@@ -74,10 +81,15 @@ const options: PeaksOptions = {
     axisGridlineColor: 'hsl(0, 0%, 29%)',
     axisLabelColor: 'hsl(0, 0%, 29%)',
   },
-  /* mediaElement is handled separately by AudioPeaks */
+  /** webAudio is optional. If omitted, and neither `dataUri` nor `waveformData`
+  is present, a new AudioContext is created */
   webAudio: { audioContext: new AudioContext() },
+  
+  /** zoomLevels is optional. If omitted, a default set of zoom levels is used */
   zoomLevels: [256],
-  playheadColor: 'hsl(348, 100%, 61%)'
+  
+  /** playheadColor is optional. If omitted, a default black color is used */
+  playheadColor: '#e43725'
 }" />
       <highlightjs language='vue-template' code="<AudioPeaks :options='options'>
   <audio controls>
