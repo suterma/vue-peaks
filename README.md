@@ -34,11 +34,15 @@ vue-peaks provides three modes of operation:
 - **Slot mode**: the media element and additional views are provided using named slots
 - **External mode**: the media element and additional views are referenced by id or HTML element references
 
-First, import the Single File Component (SFC):
+Import the component:
 
 ```
 import AudioPeaks from 'vue-peaks';
+// default styles for the AudioPeaks component
+import 'vue-peaks/dist/style.css';
 ```
+
+Note: Even if you do not use the default (or any other) styles, the overview and zoomview panes still do have a small minimum size set.
 
 #### Simple mode
 

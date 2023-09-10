@@ -416,7 +416,8 @@ const overviewWaveformProgressColor = computed(
     </slot>
   </div>
 </template>
-
+//TODO move these styles in an exportble format (or how to include in this
+component???)
 <style>
 audio.peaks,
 video.peaks,

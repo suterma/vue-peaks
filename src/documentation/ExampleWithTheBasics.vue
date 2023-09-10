@@ -11,10 +11,12 @@ import AudioPeaks from './../components/AudioPeaks.vue';
     </li>
   </ul>
   </p>
-  <p>
-    First, import the Single File Component (SFC):
-  </p>
-  <highlightjs language='vue-typescript' code="import AudioPeaks from 'vue-peaks';" />
+  <p>Import the component:  </p>
+  <highlightjs language='vue-typescript' code="import AudioPeaks from 'vue-peaks';
+// default styles for the AudioPeaks component
+import 'vue-peaks/dist/style.css';
+" />
+<p>Note: Even if you do not use the default (or any other) styles, the overview and zoomview panes still do have a small minimum size set.</p>
   <h4 class="title is-4">Simple mode</h4>
   <div class="columns is-desktop">
     <div class="column">
