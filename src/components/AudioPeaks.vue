@@ -175,6 +175,8 @@ function createPeaksInstance(): void {
     overviewSlot,
     'div'
   );
+  setMinimumSize(overviewElement);
+
   const zoomviewElement = get<HTMLDivElement>(
     props.zoomviewElement,
     props.zoomviewElementId,
@@ -182,6 +184,8 @@ function createPeaksInstance(): void {
     zoomviewSlot,
     'div'
   );
+  setMinimumSize(zoomviewElement);
+
   const mediaElement = get<HTMLMediaElement>(
     props.mediaElement,
     props.mediaElementId,
@@ -257,6 +261,16 @@ function createPeaksInstance(): void {
  */
 function destroyPeaksInstance(): void {
   peaksInstance.value?.destroy();
+}
+
+/** Sets a fixed minimum size
+ * @remarks This is used to avoid the error about making sure the zoomview and overview "container is visible and has non-zero width and height"
+ */
+function setMinimumSize(element: HTMLDivElement | undefined): void {
+  if (element) {
+    element.style.minHeight = 40 + 'px'; // default audio element height on FireFox
+    element.style.minWidth = 100 + '%';
+  }
 }
 
 /** Handles overview element resizes */
@@ -428,8 +442,6 @@ const overviewWaveformProgressColor = computed(
     </slot>
   </div>
 </template>
-//TODO move these styles in an exportble format (or how to include in this
-component???)
 <style>
 audio.peaks,
 video.peaks,
