@@ -44,6 +44,13 @@ import 'vue-peaks/dist/style.css';
 
 Note: Even if you do not use the default (or any other) styles, the overview and zoomview panes still do have a small minimum size set.
 
+Currently, the package does not properly export types, see issue [#17](https://github.com/suterma/vue-peaks/issues/17). Alternatively you can also directly include the vue component as SFC:
+
+```
+import AudioPeaks from 'vue-peaks/src/components/AudioPeaks.vue';
+// default styles for the AudioPeaks component are already contained in the SFC
+```
+
 #### Simple mode
 
 By default, the [AudioPeaks Vue component](https://github.com/suterma/vue-peaks/blob/main/src/components/AudioPeaks.vue) template creates a new audio element, with the given source URL, and both view panes (overview and zoom, which are rendered with a default size) and a controls pane. A new audio context is created and used to compute the waveform.

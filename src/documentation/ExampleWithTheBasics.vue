@@ -11,12 +11,28 @@ import AudioPeaks from './../components/AudioPeaks.vue';
     </li>
   </ul>
   </p>
-  <p>Import the component:  </p>
-  <highlightjs language='vue-typescript' code="import { AudioPeaks } from 'vue-peaks';
+
+  <div class="columns is-desktop">
+    <div class="column">
+
+      <p><b>Preferred: </b>Import the compiled component:</p>
+      <highlightjs language='vue-typescript' code="import { AudioPeaks } from 'vue-peaks';
 // default styles for the AudioPeaks component
 import 'vue-peaks/dist/style.css';
 " />
-<p>Note: Even if you do not use the default (or any other) styles, the overview and zoomview panes still do have a small minimum size set.</p>
+      <p>Note: Even if you do not use the default (or any other) styles, the overview and zoomview panes still do have a small minimum size set.</p>
+
+      </div>
+      <div class="column">
+
+        <p><b>Alternative:</b> The package does not currently properly export types, see issue <a href="https://github.com/suterma/vue-peaks/issues/17">[#17]</a>. To get TypeScript support, you can also directly include the vue component as SFC:</p>
+
+      <highlightjs language='vue-typescript' code="import AudioPeaks from 'vue-peaks/src/components/AudioPeaks.vue';
+// default styles for the AudioPeaks component are already contained in the SFC" />
+
+    </div>
+  </div>
+
   <h4 class="title is-4">Simple mode</h4>
   <div class="columns is-desktop">
     <div class="column">
@@ -36,6 +52,7 @@ import 'vue-peaks/dist/style.css';
       </div>
     </div>
   </div>
+
 
 
 
