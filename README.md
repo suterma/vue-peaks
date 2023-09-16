@@ -150,7 +150,7 @@ npm run publish-gh-pages
 ```sh
 # cleanup
 rm -rf dist
-npm run build-lib
+npm run build
 # to publish to npm
 npm publish
 ```
