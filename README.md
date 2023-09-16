@@ -34,7 +34,7 @@ vue-peaks provides three modes of operation:
 - **Slot mode**: the media element and additional views are provided using named slots
 - **External mode**: the media element and additional views are referenced by id or HTML element references
 
-Import the component:
+Preferred: Import the compiled component:
 
 ```
 import { AudioPeaks } from 'vue-peaks';
@@ -44,7 +44,7 @@ import 'vue-peaks/dist/style.css';
 
 Note: Even if you do not use the default (or any other) styles, the overview and zoomview panes still do have a small minimum size set.
 
-Currently, the package does not properly export types, see issue [#17](https://github.com/suterma/vue-peaks/issues/17). Alternatively you can also directly include the vue component as SFC:
+Alternative: The package does not currently properly export types, see issue [#17](https://github.com/suterma/vue-peaks/issues/17). To get TypeScript support, you can also directly include the vue component as SFC:
 
 ```
 import AudioPeaks from 'vue-peaks/src/components/AudioPeaks.vue';
