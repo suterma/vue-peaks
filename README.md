@@ -131,7 +131,7 @@ npm run dev
 rm -rf dist
 npm run build
 # to publish to GitHub Pages (requires committing and pushing the build in the /dist folder)
-git add dist
+git add dist -f
 git commit -m 'built for gh-pages'
 git push
 npm run publish-gh-pages
