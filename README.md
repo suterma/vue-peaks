@@ -130,7 +130,7 @@ git push
 npm run publish-gh-pages
 ```
 
-### Type-Check, Compile and Minify for Production as Library
+### Compile for Production an publish as Library
 
 - Update version
 - Update CHANGELOG.md
@@ -143,7 +143,7 @@ npm run publish-gh-pages
 ```sh
 # cleanup
 rm -rf dist
-npm run build
+npm run build-lib
 # to publish to npm
 npm publish
 ```
@@ -154,12 +154,6 @@ npm publish
 
 ```sh
 npm run test:unit
-```
-
-### Lint with [ESLint](https://eslint.org/)
-
-```sh
-npm run lint
 ```
 
 # Credits
@@ -181,6 +175,7 @@ npm run lint
 - [prettier](https://github.com/prettier/prettier), an opinionated Code Formatter. (Released under the MIT License, by the prettier team)
 - [typescript](https://github.com/Microsoft/TypeScript), a language for application-scale JavaScript. (Released under the Apache-2.0 license, by Microsoft)
 - [vue-tsc](https://github.com/johnsoncodehk/volar), high-performance tooling for Vue. (Released under the MIT License, by Johnson Chu)
+- Post [Making and publishing components with Vue 3 and Vite](https://dev.to/matijanovosel/making-and-distributing-a-ui-component-with-vue-3-and-vite-12lk) by [Matija Novosel](https://www.matijanovosel.com/).
 
 Initial code is taken from
 
