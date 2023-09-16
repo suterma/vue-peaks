@@ -142,9 +142,8 @@ npm run publish-gh-pages
 - Update version
 - Update CHANGELOG.md
 - Disable the App mode and enable the [library mode](https://vitejs.dev/guide/build.html#library-mode)
-  - in `vite.donfig.ts`
+  - in `vite.config.ts`
     - uncomment the `resolve` import
-    - comment the `rollupOptions`
     - uncomment the `lib` property
 
 ```sh
