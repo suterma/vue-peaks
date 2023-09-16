@@ -17,7 +17,7 @@ export default defineConfig({
   /* path /vue-peaks/ is suitable for publishing to github pages */
   base: '/vue-peaks/',
   build: {
-    /* Defining the options for "App Mode" */
+    /* Defining the rollupOptions for "App Mode" */
     rollupOptions: {
       external: [/^.*(.mp3)/, /^.*(.ogg)/],
     },
@@ -28,6 +28,7 @@ export default defineConfig({
     //   // the proper extensions will be added
     //   fileName: 'vue-peaks',
     // },
+    /* Defining the rollupOptions for "Library Mode" */
     // rollupOptions: {
     //   external: ['vue', 'peaks.js', /^.*(.mp3)/, /^.*(.ogg)/],
     //   output: {
