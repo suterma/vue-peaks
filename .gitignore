@@ -105,3 +105,6 @@ typings/
 
 # All distribution
 dist/
+
+# Log files
+vite.config.ts.timestamp*.mjs

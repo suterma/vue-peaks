@@ -37,7 +37,7 @@ vue-peaks provides three modes of operation:
 Import the component:
 
 ```
-import AudioPeaks from 'vue-peaks';
+import { AudioPeaks } from 'vue-peaks';
 // default styles for the AudioPeaks component
 import 'vue-peaks/dist/style.css';
 ```

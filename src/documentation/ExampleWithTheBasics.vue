@@ -12,7 +12,7 @@ import AudioPeaks from './../components/AudioPeaks.vue';
   </ul>
   </p>
   <p>Import the component:  </p>
-  <highlightjs language='vue-typescript' code="import AudioPeaks from 'vue-peaks';
+  <highlightjs language='vue-typescript' code="import { AudioPeaks } from 'vue-peaks';
 // default styles for the AudioPeaks component
 import 'vue-peaks/dist/style.css';
 " />
