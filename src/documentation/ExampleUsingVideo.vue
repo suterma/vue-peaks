@@ -22,7 +22,7 @@ import AudioPeaks from './../components/AudioPeaks.vue';
       </p>
       <highlightjs
         language="vue-template"
-        code="<AudioPeaks video src='https://domain/video-file.mp4' />"
+        code="<AudioPeaks video src='https://lib.replayer.app/nasa/-home-www-videos-voyager-20130912d-discovery20110428-640.webm' />"
       />
     </div>
     <div class="column">
@@ -36,7 +36,7 @@ import AudioPeaks from './../components/AudioPeaks.vue';
         </p>
         <AudioPeaks
           video
-          src="https://solarsystem.nasa.gov/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcHRYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--c6d603ff2a89b19ebdd89842ff2e35911e2ca2a2/-home-www-videos-voyager-20130912d-discovery20110428-640.webm?disposition=inline"
+          src="https://lib.replayer.app/nasa/-home-www-videos-voyager-20130912d-discovery20110428-640.webm"
         />
       </div>
     </div>
@@ -53,7 +53,7 @@ import AudioPeaks from './../components/AudioPeaks.vue';
         language="vue-template"
         code="<AudioPeaks>
   <video controls>
-    <source src='https://domain/video-file.mp4' />
+    <source src='https://lib.replayer.app/nasa/JPL-20161121-CASSINf-0001-720.ogv' />
   </video>
 </AudioPeaks>"
       />
@@ -79,7 +79,7 @@ import AudioPeaks from './../components/AudioPeaks.vue';
               style="width: 100%"
             >
               <source
-                src="https://solarsystem.nasa.gov/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbDFmIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--971840d1ebc56d50fc897c92adb1b8d7f8aad71e/JPL-20161121-CASSINf-0001-720.ogv?disposition=inline"
+                src="https://lib.replayer.app/nasa/JPL-20161121-CASSINf-0001-720.ogv"
               />
             </video>
           </AudioPeaks>
