@@ -1,0 +1,21 @@
+{
+  "src/assets/peaks-logo.svg": {
+    "file": "assets/peaks-logo.72e98b64.svg",
+    "src": "src/assets/peaks-logo.svg"
+  },
+  "index.html": {
+    "file": "assets/index.052b9665.js",
+    "src": "index.html",
+    "isEntry": true,
+    "css": [
+      "assets/index.525b4f4f.css"
+    ],
+    "assets": [
+      "assets/peaks-logo.72e98b64.svg"
+    ]
+  },
+  "index.css": {
+    "file": "assets/index.525b4f4f.css",
+    "src": "index.css"
+  }
+}
