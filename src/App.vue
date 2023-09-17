@@ -6,6 +6,7 @@ import ExampleUsingPeaksOptions from './documentation/ExampleUsingPeaksOptions.v
 import DemoWidget from './documentation/DemoWidget.vue';
 import AccessingThePeaksInstance from './documentation/AccessingThePeaksInstance.vue';
 import ExampleUsingReactivity from './documentation/ExampleUsingReactivity.vue';
+import ExampleErrorHandling from './documentation/ExampleErrorHandling.vue';
 import ExampleUsingSlots from './documentation/ExampleUsingSlots.vue';
 import Introduction from './documentation/Introduction.vue';
 import Credits from './documentation/Credits.vue';
@@ -50,6 +51,7 @@ import AvailableProperties from './documentation/AvailableProperties.vue';
               <li><a href="#using-options">Options</a></li>
               <li><a href="#accessing-instance">Accessing the instance</a></li>
               <li><a href="#using-reactivity">Using reactivity</a></li>
+              <li><a href="#error-handling">Error handling</a></li>
               <li><a href="#player-widget">A widget</a></li>
               <li><a href="#using-video">Using video</a></li>
               <li><a href="#credits">Credits</a></li>
@@ -131,6 +133,16 @@ import AvailableProperties from './documentation/AvailableProperties.vue';
             </h3>
             <article class="example">
               <ExampleUsingReactivity />
+            </article>
+
+            <h3
+              id="error-handling"
+              class="title is-3"
+            >
+              Error handling
+            </h3>
+            <article class="example">
+              <ExampleErrorHandling />
             </article>
 
             <h3

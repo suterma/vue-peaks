@@ -24,9 +24,8 @@ import AudioPeaks from './../components/AudioPeaks.vue';
         language="vue-template"
         code="<AudioPeaks video src='https://lib.replayer.app/nasa/-home-www-videos-voyager-20130912d-discovery20110428-640.webm' />"
       />
-    </div>
-    <div class="column">
-      <div class="box">
+
+      <div class="box is-pulled-right">
         <p>
           Voyage of Discovery (Source:
           <a
@@ -62,28 +61,25 @@ import AudioPeaks from './../components/AudioPeaks.vue';
         <span class="code">#audio</span>, in case you want to use it for
         customization.
       </p>
-    </div>
-    <div class="columns is-desktop">
-      <div class="column">
-        <div class="box">
-          <p>
-            Cassini's High-Flying, Ring-Grazing Orbits (Source:
-            <a
-              href="https://solarsystem.nasa.gov/resources/17561/cassinis-high-flying-ring-grazing-orbits/?category=videos"
-              >NASA / Jet Propulsion Laboratory - Caltech)</a
-            >, 27.1 MB (video/ogg)
-          </p>
-          <AudioPeaks>
-            <video
-              controls
-              style="width: 100%"
-            >
-              <source
-                src="https://lib.replayer.app/nasa/JPL-20161121-CASSINf-0001-720.ogv"
-              />
-            </video>
-          </AudioPeaks>
-        </div>
+
+      <div class="box is-pulled-right">
+        <p>
+          Cassini's High-Flying, Ring-Grazing Orbits (Source:
+          <a
+            href="https://solarsystem.nasa.gov/resources/17561/cassinis-high-flying-ring-grazing-orbits/?category=videos"
+            >NASA / Jet Propulsion Laboratory - Caltech)</a
+          >, 27.1 MB (video/ogg)
+        </p>
+        <AudioPeaks>
+          <video
+            controls
+            style="width: 100%"
+          >
+            <source
+              src="https://lib.replayer.app/nasa/JPL-20161121-CASSINf-0001-720.ogv"
+            />
+          </video>
+        </AudioPeaks>
       </div>
     </div>
   </div>
@@ -106,9 +102,8 @@ import AudioPeaks from './../components/AudioPeaks.vue';
 <AudioPeaks mediaElementId='externalVideoElement'>
 </AudioPeaks>"
       />
-    </div>
-    <div class="column is-narrow">
-      <div class="box">
+
+      <div class="box is-pulled-right">
         <p>
           Where is the Edge of the Solar System? (Source:
           <a href="https://svs.gsfc.nasa.gov/12639"
@@ -136,6 +131,6 @@ import AudioPeaks from './../components/AudioPeaks.vue';
 <style scoped>
 div.box {
   /** Videos should not be too big to have room for the text */
-  max-width: 50vw;
+  max-width: 33vw;
 }
 </style>

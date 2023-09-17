@@ -6,6 +6,7 @@ import {
   onBeforeUnmount,
   computed,
   watch,
+  ref,
 } from 'vue';
 import {
   useResizeObserver,
@@ -159,6 +160,27 @@ watch(
   }
 );
 
+// --- error handling ---
+
+/** Handle peaks.js initialization errors
+ */
+function handleError(error: Error): void {
+  console.error(error);
+  lastError.value = error;
+  emit('error', lastError.value);
+}
+
+/** Handle media-related errors
+ */
+function handleMediaError(mediaError: MediaError): void {
+  console.error(mediaError);
+  lastError.value = new Error(mediaError.message);
+  emit('error', lastError.value);
+}
+
+/** A reference to the last error, if any */
+const lastError = ref<Error | null>(null);
+
 // --- setup ---
 
 /** Initializes the peaks instance
@@ -193,6 +215,17 @@ function createPeaksInstance(): void {
     mediaSlot,
     'audio,video'
   );
+
+  // handle an already existing and future errors on the media element, e.g. a missing response
+  // NOTE: this does not work in "simple mode", see https://github.com/suterma/vue-peaks/issues/18
+  if (mediaElement?.error) {
+    handleMediaError(mediaElement.error);
+  }
+  if (mediaElement) {
+    mediaElement?.addEventListener('error', (error) => {
+      handleError(error.error);
+    });
+  }
 
   // If the options are given, take over only the internally handled options
   if (props.options) {
@@ -246,10 +279,9 @@ function createPeaksInstance(): void {
 
   Peaks.init(
     options,
-    function (err: Error, peaks: PeaksInstance | undefined): void {
-      if (err) {
-        console.error(err);
-        emit('error', err);
+    function (error: Error, peaks: PeaksInstance | undefined): void {
+      if (error) {
+        handleError(error);
       }
       peaksInstance.value = peaks;
       zoomLevel.value = peaks?.zoom.getZoom();
@@ -373,6 +405,10 @@ const overviewWaveformProgressColor = computed(
   <div
     ref="audioPeaks"
     class="peaks"
+    :class="{
+      hasError: lastError !== null,
+    }"
+    :title="lastError?.message"
   >
     <div ref="overviewSlot">
       <!-- @slot Named slot for the overview element. If an external overview element is referenced, the overview slot is not used -->
@@ -494,5 +530,20 @@ div.peaks-zoomview:empty {
   100% {
     background-position: 200% 200%;
   }
+}
+
+/** On error when loading, no waveform is displayed, but an error indication shown */
+
+/** progress colors */
+.peaks.hasError div.peaks-overview:empty,
+.peaks.hasError div.peaks-zoomview:empty {
+  background: repeating-linear-gradient(
+    -45deg,
+    #e10000,
+    #e10000 10px,
+    #e1000000 10px,
+    #e1000000 20px
+  );
+  animation-name: none;
 }
 </style>

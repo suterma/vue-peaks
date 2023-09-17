@@ -21,6 +21,8 @@
         language="css"
         code="div.peaks { 
     /* The div with the whole AudioPeaks component */ }
+div.peaks.hasError { 
+    /* When vue-peaks has reported an error */ }    
 div.peaks-overview { 
     /* The div with the overview waveform */ }
 div.peaks-zoomview { 
