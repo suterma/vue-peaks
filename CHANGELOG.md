@@ -1,5 +1,10 @@
 # vue-peaks
 
+## 2.0.1 (2023/09/17)
+
+- Added default error display
+- Updated documentation
+
 ## 2.0.0 (2023/09/16)
 
 - Added (unfinished) Typescript support
