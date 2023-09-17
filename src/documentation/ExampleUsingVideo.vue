@@ -98,9 +98,9 @@ import AudioPeaks from './../components/AudioPeaks.vue';
 
       <highlightjs
         language="vue-template"
-        code="<audio controls id='externalVideoElement'>
-  <source src='https://domain/video-file.mp4' />
-</audio>
+        code="<video controls id='externalVideoElement'>
+  <source src='https://lib.replayer.app/nasa/12639_EdgeofSolarSystem_Final_24fps_v02_VX-718267_appletv_subtitles.m4v' />
+</video>
 <div><span class='tag is-danger'>
     Using the external media element above.</span></div>
 <AudioPeaks mediaElementId='externalVideoElement'>
@@ -111,8 +111,7 @@ import AudioPeaks from './../components/AudioPeaks.vue';
       <div class="box">
         <p>
           Where is the Edge of the Solar System? (Source:
-          <a
-            href="https://solarsystem.nasa.gov/resources/17561/cassinis-high-flying-ring-grazing-orbits/?category=videos"
+          <a href="https://svs.gsfc.nasa.gov/12639"
             >NASA's Goddard Space Flight Center)</a
           >, 28.8 MB (video/mp4)
         </p>
@@ -121,7 +120,7 @@ import AudioPeaks from './../components/AudioPeaks.vue';
           id="externalVideoElement"
         >
           <source
-            src="https://solarsystem.nasa.gov/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBczlnIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--8e7fbe9534876dd62ed8e8eec07a33197beab17a/12639_EdgeofSolarSystem_Final_24fps_v02_VX-718267_appletv_subtitles.m4v?disposition=inline"
+            src="https://lib.replayer.app/nasa/12639_EdgeofSolarSystem_Final_24fps_v02_VX-718267_appletv_subtitles.m4v"
           />
         </video>
         <div>
