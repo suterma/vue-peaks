@@ -128,13 +128,14 @@ import AudioPeaks from './../components/AudioPeaks.vue';
             Using the external video element above.</span
           >
         </div>
-        <AudioPeaks mediaElementId="externalVideoElement"> </AudioPeaks>
+        <AudioPeaks mediaElementId="externalVideoElement"></AudioPeaks>
       </div>
     </div>
   </div>
 </template>
 <style scoped>
 div.box {
+  /** Videos should not be too big to have room for the text */
   max-width: 50vw;
 }
 </style>
