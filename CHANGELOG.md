@@ -1,5 +1,10 @@
 # vue-peaks
 
+## 2.0.2 (2023/10/07)
+
+- used media links from lib.replayer.app
+- removed packed media files (reduces package size)
+
 ## 2.0.1 (2023/09/17)
 
 - Added default error display
