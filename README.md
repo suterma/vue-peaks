@@ -127,9 +127,19 @@ npm run dev
 ### Compile and publish on GitHub pages
 
 ```sh
+# setup (required once)
+git config --global pull.rebase true
+git config --global push.autoSetupRemote true
+
+# remove old code in gh-pages (prevents merge conflicts when pushing subtree)
+git checkout gh-pages
+git rebase -Xtheirs origin/main
+git checkout main
+
 # cleanup
 rm -rf dist
 npm run build
+
 # to publish to GitHub Pages (requires committing and pushing the build in the /dist folder)
 git add dist -f
 git commit -m 'built for gh-pages'
