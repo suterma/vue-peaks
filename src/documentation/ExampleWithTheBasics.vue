@@ -48,13 +48,10 @@ import 'vue-peaks/dist/style.css';
     </div>
     <div class="column">
       <div class="box">
-        <AudioPeaks src="https://suterma.github.io/vue-peaks/lidija_roos-not_for_sale.mp3" />
+        <AudioPeaks src="https://lib.replayer.app/lidija_roos-not_for_sale.mp3" />
       </div>
     </div>
   </div>
-
-
-
 
   <h4 class="title is-4">Slot mode</h4>
   <div class="columns is-desktop">
@@ -78,7 +75,7 @@ import 'vue-peaks/dist/style.css';
         <AudioPeaks>
           <span class="tag is-danger is-multiline">You can also add additional HTML content.</span>
           <audio controls>
-            <source src='https://suterma.github.io/vue-peaks/lidija_roos-not_for_sale.mp3' />
+            <source src='https://lib.replayer.app/lidija_roos-not_for_sale.mp3' />
           </audio>
         </AudioPeaks>
       </div>
@@ -108,7 +105,7 @@ import 'vue-peaks/dist/style.css';
     <div class="column is-narrow">
       <div class="box">
         <audio controls id='externalMediaElement'>
-          <source src='https://suterma.github.io/vue-peaks/lidija_roos-not_for_sale.mp3' />
+          <source src='https://lib.replayer.app/lidija_roos-not_for_sale.mp3' />
         </audio>
         <div><span class='tag is-danger'>
             Using the external media element above.</span></div>
@@ -131,7 +128,7 @@ import 'vue-peaks/dist/style.css';
       <highlightjs language='vue-template' code="<div id='externalBasicOverviewDivId'>External overview</div>
 <div id='externalBasicZoomviewDivId'>External zoomview</div>
 <audio controls id='externalBasicMediaElement'>
-  <source src='https://suterma.github.io/vue-peaks/lidija_roos-not_for_sale.mp3' />
+  <source src='https://lib.replayer.app/lidija_roos-not_for_sale.mp3' />
 </audio>        
 <div><span class='tag is-danger'>
     Using the external overview, zoomview and audio element above.</span></div>
@@ -150,7 +147,7 @@ import 'vue-peaks/dist/style.css';
         <div id='externalBasicOverviewDivId'>External overview</div>
         <div id='externalBasicZoomviewDivId'>External zoomview</div>
         <audio controls id='externalBasicMediaElement'>
-          <source src='https://suterma.github.io/vue-peaks/lidija_roos-not_for_sale.mp3' />
+          <source src='https://lib.replayer.app/lidija_roos-not_for_sale.mp3' />
         </audio>        
         <div><span class='tag is-danger'>
             Using the external overview, zoomview and audio element above.</span></div>

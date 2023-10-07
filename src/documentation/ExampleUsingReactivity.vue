@@ -5,7 +5,7 @@ import AudioPeaks from './../components/AudioPeaks.vue';
 /** reactive properties */
 const state = reactive({
   isRendered: true,
-  mediaSource: 'https://suterma.github.io/vue-peaks/lidija_roos-not_for_sale.mp3',
+  mediaSource: 'https://lib.replayer.app/lidija_roos-not_for_sale.mp3',
   peaksWidth: 50
 })
 
@@ -36,9 +36,9 @@ function toggleRendering() {
             <div class='select is-danger'>
               <select v-model='state.mediaSource' class='highlight'>
                 <option value=''>none</option>
-                <option value='https://suterma.github.io/vue-peaks/lidija_roos-not_for_sale.mp3'>An MP3 music file
+                <option value='https://lib.replayer.app/lidija_roos-not_for_sale.mp3'>An MP3 music file
                 </option>
-                <option value='https://suterma.github.io/vue-peaks/lidija_roos-decisions.ogg'>An OGG music file
+                <option value='https://lib.replayer.app/decisions-by-lidija-roos.ogg'>An OGG music file
                 </option>
                 <option value='https://twit.cachefly.net/audio/sn/sn0886/sn0886.mp3'>Security Now! Podcast,
                   Episode #886 (112 min, 55.5MB, MP3)</option>

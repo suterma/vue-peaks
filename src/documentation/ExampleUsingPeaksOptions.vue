@@ -105,7 +105,7 @@ const options: PeaksOptions = {
       <div class="box">
         <AudioPeaks :options='options'>
           <audio controls>
-            <source src='https://suterma.github.io/vue-peaks/lidija_roos-not_for_sale.mp3' />
+            <source src='https://lib.replayer.app/lidija_roos-not_for_sale.mp3' />
           </audio>
           <template #controls><template />
             <!-- Using an empty template on a slot 
